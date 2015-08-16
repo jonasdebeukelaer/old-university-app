@@ -1,6 +1,8 @@
-node_modules/
-bower_components/
-*.log
-
-build/
-dist/
+.DS_Store
+*.db
+*.pyc
+*.swp
+*~
+db_repository
+flask
+node_modules
