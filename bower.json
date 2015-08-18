@@ -2,22 +2,22 @@
   "name": "unisalad",
   "version": "0.0.0",
   "dependencies": {
-    "angular-bootstrap": "~0.10.0",
-    "angular-resource": "~1.2.13",
-    "angular-route": "~1.2.13",
+    "angular": "~1.4",
+    "angular-bootstrap": "~0.10",
+    "angular-resource": "~1.4",
+    "angular-route": "~1.4",
     "angular-ui-date": "~0.0.3",
-    "angular": "~1.2.13",
-    "bootstrap-css": "~3.0.0",
-    "jquery": "~2.1.0",
-    "lodash": "~2.4.1",
-    "angular-touch": "~1.4.4",
-    "angular-material": "~0.10.1",
-    "angular-local-storage": "~0.2.2",
-    "angular-animate": "~1.4.4",
-    "angular-aria": "~1.4.4"
+    "bootstrap-css": "~3.0",
+    "jquery": "~2.1",
+    "lodash": "~2.4",
+    "angular-touch": "~1.4",
+    "angular-material": "~0.10",
+    "angular-local-storage": "~0.2",
+    "angular-animate": "~1.4",
+    "angular-aria": "~1.4"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.13",
-    "angular-scenario": "~1.2.13"
+    "angular-mocks": "~1.4",
+    "angular-scenario": "~1.4"
   }
 }

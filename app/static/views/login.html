@@ -1,0 +1,59 @@
+<div>
+  <md-content class="login-signup">
+    <md-tabs md-selected="selectedTab" md-dynamic-height md-border-bottom class="login-tabs">
+      <md-tab label="login">
+        <md-content class="md-padding">
+          <h3>Login to your {{ university }} account</h3>
+
+          <md-input-container flex>
+            <label>Email</label>
+            <input ng-model="user.email" type="email">
+          </md-input-container>
+          <md-input-container flex>
+            <label>Password</label>
+            <input ng-model="theMax" type="password">
+          </md-input-container>
+          <md-input-container flex>
+            <md-checkbox md-no-ink aria-label="Remember me" ng-model="remember" class="md-primary"> Remember Me
+          </md-input-container>
+          <md-input-container flex>
+              <md-button ng-href="#/tool" class="md-raised md-primary button-wide">Submit</md-button>
+          </md-input-container>
+        </md-content>
+      </md-tab>
+
+      <md-tab label="signUp">
+        <md-content class="md-padding">
+          <h3>Sign up to unisalad :)</h3>
+
+          <md-input-container flex>
+              <label>Name</label>
+              <input ng-model="user.name">
+          </md-input-container>
+          <md-input-container flex>
+              <label>University email</label>
+              <input ng-model="user.email" type="email">
+              <div ng-messages="projectForm.clientName.$error">
+                <div class="price-notice" ng-message="ng-maxlength">A confirmation email will be sent</div>
+              </div>
+          </md-input-container>
+          <md-input-container flex>
+              <label>Password</label>
+              <input ng-model="user.password" type="password">
+          </md-input-container>
+          <md-input-container flex>
+              <label>Mobile number</label>
+              <input ng-model="user.mobile" type="number">
+          </md-input-container>
+          <md-input-container flex>
+              <md-button class="md-primary md-raised facebook" ng-click="createUser">Connect with facebook?</md-button>
+          </md-input-container>
+          <p>None of your personal details will be shared to any third parties. They will only be used to enable you to contact other students through the site</p>
+          <md-input-container flex>
+              <md-button class="md-primary md-raised button-wide" ng-href="#/confirmationsent">Send confirmation email</md-button>
+          </md-input-container>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>

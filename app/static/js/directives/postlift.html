@@ -1,0 +1,44 @@
+ <div class="post-card">
+	 <md-card id="idCard{{ info.id }}" class="md-card">
+		 <md-card-content class="post-card-content">
+		 	<!--<div class="fill-absolute"></div>-->
+		 	<div class="make-flex">
+				<h4>
+					{{ info.from | capitalise }}
+					<!-- MAKE CAPITALISATION HAPPEN ON STORAGE -->
+				</h4>
+			</div>
+
+			<md-divider></md-divider>
+
+			<div class="make-flex">
+				<md-icon class="card-lifts-toArrow" md-svg-icon="arrow_forward"></md-icon>
+				<h4>
+					{{ info.to | capitalise }}
+					<!-- MAKE CAPITALISATION HAPPEN ON STORAGE -->
+				</h4>
+			</div>
+
+			<md-divider></md-divider>
+
+			<div class="make-flex">
+				<p>
+					{{ info.leavingDate | date:'dd/MM/yy' }}
+					<span ng-if="info.flexibility != 0">+/- {{ info.flexibility }} days</span>
+				</p>
+				<span class="to-right">
+					<p>
+						<span ng-if="info.spaces != 1">{{ info.spaces }} x </span>
+						<b>{{ info.cost | currency:"£" }}</b>
+					</p>
+				</span>
+			</div>
+			
+			<div>
+				<p> Here would go extra info about the journey {{ info.extraInfo }}
+				</p>
+				<p class="to-right card-username">{{ info.user }}</p>
+			</div>
+		</md-card-content>
+	</md-card>
+</div>

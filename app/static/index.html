@@ -1,54 +1,222 @@
 <!doctype html>
-<html lang="en" ng-app="unisalad">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unisalad</title>
-  <link href="lib/bootstrap-css/css/bootstrap.css" rel="stylesheet">
-  <link href="lib/jquery-ui/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
-  <link href="css/app.css" rel="stylesheet">
+  <link href="lib/angular-material/angular-material.min.css" rel="stylesheet">
+  <!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">-->
+  <link href="css/main.css" rel="stylesheet">
 </head>
-<body>
- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-   <div class="container">
-     <div class="navbar-header">
-       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-         <span class="sr-only">Toggle navigation</span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </button>
-       <a class="navbar-brand" href="#">Unisalad</a>
-     </div>
+<body ng-app="unisalad">
 
-     <!-- Collect the nav links, forms, and other content for toggling -->
-     <div class="collapse navbar-collapse navbar-ex1-collapse">
-       <ul class="nav navbar-nav">
-         
-       </ul>
-     </div>
-     <!-- /.navbar-collapse -->
-   </div>
-   <!-- /.container -->
-  </nav>
-  <div class="container" ng-view></div>
+  <div class="all" ng-controller="AppCtrl">
+
+      <md-sidenav class="md-sidenav-left" md-swipe-left="toggleLeft()" md-component-id="left" md-is-locked-open="wideScreen">
+        <md-toolbar class="md-theme-indigo" ng-click="toggleLeft()">
+          <div class="md-toolbar-tools">
+            <h1>Menu</h1>
+            <md-button ng-if="!wideScreen" class="md-icon-button to-right" aria-label="Settings" >
+                <md-icon md-svg-icon="arrow_back"></md-icon>
+              </md-button>
+          </div>
+        </md-toolbar>
+
+        <md-content layout-padding ng-controller="LeftCtrl">
+          <md-list>
+            <md-list-item ng-click="closeAndChangePage('')">
+              <md-icon md-svg-icon="home"></md-icon>
+              <p>Home</p>
+            </md-list-item>
+
+            <md-list-item ng-click="closeAndChangePage('/profile')">
+              <md-icon md-svg-icon="person"></md-icon>
+              <p>My profile</p>
+            </md-list-item>
+            
+            <md-divider></md-divider>
+
+            <md-list-item ng-click="closeAndChangePage('/about')">
+              <md-icon md-svg-icon="info"></md-icon>
+              <p>About</p>
+            </md-list-item>
+          </md-list>
+        </md-content>
+      </md-sidenav>
+
+        <!-- -------------------------------------------------------------------------- -->
+
+      <div class="view-container" layout="column" layout-fill>
+
+        <md-toolbar id="toolbar" md-scroll-shrink>
+          <div class="md-toolbar-tools">
+            <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+              <md-icon md-svg-icon="menu"></md-icon>
+            </md-button>
+            <h2>
+              <span>unisalad</span>
+            </h2>
+            <md-switch ng-model="loggedIn" ng-change="debugLoggedIn()" class="md-primary" aria-label="debugging tool">
+              *
+            </md-switch>
+            <md-button ng-if="loggedIn && !wideScreen" class="md-icon-button to-right" aria-label="My things" ng-click="toggleRight()">
+              <md-icon md-svg-icon="person"></md-icon>
+            </md-button>
+
+            <md-button ng-if="!loggedIn" class="to-right" aria-label="My things" ng-click="goTo('/login')">
+              <md-icon md-svg-icon="person"></md-icon>
+              Login
+            </md-button>
+          </div>
+        </md-toolbar>
+        <md-content md-swipe-right="toggleLeft()" md-swipe-left="toggleRight()" id="content-scrollable" class="all-content">
+          <div class="container" ng-controller="AppCtrl">
+            <div ng-view="" class="container-ng-view"></div>
+          </div>
+        </md-content>
+      
+        <md-button ng-if="onListview" aria-label="Add post" href="#/addpost" class="md-fab md-primary add-post">
+          <md-icon md-svg-icon="add"></md-icon>
+        </md-button>
+
+      </div>
+
+      <!-- -------------------------------------------------------------------------- -->
+
+      <md-sidenav md-component-id="right" md-swipe-right="toggleRight()" md-is-locked-open="wideScreen" class="md-sidenav-right mythings-sidenav">
+        <md-toolbar class="mythings-fix" ng-click="toggleRight()">
+          <div class="md-toolbar-tools">
+            <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings">
+                <md-icon md-svg-icon="arrow_forward"></md-icon>
+              </md-button>
+            <h1 class="to-right">My Things</h1>
+          </div>
+        </md-toolbar>
+        <md-list class="personalinfo">
+          <md-list-item class="md-2-line mythings-fix">
+            <img ng-src="https://placekitten.com/110/110" class="md-avatar" alt="fbFace">
+            <div class="md-list-item-text">
+              <h3>My name</h3>
+              <p>My University</p>
+            </div>
+          </md-list-item>
+          <md-divider></md-divider>
+        </md-list>
+        <md-content ng-if="loggedIn" class="mythings-fill" layout-padding ng-controller="RightCtrl">
+          <md-list>
+            <md-list-header>My things for Sale</md-list-header>
+            <md-subheader>Tickets</md-subheader>
+            <md-list-item>
+              <p>Test item</p>
+              <md-grid-list class="md-secondary">
+                <md-grid-list-item>
+                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                    <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+                  </md-button>
+                </md-grid-list-item>
+                <md-grid-list-item>
+                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                    <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+                  </md-button>
+                </md-grid-list-item>
+              </md-grid-list>
+            </md-list-item>
+            <md-list-item>
+              <p>Test item 2</p>
+              <md-grid-list class="md-secondary">
+                <md-grid-list-item>
+                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                    <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+                  </md-button>
+                </md-grid-list-item>
+                <md-grid-list-item>
+                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                    <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+                  </md-button>
+                </md-grid-list-item>
+              </md-grid-list>
+            </md-list-item>
+            <md-list-item>
+              <p>Test item 2</p>
+              <md-grid-list class="md-secondary">
+                <md-grid-list-item>
+                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                    <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+                  </md-button>
+                </md-grid-list-item>
+                <md-grid-list-item>
+                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                    <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+                  </md-button>
+                </md-grid-list-item>
+              </md-grid-list>
+            </md-list-item>
+
+            <md-divider></md-divider>
+            <md-subheader>Lifts</md-subheader>
+
+            <md-divider></md-divider>
+            <md-subheader>Miscellaneous</md-subheader>
+            <md-list-item>
+              <p>Test item</p>
+              <span class="md-secondary">
+                <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+                <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+              </span>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-subheader>For Sale</md-subheader>
+          </md-list>
+        </md-content>
+      </md-sidenav>
+
+
+    </div>
+
+    <!-- ---------------------------------------------------------------------------- -->
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script>
+
   <script src="lib/jquery/dist/jquery.js"></script>
   <script src="lib/jquery-ui/jquery-ui.js"></script>
-  <script src="lib/lodash/dist/lodash.js"></script>
-  <script src="lib/angular/angular.js"></script>
+  <!--<script src="lib/angular/angular.js"></script>-->
+  <!--<script src="lib/angular-animate/angular-animate.js"></script>-->
   <script src="lib/angular-resource/angular-resource.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
-  <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="lib/angular-ui-date/src/date.js"></script>
   <script src="lib/angular-touch/angular-touch.js"></script>
-  <script src="lib/angular-animate/angular-animate.js"></script>
-  <script src="lib/angular-aria/angular-aria.js"></script>
-  <script src="lib/angular-material/angular-material.js"></script>
+  <!--<script src="lib/angular-aria/angular-aria.js"></script>-->
+  <!--<script src="lib/angular-material/angular-material.js"></script>-->
   <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
 
+  
+
   <script src="js/app.js"></script>
-  <script src="js/home/home-controller.js"></script>
+  <script src="js/controllers/app.js"></script>
+  <script src="js/controllers/main.js"></script>
+  <script src="js/controllers/about.js"></script>
+  <script src="js/controllers/tool.js"></script>
+  <script src="js/controllers/login.js"></script>
+  <script src="js/controllers/listview.js"></script>
+  <script src="js/controllers/addpost.js"></script>
+  <script src="js/controllers/postdetail.js"></script>
+  <script src="js/controllers/confirmationsent.js"></script>
+
+  <script src="js/directives/postticket.js"></script>
+  <script src="js/directives/postlift.js"></script>
+
+  <script src="js/services/searchtext.js"></script>
+  <script src="js/services/tappedpost.js"></script>
+
+  <script src="js/filters/capitalise.js"></script>
+  <script src="js/filters/searchall.js"></script>
+
+  <script src="js/jQuery-plugins/scrollTo.js"></script>
   
 </body>
 </html>

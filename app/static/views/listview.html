@@ -1,0 +1,23 @@
+<div id="listview" class="listview-container">
+	<span class="make-flex">
+		<md-icon class="large-icon title-icon" md-svg-icon="{{ list.icon }}"></md-icon>
+		<h2>{{ list.name }}</h2>
+	</span>
+    <div class="search-container">
+    	<md-input-container class="search-posts">
+	    	<label>Search</label>
+	        <input ng-model="searchText.words">
+	    </md-input-container>
+
+	    <md-select class="sort-list" ng-model="sortBy" placeholder="Sort">
+	    	<md-option ng-repeat="mode in sortModes" value="{{ mode.code }}">{{ mode.label }}</md-option>
+		</md-select>
+  	</div>
+
+	<post-ticket ng-if="list.label == 'tickets'" id="id{{ pst.id }}" ng-repeat="pst in posts | searchAll:searchText.words | orderBy:sortBy" ng-click="openPostDetails($event, pst)" info="pst">
+	</post-ticket>
+
+	<post-lift id="id{{ pst.id }}" ng-repeat="pst in lifts | searchAll:searchText.words | orderBy:sortBy" ng-click="openPostDetails($event, pst)" info="pst">
+	</post-lift>
+	
+</div>

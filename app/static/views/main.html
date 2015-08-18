@@ -1,0 +1,15 @@
+<div class="container-welcome md-whiteframe-z2">
+  <h1>Hello</h1>
+  <p>Welcome to unisalad, home to all your studenty needs!</p>
+
+  <div class="to-bottom bottom-padding">
+  	<md-input-container>
+  		
+	    <md-select class="select-uni" placeholder="Select your university" ng-model="university" ng-change="uniSelected()" aria-label="choose pls">
+	    	<md-option ng-repeat="uni in universities">{{ uni }}</md-option>
+	    </md-select>
+	  </md-input-container>
+    
+    <md-button ng-click="goToSign('up')" class="md-raised md-primary button-wide">Sign Up</md-button>
+  </div>
+</div>
