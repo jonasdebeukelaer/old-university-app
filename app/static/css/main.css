@@ -61,21 +61,21 @@ md-content.all-content {
   flex: 1 1 auto;
   background-image: url("../images/noise.png");
   background-repeat: repeat;
-  margin-bottom: 32px;
+  /*margin-bottom: 32px;                                                                AUTO-SHRINK */
 }
 
 .container {
   position: absolute;
+
   min-height: 100%;
   width: 100%;
 }
 
 .container-ng-view {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 64px;
+  height: 92%;
+  width: 92%;
+  /*bottom: 64px;                                                                       AUTO-SHRINK */
   margin: 4%;
 }
 
@@ -97,6 +97,7 @@ md-content.all-content {
   left: 0;
   right: 0;
   padding: 4%;
+  margin-bottom: 4%;
   background-color: white;
 }
 
@@ -443,24 +444,24 @@ md-select.select-withlabel {
 
 @keyframes slideInLeft {
     0%      { transform:translateX(0); opacity: 0; }
-    50%     { transform:translateX(0); opacity: 0.2; }
+    50%     { transform:translateX(0); opacity: 0.1; }
     100%    { transform: translateX(0); opacity: 1; }  
     }  
 
 @keyframes slideOutRight {
     0%    { transform:translateX(0); opacity: 1; }
-    50%   { transform: translateX(-100%); opacity: 1; }
-    100%  { transform: translateX(-100%); opacity: 1; }
+    50%   { transform: translateX(0); opacity: 0.1; }
+    100%  { transform: translateX(0); opacity: 0; }
     }
 
 
 .ng-enter:not(md-bottom-sheet) {
-  animation: slideInLeft 0.3s both ease-in;
+  animation: slideInLeft 0.2s both ease-in;
   z-index: 2;
 }
 
 .ng-leave:not(md-bottom-sheet) {
-  animation: slideOutRight 0.5s both ease-in;
+  animation: slideOutRight 0.2s both ease-in;
   z-index: 10;
 }
 

@@ -177,14 +177,14 @@ function ScrollOperation(clickedPost) {
 
     //account for menu schrink status
     var toolbarTransform = getComputedStyle(document.getElementById('toolbar'), null).transform.split(',')[5];
-    var toolbarY = parseInt(toolbarTransform.substring(0, toolbarTransform.length-1));
+    //var toolbarY = parseInt(toolbarTransform.substring(0, toolbarTransform.length-1));                            AUTO-SHRINK
     var offsetTopCalc = 0;
 
     if (postCardHeight < (contentHeight - bottomSheetHeight)) {
       console.log('lol')
       offsetTopCalc = contentHeight - bottomSheetHeight - postCardHeight + 20;
     };
-    offsetTopCalc += (toolbarY) % 65;
+    //offsetTopCalc += (toolbarY) % 65;                                                                             AUTO-SHRINK
     offsetTopCalc += 64;
 
     var cards = document.getElementsByClassName('md-card');
