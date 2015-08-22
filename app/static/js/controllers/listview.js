@@ -110,6 +110,28 @@ angular.module('unisalad')
       extraInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis '
     }];
 
+
+    $scope.houses = [{
+      id: 1,
+      isOffering: true,
+      title: 'double room for rent',
+      postDate: new Date("2015-05-25"),
+      user: 'Manny Zarate',
+      cost: '1000',
+      location: '26 Hetley Road, London, Banterville',
+      moveDate: new Date("2015-08-31"),
+      pics: [{
+        caption: 'dis de bed',
+        img: 'images/Aug15/bed.jpg'
+      },
+      {
+        caption: 'the front',
+        img: 'images/Aug15/front.jpg'
+      }],
+      link: 'http://www.spareroom.co.uk/flatshare/flatshare_detail.pl?flatshare_id=4304519',
+      extraInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi'
+    }]
+
     $scope.sortModes = [{
         label: 'Date added',
         code: 'postDate'

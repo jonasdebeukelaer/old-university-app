@@ -409,6 +409,23 @@ div > h3:first-child {
   }
 }
 
+
+.post-picContainer {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+
+}
+
+.post-img {
+  height: 70px;
+  margin: 4px;
+}
+
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------add post page-----------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -443,16 +460,26 @@ md-select.select-withlabel {
 /*----------------------------------------------------------------------------------*/
 
 @keyframes slideInLeft {
-    0%      { transform:translateX(0); opacity: 0; }
-    50%     { transform:translateX(0); opacity: 0.1; }
-    100%    { transform: translateX(0); opacity: 1; }  
-    }  
+  0%      { transform:translateX(0); opacity: 0; }
+  50%     { transform:translateX(0); opacity: 0.1; }
+  100%    { transform: translateX(0); opacity: 1; }  
+ }  
 
 @keyframes slideOutRight {
-    0%    { transform:translateX(0); opacity: 1; }
-    50%   { transform: translateX(0); opacity: 0.1; }
-    100%  { transform: translateX(0); opacity: 0; }
-    }
+  0%    { transform: translateX(0); opacity: 1; }
+  50%   { transform: translateX(0); opacity: 0.1; }
+  100%  { transform: translateX(0); opacity: 0; }
+}
+
+@keyframes jumpUp {
+  from  { transform: translateY(100%); }
+  to    { transform: translateY(0); }
+}
+
+@keyframes fallDown {
+  from  { transform: translateY(0); }
+  to    { transform: translateY(100%); }
+}
 
 
 .ng-enter:not(md-bottom-sheet) {
@@ -465,4 +492,13 @@ md-select.select-withlabel {
   z-index: 10;
 }
 
+.add-post.ng-enter {
+  animation: jumpUp 0.2s both cubic-bezier(.55,0,.1,1);
+  z-index: 10; 
+}
+
+.add-post.ng-leave {
+  animation: fallDown 0.2s both cubic-bezier(.55,0,.1,1);
+  z-index: 10; 
+}
 
