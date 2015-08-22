@@ -55,10 +55,12 @@ div.all {
 md-toolbar {
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   flex: 0 1 auto;
+  -webkit-flex: 0 1 auto;
 }
 
 md-content.all-content {
   flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
   background-image: url("../images/noise.png");
   background-repeat: repeat;
   /*margin-bottom: 32px;                                                                AUTO-SHRINK */
@@ -84,7 +86,6 @@ md-content.all-content {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
   padding: 4%;
   background-color: white;
   display: flex;
@@ -129,15 +130,18 @@ md-toolbar {
 
   md-sidenav.md-sidenav-left {
     flex: 0 1 auto;
+    -webkit-flex: 0 1 auto;
   }
 
   div.view-container {
     position: relative;
     flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
   }
 
   md-sidenav.md-sidenav-right {
     flex: 0 1 auto;
+    -webkit-flex: 0 1 auto;
   }
 
 }
@@ -196,10 +200,12 @@ md-select-label {
 
 .mythings-fix {
   flex: 0 1 auto;
+  -webkit-flex: 0 1 auto;
 }
 
 .mythings-fill {
   flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
 }
 
 .md-list.personalinfo {
@@ -484,21 +490,25 @@ md-select.select-withlabel {
 
 .ng-enter:not(md-bottom-sheet) {
   animation: slideInLeft 0.2s both ease-in;
+  -webkit-animation: slideInLeft 0.2s both ease-in;
   z-index: 2;
 }
 
 .ng-leave:not(md-bottom-sheet) {
   animation: slideOutRight 0.2s both ease-in;
+  -webkit-animation: slideOutRight 0.2s both ease-in;
   z-index: 10;
 }
 
 .add-post.ng-enter {
   animation: jumpUp 0.2s both cubic-bezier(.55,0,.1,1);
+  -webkit-animation: jumpUp 0.2s both cubic-bezier(.55,0,.1,1);
   z-index: 10; 
 }
 
 .add-post.ng-leave {
   animation: fallDown 0.2s both cubic-bezier(.55,0,.1,1);
+  -webkit-animation: fallDown 0.2s both cubic-bezier(.55,0,.1,1);
   z-index: 10; 
 }
 
