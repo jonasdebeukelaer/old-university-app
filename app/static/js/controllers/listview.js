@@ -128,7 +128,7 @@ angular.module('unisalad')
         caption: 'the front',
         img: 'images/Aug15/front.jpg'
       }],
-      link: 'http://www.spareroom.co.uk/flatshare/flatshare_detail.pl?flatshare_id=4304519',
+      link: 'http://www.spareroom.co.uk/',
       extraInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi'
     }]
 
@@ -159,35 +159,45 @@ angular.module('unisalad')
     //---------------------------------------------------------------------
     //---------------------------------------------------------------------
 
-    //$scope.backdrop = false;
+    ;( function( $ ) {
+
+    $( '.swipebox' ).swipebox();
+
+    } )( jQuery );
 
     $scope.openPostDetails = function($event, clickedPost) {
 
+        var clickedElementClass = $event.srcElement.className;
 
-        //$scope.backdrop = true;
+        if (clickedElementClass === 'post-img') {
+          console.log('clicked pic');
 
-        tappedPost.post = clickedPost;
+        } else if (clickedElementClass === 'post-link') {
+          console.log('clicked link');
 
-        ScrollOperation(clickedPost);
-        
-        $mdBottomSheet.show({
-            templateUrl: 'views/postdetails.html',
-            controller: 'PostdetailCtrl',
-            targetEvent: $event
-        }).then(function () {
-            console.log('clicked a contact method');
-        }, function () {
-            console.log('cancelled bottom-sheet');
+        } else {
+          tappedPost.post = clickedPost;
 
-            var focusedId = "#idCard" + clickedPost.id;
-            $(focusedId).removeClass('bottom-sheet-open'); //
-            $('#listview').removeClass('bottom-sheet-open'); //add padding to bottom so lowest posts can still be brought up
-            //$('md-card.md-card > md-card-content > div.fill-absolute').removeClass('whiten');
-        });
-        
+          ScrollOperation(clickedPost);
+          
+          $mdBottomSheet.show({
+              templateUrl: 'views/postdetails.html',
+              controller: 'PostdetailCtrl',
+              targetEvent: $event
+          }).then(function () {
+              console.log('clicked a contact method');
+          }, function () {
+              console.log('cancelled bottom-sheet');
 
-        
+              var focusedId = "#idCard" + clickedPost.id;
+              $(focusedId).removeClass('bottom-sheet-open'); //
+              $('#listview').removeClass('bottom-sheet-open'); //add padding to bottom so lowest posts can still be brought up
+              //$('md-card.md-card > md-card-content > div.fill-absolute').removeClass('whiten');
+          });
+        };
+
     };
+
 
   }]);
 
@@ -198,7 +208,7 @@ function ScrollOperation(clickedPost) {
     var postCardHeight = document.getElementById('id' + clickedPost.id).getBoundingClientRect().height;
 
     //account for menu schrink status
-    var toolbarTransform = getComputedStyle(document.getElementById('toolbar'), null).transform.split(',')[5];
+    //var toolbarTransform = getComputedStyle(document.getElementById('toolbar'), null).transform.split(',')[5];    AUTO-SHRINK
     //var toolbarY = parseInt(toolbarTransform.substring(0, toolbarTransform.length-1));                            AUTO-SHRINK
     var offsetTopCalc = 0;
 

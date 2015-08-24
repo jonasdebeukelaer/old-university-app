@@ -1,3 +1,6 @@
+
+html { visibility:hidden; }
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -8,6 +11,8 @@
 body {
   padding: 0;
   display: flex;
+  display: -webkit-flex;
+  flex-flow: row;-webkit-
   flex-flow: row;
 }
 
@@ -39,12 +44,16 @@ div.all {
   top: 0;
   bottom: 0;
   display: flex;
+  display: -webkit-flex;
+  flex-flow: row;-webkit-
   flex-flow: row;
 }
 
 .view-container {
   display: flex;
+  display: -webkit-flex;
   flex-flow: column;
+  -webkit-flex-flow: column;
   height: 100%;
   max-width: 768px;
   margin-right: auto;
@@ -89,7 +98,9 @@ md-content.all-content {
   padding: 4%;
   background-color: white;
   display: flex;
+  display: -webkit-flex;
   flex-flow: column;
+  -webkit-flex-flow: column;
 }
 
 .container-tool {
@@ -147,10 +158,9 @@ md-toolbar {
 }
 
 /*prevent focus glow */
-post, div, md-toolbar  {
+post-ticket, div, md-toolbar, post-ticket:focus, div:focus, md-toolbar:focus, *:focus  {
   outline: none;
 }
-
 
 
 /*----------------------------------------------------------------------------------*/
@@ -195,7 +205,9 @@ md-select-label {
 
 .mythings-sidenav {
   display: flex;
+  display: -webkit-flex;
   flex-direction:column;
+  -webkit-flex-direction: column;
 }
 
 .mythings-fix {
@@ -323,6 +335,7 @@ md-card {
 
 .make-flex {
   display: flex;
+  display: -webkit-flex;
 }
 
 .card-username {
@@ -356,10 +369,8 @@ md-card-content.bottom-sheet-open {
 
 div.listview-container {
   margin-bottom: 0;
-  -webkit-transition: margin-bottom 0.4s;
-  transition: margin-bottom 0.4s;
-  -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  -webkit-transition: margin-bottom 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+  transition: margin-bottom 0.4s cubic-bezier(0.55, 0, 0.1, 1);
 }
 
 div.listview-container.bottom-sheet-open {
@@ -420,8 +431,10 @@ div > h3:first-child {
   margin-top: 5px;
   margin-bottom: 5px;
   display: flex;
+  display: -webkit-flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -webkit-flex-wrap: wrap;
   justify-content: space-around;
   align-content: center;
 
@@ -465,16 +478,38 @@ md-select.select-withlabel {
 /*-------------------------------page load animation--------------------------------*/
 /*----------------------------------------------------------------------------------*/
 
-@keyframes slideInLeft {
-  0%      { transform:translateX(0); opacity: 0; }
-  50%     { transform:translateX(0); opacity: 0.1; }
-  100%    { transform: translateX(0); opacity: 1; }  
+@-webkit-keyframes fadeIn {
+  0%    { opacity: 0; }
+  50%   { opacity: 0.1; }
+  100%  { opacity: 1; }  
  }  
 
-@keyframes slideOutRight {
-  0%    { transform: translateX(0); opacity: 1; }
-  50%   { transform: translateX(0); opacity: 0.1; }
-  100%  { transform: translateX(0); opacity: 0; }
+@-webkit-keyframes fadeOut {
+  0%    { opacity: 1; }
+  50%   { opacity: 0.1; }
+  100%  { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  0%    { opacity: 0; }
+  50%   { opacity: 0.1; }
+  100%  { opacity: 1; }  
+ }  
+
+@keyframes fadeOut {
+  0%    { opacity: 1; }
+  50%   { opacity: 0.1; }
+  100%  { opacity: 0; }
+}
+
+@-webkit-keyframes jumpUp {
+  from  { -webkit-transform: translateY(110%); }
+  to    { -webkit-transform: translateY(0); }
+}
+
+@-webkit-keyframes fallDown {
+  from  { -webkit-transform: translateY(0); }
+  to    { -webkit-transform: translateY(110%); }
 }
 
 @keyframes jumpUp {
@@ -488,15 +523,15 @@ md-select.select-withlabel {
 }
 
 
-.ng-enter:not(md-bottom-sheet) {
-  animation: slideInLeft 0.2s both ease-in;
-  -webkit-animation: slideInLeft 0.2s both ease-in;
+.ng-enter:not(md-bottom-sheet):not(.add-post) {
+  animation: fadeIn 0.2s both ease-in;
+  -webkit-animation: fadeIn 0.2s both ease-in;
   z-index: 2;
 }
 
-.ng-leave:not(md-bottom-sheet) {
-  animation: slideOutRight 0.2s both ease-in;
-  -webkit-animation: slideOutRight 0.2s both ease-in;
+.ng-leave:not(md-bottom-sheet):not(.add-post) {
+  animation: fadeOut 0.2s both ease-in;
+  -webkit-animation: fadeOut 0.2s both ease-in;
   z-index: 10;
 }
 

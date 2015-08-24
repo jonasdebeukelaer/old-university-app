@@ -11,6 +11,11 @@ angular.module('unisalad')
   .controller('AppCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$animate', '$mdMedia', '$location', 'localStorageService', 
                     function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $animate, $mdMedia, $location, localStorageService) {
 
+    $(document).ready(function() {
+      //in future load splash image instead of hiding everything
+      document.getElementsByTagName("html")[0].style.visibility = "visible";
+    });
+
     $scope.onListview = false;
     
     $scope.$on('$routeChangeStart', function(event, next) {

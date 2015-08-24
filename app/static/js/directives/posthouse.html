@@ -28,10 +28,12 @@
 			</div>
 
 			<div class="post-picContainer">
-				<img src="{{ pic.img }}" alt="pic" ng-repeat="pic in info.pics" class="post-img">
+				<a href="{{ pic.img }}" ng-repeat="pic in info.pics" class="swipebox" title="{{ pic.caption }}">
+					<img src="{{ pic.img }}" alt="pic" class="post-img">
+				</a>
 			</div>
 
-			<a ng-href="{{ info.link }}"><p>External page</p></a>
+			<a ng-href="{{ info.link }}" target="_blank"><p class="post-link">External page</p></a>
 
 			<p>{{ info.extraInfo }}</p>
 		</md-card-content>
