@@ -26,6 +26,12 @@ angular.module('unisalad')
     });
     headroom.init();
 
+    var viewHeight = $(window).height();
+    $('md-sidenav').css('bottom', 'auto');
+    $('md-sidenav').css('height', viewHeight);
+    $('div.page').css('min-height', viewHeight);
+    $('div.content').css('min-height', viewHeight);
+
 
 
     $scope.onListview = false;
