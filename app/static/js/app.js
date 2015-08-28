@@ -3,10 +3,12 @@ angular.module('unisalad', [
 	'ngAnimate',
 	'ngResource',
 	'ngRoute',
-  'ngTouch',
   'LocalStorageModule',
   'ngMaterial'
 	])
+  .run(function() {
+    FastClick.attach(document.body);
+    })
 	.config(['localStorageServiceProvider', function(localStorageServiceProvider){
 	  localStorageServiceProvider.setPrefix('us');
 	  }])

@@ -11,9 +11,7 @@
 
   <link href="css/main.css" rel="stylesheet">
 </head>
-<body ng-app="unisalad">
-
-  <div class="all" ng-controller="AppCtrl">
+<body ng-app="unisalad" ng-controller="AppCtrl">
 
       <md-sidenav class="md-sidenav-left" md-swipe-left="toggleLeft()" md-component-id="left" md-is-locked-open="wideScreen">
         <md-toolbar class="md-theme-indigo" ng-click="toggleLeft()">
@@ -24,17 +22,13 @@
               </md-button>
           </div>
         </md-toolbar>
-
         <md-content layout-padding ng-controller="LeftCtrl">
           <md-list>
             <md-list-item ng-click="closeAndChangePage('')">
               <md-icon md-svg-icon="home"></md-icon>
               <p>Home</p>
             </md-list-item>
-
-            
             <md-divider></md-divider>
-
             <md-list-item ng-click="closeAndChangePage('/about')">
               <md-icon md-svg-icon="info"></md-icon>
               <p>About</p>
@@ -45,40 +39,39 @@
 
         <!-- -------------------------------------------------------------------------- -->
 
-      <div class="view-container" layout="column" layout-fill>
+        <div class="page">
+          <md-toolbar class="toolbar" id="toolbar">
+            <div class="md-toolbar-tools">
+              <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+                <md-icon md-svg-icon="menu"></md-icon>
+              </md-button>
+              <h2>
+                <span>unisalad</span>
+              </h2>
+              <md-switch ng-model="loggedIn" ng-change="debugLoggedIn()" class="md-primary" aria-label="debugging tool">
+                *
+              </md-switch>
+              <md-button ng-if="loggedIn && !wideScreen" class="md-icon-button to-right" aria-label="My things" ng-click="toggleRight()">
+                <md-icon md-svg-icon="person"></md-icon>
+              </md-button>
 
-        <md-toolbar id="toolbar">
-          <div class="md-toolbar-tools">
-            <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
-              <md-icon md-svg-icon="menu"></md-icon>
-            </md-button>
-            <h2>
-              <span>unisalad</span>
-            </h2>
-            <md-switch ng-model="loggedIn" ng-change="debugLoggedIn()" class="md-primary" aria-label="debugging tool">
-              *
-            </md-switch>
-            <md-button ng-if="loggedIn && !wideScreen" class="md-icon-button to-right" aria-label="My things" ng-click="toggleRight()">
-              <md-icon md-svg-icon="person"></md-icon>
-            </md-button>
+              <md-button ng-if="!loggedIn" class="to-right" aria-label="My things" ng-click="goTo('/login')">
+                <md-icon md-svg-icon="person"></md-icon>
+                Login
+              </md-button>
+            </div>
+          </md-toolbar>
 
-            <md-button ng-if="!loggedIn" class="to-right" aria-label="My things" ng-click="goTo('/login')">
-              <md-icon md-svg-icon="person"></md-icon>
-              Login
-            </md-button>
+
+          <div md-swipe-right="toggleLeft()" md-swipe-left="toggleRight()" class="content" id="content-scroll">
+              <div ng-view="" class="container-ng-view"></div>
           </div>
-        </md-toolbar>
-        <md-content md-swipe-right="toggleLeft()" md-swipe-left="toggleRight()" id="content-scrollable" class="all-content">
-          <div class="container" ng-controller="AppCtrl">
-            <div ng-view="" class="container-ng-view"></div>
-          </div>
-        </md-content>
-      
-        <md-button ng-if="onListview" aria-label="Add post" href="#/addpost" class="md-fab md-primary add-post">
-          <md-icon md-svg-icon="add"></md-icon>
-        </md-button>
+        
+          <md-button ng-if="onListview" aria-label="Add post" href="#/addpost" class="md-fab md-primary add-post">
+            <md-icon md-svg-icon="add"></md-icon>
+          </md-button>
+        </div>
 
-      </div>
 
       <!-- -------------------------------------------------------------------------- -->
 
@@ -114,7 +107,7 @@
                   </md-button>
                 </md-grid-list-item>
                 <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                  <md-button class="md-grid-item-content list-button" ng-click="">
                     <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
                   </md-button>
                 </md-grid-list-item>
@@ -129,7 +122,7 @@
                   </md-button>
                 </md-grid-list-item>
                 <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                  <md-button class="md-grid-item-content list-button" ng-click="">
                     <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
                   </md-button>
                 </md-grid-list-item>
@@ -144,7 +137,7 @@
                   </md-button>
                 </md-grid-list-item>
                 <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+                  <md-button class="md-grid-item-content list-button" ng-click="">
                     <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
                   </md-button>
                 </md-grid-list-item>
@@ -170,29 +163,27 @@
       </md-sidenav>
 
 
-    </div>
-
     <!-- ---------------------------------------------------------------------------- -->
 
+
+  
+
+  <script src="lib/jquery/dist/jquery.js"></script>
+  <script src="lib/jquery-ui/jquery-ui.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script>
 
-  <script src="lib/jquery/dist/jquery.js"></script>
-  <script src="lib/jquery-ui/jquery-ui.js"></script>
-
   <script src="lib/swipebox/src/js/jquery.swipebox.js"></script>
+  <script src="lib/fastclick/lib/fastclick.js"></script>
 
-  <!--<script src="lib/angular/angular.js"></script>-->
-  <!--<script src="lib/angular-animate/angular-animate.js"></script>-->
+  <script src="lib/headroom/headroom.min.js"></script>
+
   <script src="lib/angular-resource/angular-resource.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
   <script src="lib/angular-ui-date/src/date.js"></script>
-  <script src="lib/angular-touch/angular-touch.js"></script>
-  <!--<script src="lib/angular-aria/angular-aria.js"></script>-->
-  <!--<script src="lib/angular-material/angular-material.js"></script>-->
   <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
 
   

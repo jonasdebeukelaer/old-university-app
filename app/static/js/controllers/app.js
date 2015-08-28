@@ -7,14 +7,26 @@
  * # AppCtrl
  * Controller of the yomantutApp
  */
+
 angular.module('unisalad')
   .controller('AppCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$animate', '$mdMedia', '$location', 'localStorageService', 
                     function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $animate, $mdMedia, $location, localStorageService) {
 
-    $(document).ready(function() {
-      //in future load splash image instead of hiding everything
-      document.getElementsByTagName("html")[0].style.visibility = "visible";
+    //in future load splash image instead of hiding everything
+    document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+    var headroom = new Headroom(document.getElementById("toolbar"), {
+      "offset": 10,
+      "tolerance": 10,
+      "classes": {
+        "initial": "animated",
+        "pinned": "slideDown",
+        "unpinned": "slideUp"
+      }
     });
+    headroom.init();
+
+
 
     $scope.onListview = false;
     

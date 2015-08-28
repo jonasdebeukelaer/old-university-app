@@ -8,8 +8,8 @@
  * Controller of the yomantutApp
  */
 angular.module('unisalad')
-  .controller('ListviewCtrl', ['$scope', 'searchText', 'filterFilter', 'localStorageService', '$animate', '$mdBottomSheet', 'tappedPost',
-                                function ($scope, searchText, filterFilter, localStorageService, $animate, $mdBottomSheet, tappedPost) {
+  .controller('ListviewCtrl', ['$scope', 'searchText', 'filterFilter', 'localStorageService', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia',
+                                function ($scope, searchText, filterFilter, localStorageService, $animate, $mdBottomSheet, tappedPost, $mdMedia) {
 
 
     $scope.list = localStorageService.get('list');
@@ -165,9 +165,18 @@ angular.module('unisalad')
 
     } )( jQuery );
 
+    var wideScreen = $mdMedia('gt-md');
+
+    var offset = 70;
+    if (wideScreen) {
+      var $root = $('.page');
+    } else {
+      var $root = $('body, html');
+    };
+
     $scope.openPostDetails = function($event, clickedPost) {
 
-        var clickedElementClass = $event.srcElement.className;
+        var clickedElementClass = $event.target.className;
 
         if (clickedElementClass === 'post-img') {
           console.log('clicked pic');
@@ -178,7 +187,7 @@ angular.module('unisalad')
         } else {
           tappedPost.post = clickedPost;
 
-          ScrollOperation(clickedPost);
+          ScrollOperation(clickedPost, $root, offset, wideScreen);
           
           $mdBottomSheet.show({
               templateUrl: 'views/postdetails.html',
@@ -190,9 +199,8 @@ angular.module('unisalad')
               console.log('cancelled bottom-sheet');
 
               var focusedId = "#idCard" + clickedPost.id;
-              $(focusedId).removeClass('bottom-sheet-open'); //
+              $(focusedId).removeClass('bottom-sheet-open'); 
               $('#listview').removeClass('bottom-sheet-open'); //add padding to bottom so lowest posts can still be brought up
-              //$('md-card.md-card > md-card-content > div.fill-absolute').removeClass('whiten');
           });
         };
 
@@ -202,36 +210,25 @@ angular.module('unisalad')
   }]);
 
 
-function ScrollOperation(clickedPost) {
-    var contentHeight = document.getElementById('content-scrollable').getBoundingClientRect().height;
-    var bottomSheetHeight = 220;
-    var postCardHeight = document.getElementById('id' + clickedPost.id).getBoundingClientRect().height;
-
-    //account for menu schrink status
-    //var toolbarTransform = getComputedStyle(document.getElementById('toolbar'), null).transform.split(',')[5];    AUTO-SHRINK
-    //var toolbarY = parseInt(toolbarTransform.substring(0, toolbarTransform.length-1));                            AUTO-SHRINK
-    var offsetTopCalc = 0;
-
-    if (postCardHeight < (contentHeight - bottomSheetHeight)) {
-      console.log('lol')
-      offsetTopCalc = contentHeight - bottomSheetHeight - postCardHeight + 20;
-    };
-    //offsetTopCalc += (toolbarY) % 65;                                                                             AUTO-SHRINK
-    offsetTopCalc += 64;
-
-    var cards = document.getElementsByClassName('md-card');
+function ScrollOperation(clickedPost, $root, offset, wideScreen) {
     var idFormatted = '#idCard' + clickedPost.id;
     $(idFormatted).addClass('bottom-sheet-open');
 
-    //for (var i = 0; i < cards.length; i++) {
-    //    idFormatted = '#idCard' + clickedPost.id;
-    //    if (idFormatted == '#' + cards[i].id) {
-    //        $(idFormatted).addClass('bottom-sheet-open'); TOO CPU INTENSIVE?
-    //    } else {
-    //        console.log(cards[i].id + ' ' + idFormatted)
-    //        $('#' + cards[i].id + ' > md-card-content > div.fill-absolute').addClass('whiten');
-    //    };
-    //};
-
     $('#listview').addClass('bottom-sheet-open');
-    $('#content-scrollable').scrollTo('#id' + clickedPost.id, {offsetTop: offsetTopCalc});}
+
+    if (wideScreen) {
+      var post = $('#id' + clickedPost.id).offset().top;
+      var page = $('.page').scrollTop();
+
+      var position = post + page - offset -70;
+    } else {
+      var position = $('#id' + clickedPost.id).offset().top - offset;
+    };
+
+    $root.animate({
+        scrollTop: position
+    }, 300, function () {
+      console.log('finished scroll')
+    });
+
+  }

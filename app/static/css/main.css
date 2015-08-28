@@ -1,5 +1,8 @@
 
-html { visibility:hidden; }
+html { 
+  visibility: hidden;
+  height: auto;
+}
 
 .browsehappy {
   margin: 0.2em 0;
@@ -9,11 +12,19 @@ html { visibility:hidden; }
 }
 
 body {
-  padding: 0;
-  display: flex;
-  display: -webkit-flex;
-  flex-flow: row;-webkit-
-  flex-flow: row;
+  height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  html, body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row;
+    -webkit-flex-flow: row;
+    overflow: auto;
+  }
 }
 
 h1 {
@@ -30,71 +41,57 @@ h4 {
 font-weight: normal;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-div.all {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  display: -webkit-flex;
-  flex-flow: row;-webkit-
-  flex-flow: row;
-}
-
-.view-container {
-  display: flex;
-  display: -webkit-flex;
-  flex-flow: column;
-  -webkit-flex-flow: column;
-  height: 100%;
-  max-width: 768px;
-  margin-right: auto;
-  margin-left: auto;
-  overflow: hidden;
-}
-
 md-toolbar {
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-  flex: 0 1 auto;
-  -webkit-flex: 0 1 auto;
+  background-color: #008D8C;
+  background-color: #00BCBB;
 }
 
-md-content.all-content {
+a.md-primary {
+  background-color: #008D8C;
+  background-color: #00BCBB !important;
+}
+
+md-toolbar.toolbar {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  position: fixed;
+  width: 100%;
+  flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+}
+
+@media screen and (max-width: 768px) {
+  md-toolbar.toolbar {
+    transition: transform 200ms cubic-bezier(0.55, 0, .1, 1);
+    -webkit-transition: transform 200ms cubic-bezier(0.55, 0, .1, 1);
+  }
+  md-toolbar.slideDown {
+    transform: translateY(0%);
+  }
+  md-toolbar.slideUp {
+    transform: translateY(-100%);
+  }
+}
+
+div.page {
+  width: 100%;
+}
+
+div.content {
+  position: relative;
+  overflow: auto;
+  padding-top: 64px;
   flex: 1 1 auto;
   -webkit-flex: 1 1 auto;
   background-image: url("../images/noise.png");
   background-repeat: repeat;
-  /*margin-bottom: 32px;                                                                AUTO-SHRINK */
-}
-
-.container {
-  position: absolute;
-
-  min-height: 100%;
-  width: 100%;
 }
 
 .container-ng-view {
-  position: absolute;
-  height: 92%;
-  width: 92%;
-  /*bottom: 64px;                                                                       AUTO-SHRINK */
-  margin: 4%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .container-welcome {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   padding: 4%;
   background-color: white;
   display: flex;
@@ -104,11 +101,8 @@ md-content.all-content {
 }
 
 .container-tool {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   padding: 4%;
+  margin-top: 4%;
   margin-bottom: 4%;
   background-color: white;
 }
@@ -121,39 +115,20 @@ md-content.all-content {
   padding-bottom: 10px;
 }
 
-md-toolbar {
-  background-color: #008D8C;
-  background-color: #00BCBB;
-}
-
-/* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    
-    max-width: 768px;
-  }
 
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-
-  md-sidenav.md-sidenav-left {
+  md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed.md-sidenav-right  {
     flex: 0 1 auto;
-    -webkit-flex: 0 1 auto;
+    z-index: 4;
   }
 
-  div.view-container {
-    position: relative;
+  div.page {
     flex: 1 1 auto;
-    -webkit-flex: 1 1 auto;
+    max-width: 768px;
+    overflow: scroll;
   }
 
-  md-sidenav.md-sidenav-right {
-    flex: 0 1 auto;
-    -webkit-flex: 0 1 auto;
-  }
+  md-bottom-sheet.
 
 }
 
@@ -310,9 +285,15 @@ md-card {
 }
 
 .add-post {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .add-post {
+    right: 305px;
+  }
 }
 
 .post-card {
@@ -346,9 +327,20 @@ md-card {
 }
 
 md-bottom-sheet.post-detail-sheet {
-  max-width: 768px;
-  margin-left: auto;
-  margin-right: auto;
+  position: fixed;
+  box-shadow: 0 0px 5px 0 rgba(0,0,0,.26);
+}
+
+
+@media screen and (min-width: 768px) {
+  md-bottom-sheet.post-detail-sheet {
+    width: 400px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    
+  }
 }
 
 
@@ -374,7 +366,7 @@ div.listview-container {
 }
 
 div.listview-container.bottom-sheet-open {
-  margin-bottom: 200px;
+  margin-bottom: 180px;
 }
 
 md-card {
@@ -432,11 +424,8 @@ div > h3:first-child {
   margin-bottom: 5px;
   display: flex;
   display: -webkit-flex;
-  flex-direction: row;
-  -webkit-flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: center;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
 
 }
 
@@ -461,6 +450,7 @@ div .price-notice {
 }
 
 md-toolbar.toolbar-addpost {
+  z-index: 1;
   box-shadow: none;
   background-color: #f6f6f6;
   color: rgba(0, 0, 0, 0.87);

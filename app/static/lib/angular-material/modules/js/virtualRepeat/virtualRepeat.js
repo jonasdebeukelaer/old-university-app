@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.10.1-master-8c71d0c
+ * v0.10.1
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -377,12 +377,6 @@ function VirtualRepeatController($scope, $element, $attrs, $browser, $document, 
   this.itemsLength = 0;
 
   /**
-   * @type {!Function} Unwatch callback for item size (when md-items-size is
-   *     not specified), or angular.noop otherwise.
-   */
-  this.unwatchItemSize_ = angular.noop;
-
-  /**
    * Presently rendered blocks by repeat index.
    * @type {Object<number, !VirtualRepeatController.Block}
    */
@@ -425,11 +419,6 @@ VirtualRepeatController.prototype.link_ =
 
 /** @private Attempts to set itemSize by measuring a repeated element in the dom */
 VirtualRepeatController.prototype.readItemSize_ = function() {
-  if (this.itemSize) {
-    // itemSize was successfully read in a different asynchronous call.
-    return;
-  }
-
   this.items = this.repeatListExpression(this.$scope);
   this.parentNode = this.$element[0].parentNode;
   var block = this.getBlock_(0);
@@ -453,14 +442,7 @@ VirtualRepeatController.prototype.readItemSize_ = function() {
 VirtualRepeatController.prototype.containerUpdated = function() {
   // If itemSize is unknown, attempt to measure it.
   if (!this.itemSize) {
-    this.unwatchItemSize_ = this.$scope.$watch(
-        this.repeatListExpression,
-        angular.bind(this, function(items) {
-          if (items && items.length) {
-            this.$$rAF(angular.bind(this, this.readItemSize_));
-          }
-        }));
-    this.$scope.$digest();
+    this.$$rAF(angular.bind(this, this.readItemSize_));
 
     return;
   } else if (!this.sized) {
@@ -468,7 +450,6 @@ VirtualRepeatController.prototype.containerUpdated = function() {
   }
 
   if (!this.sized) {
-    this.unwatchItemSize_();
     this.sized = true;
     this.$scope.$watchCollection(this.repeatListExpression,
         angular.bind(this, this.virtualRepeatUpdate_));

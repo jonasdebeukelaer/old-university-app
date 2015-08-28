@@ -20,7 +20,7 @@
 	<post-lift ng-if="list.label === 'lifts'" id="id{{ pst.id }}" ng-repeat="pst in lifts | searchAll:searchText.words | orderBy:sortBy" ng-click="openPostDetails($event, pst)" info="pst">
 	</post-lift>
 
-	<post-house ng-if="list.label === 'houses'" id="id{{ pst.id }}" ng-repeat="pst in houses | searchAll:searchText.words | orderBy:sortBy" ng-click="openPostDetails($event, pst)" info="pst">
-	</post-house>
+	<!--<post-house ng-if="list.label === 'houses'" id="id{{ pst.id }}" ng-repeat="pst in houses | searchAll:searchText.words | orderBy:sortBy" ng-click="openPostDetails($event, pst)" info="pst">
+	</post-house>-->
 	
 </div>
