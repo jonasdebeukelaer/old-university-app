@@ -8,7 +8,7 @@
  * Controller of the yomantutApp
  */
 angular.module('unisalad')
-  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', function ($scope, $location, localStorageService) {
+  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', 'currentList', function ($scope, $location, localStorageService, currentList) {
     $scope.university = localStorageService.get('uni');
 
     $scope.items = [ {
@@ -27,7 +27,7 @@ angular.module('unisalad')
         label: 'houses',
         name: 'Houses',
         posts: '-20',
-        icon: 'homeBig'
+        icon: 'bed'
     },
     {
         label: 'misc',
@@ -44,7 +44,7 @@ angular.module('unisalad')
     ];
 
     $scope.goToList = function (list) {
-        $location.path('/listview');
-        localStorageService.set('list', list);
+      currentList.list = list;
+      $location.path('/listview');
     };
   }]);

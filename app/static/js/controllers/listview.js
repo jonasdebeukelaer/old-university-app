@@ -8,14 +8,13 @@
  * Controller of the yomantutApp
  */
 angular.module('unisalad')
-  .controller('ListviewCtrl', ['$scope', 'searchText', 'filterFilter', 'localStorageService', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia',
-                                function ($scope, searchText, filterFilter, localStorageService, $animate, $mdBottomSheet, tappedPost, $mdMedia) {
-
-
-    $scope.list = localStorageService.get('list');
+  .controller('ListviewCtrl', ['$scope', 'searchText', 'filterFilter', 'localStorageService', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia', 'currentList',
+                                function ($scope, searchText, filterFilter, localStorageService, $animate, $mdBottomSheet, tappedPost, $mdMedia, currentList) {
+    $scope.list = function () {
+      return currentList.list;
+    };
 
     $scope.searchText = searchText;
-
 
     $scope.posts = [{
         id: 1,

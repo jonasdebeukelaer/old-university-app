@@ -27,6 +27,7 @@ angular.module('unisalad', [
 	       .icon('person', 'images/icons/ic_person_24px.svg')
 	       .icon('place', 'images/icons/ic_place_24px.svg')
 	       .icon('delete', 'images/icons/ic_delete_24px.svg')
+         .icon('bed', 'images/icons/ic_hotel_24px.svg')
 	       .icon('tickets', 'images/icons/ic_local_play_48px.svg')
 	       .icon('lifts', 'images/icons/ic_directions_car_48px.svg')
 	       .icon('misc', 'images/icons/ic_forum_48px.svg')
