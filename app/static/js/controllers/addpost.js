@@ -8,18 +8,38 @@
  * Controller of the yomantutApp
  */
 angular.module('unisalad')
-  .controller('AddpostCtrl', [ '$scope', '$location', function ($scope, $location) {
+  .controller('AddpostCtrl', [ '$scope', '$location', 'currentList', function ($scope, $location, currentList) {
+
+  	$scope.list = currentList.list;
+
+  	if ($scope.list.label === 'tickets') {
+  		console.log('adding ticket');
+  		$scope.ticket = true;
+  	} else if ($scope.list.label === 'lifts') {
+  		console.log('adding lift');
+  		$scope.lift = true;
+  	} else if ($scope.list.label === 'houses') {
+  		console.log('adding housey');
+  		$scope.house = true;
+  	} else if ($scope.list.label === 'misc') {
+  		console.log('adding misc');
+  		$scope.misc = true;
+  	} else if ($scope.list.label === 'sale') {
+  		console.log('adding item for sale');
+  		$scope.sale = true;
+  	};
+
     $scope.possibleNumber = [1, 2, 3, 4, 5, 6];
-    $scope.numberOfTickets = 1;
+    $scope.numberOfItems = 1;
     $scope.post = {
     	ticket: '',
-    	numberOfTickets: 1,
+    	numberOfItems: 1,
     	cost: '',
     	location: '',
     	contact: {
-    		email: true,
     		text: true,
-    		facebook: true
+    		facebook: true,
+    		email: true
     	}
 	};
     /*

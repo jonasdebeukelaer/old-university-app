@@ -3,9 +3,9 @@
 angular.module('unisalad')
   .service('currentList', function () {
     this.list = {
-        label: '',
-        name: '',
+        label: 'ticket',
+        name: 'Tickets',
         posts: 0,
-        icon: ''
+        icon: 'tickets'
     };
   });

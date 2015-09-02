@@ -8,8 +8,10 @@
  * Controller of the yomantutApp
  */
 angular.module('unisalad')
-  .controller('ListviewCtrl', ['$scope', 'searchText', 'filterFilter', 'localStorageService', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia', 'currentList',
-                                function ($scope, searchText, filterFilter, localStorageService, $animate, $mdBottomSheet, tappedPost, $mdMedia, currentList) {
+  .controller('ListviewCtrl', ['$scope', 'searchText', 'filterFilter', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia', 'currentList',
+                                function ($scope, searchText, filterFilter, $animate, $mdBottomSheet, tappedPost, $mdMedia, currentList) {
+    
+    //Is this a correct way of doing this?
     $scope.list = function () {
       return currentList.list;
     };

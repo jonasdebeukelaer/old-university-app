@@ -8,7 +8,7 @@
  * Controller of the yomantutApp
  */
 angular.module('unisalad')
-  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', 'currentList', function ($scope, $location, localStorageService, currentList) {
+  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', 'currentList', '$mdSidenav', function ($scope, $location, localStorageService, currentList, $mdSidenav) {
     $scope.university = localStorageService.get('uni');
 
     $scope.items = [ {
@@ -46,5 +46,6 @@ angular.module('unisalad')
     $scope.goToList = function (list) {
       currentList.list = list;
       $location.path('/listview');
+      $mdSidenav('left').close();
     };
   }]);
