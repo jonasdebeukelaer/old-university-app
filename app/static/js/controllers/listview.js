@@ -18,12 +18,13 @@ angular.module('unisalad')
 
     $scope.searchText = searchText;
 
+
     $scope.posts = [{
         id: 1,
     	item: 'Crisis ticket',
     	postDate: new Date("2015-03-20"),
     	user: 'Helen Mart',
-        number: 1,
+      number: 1,
     	cost: 20,
     	meet: 'Lenton pick up',
     	eventDate: new Date("2015-03-25"),
@@ -191,8 +192,8 @@ angular.module('unisalad')
           ScrollOperation(clickedPost, $root, offset, wideScreen);
           
           $mdBottomSheet.show({
-              templateUrl: 'views/postdetails.html',
-              controller: 'PostdetailCtrl',
+              templateUrl: 'views/contactsheet.html',
+              controller: 'ContactSheetCtrl',
               targetEvent: $event
           }).then(function () {
               console.log('clicked a contact method');

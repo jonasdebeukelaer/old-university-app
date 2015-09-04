@@ -344,6 +344,7 @@ md-bottom-sheet.post-detail-sheet {
 
 
 md-grid-list.contact-methods {
+  text-align: center;
   margin-right: auto;
   margin-left: auto;
   max-width: 325px;
@@ -352,10 +353,6 @@ md-grid-list.contact-methods {
 /*prevent bottom-sheet backdrop default*/
 md-backdrop.md-bottom-sheet-backdrop.md-opaque {
   background-color: rgba(0, 0, 0, 0) !important;
-}
-
-md-card-content.bottom-sheet-open {
-  color: rgba(0,0,0,0.40);
 }
 
 div.listview-container {
@@ -369,32 +366,12 @@ div.listview-container.bottom-sheet-open {
 }
 
 md-card {
-  -webkit-transition: box-shadow 0.3s;
-  transition: box-shadow 0.3s;
-  -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  -webkit-transition: box-shadow 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  transition: box-shadow 0.3s cubic-bezier(0.55, 0, 0.1, 1);
 }
 
 md-card.bottom-sheet-open {
   box-shadow: 0px 8px 10px -5px rgba(0, 141,140, 0.14), 0px 16px 24px 2px rgba(0, 141,140, 0.098), 0px 6px 30px 5px rgba(0, 141,140, 0.084);
-}
-
-div.fill-absolute {
-  background-color: rgba(255, 255, 255, 0);
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 10;
-  -webkit-transition: background-color 0.4s;
-  transition: background-color 0.4s;
-  -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-}
-
-div.fill-absolute.whiten {
-  background-color: rgba(255, 255, 255, 0.4);
 }
 
 md-icon.card-lifts-toArrow {
@@ -411,7 +388,7 @@ div > h3:first-child {
 
 /*otherwise bottom-sheet items spill onto neow line for very small devices eg iphone 4 */
 @media screen and (max-width: 350px) {
-  md-grid-list-item > button.md-grid-item-content {
+  md-grid-list-item > a.md-grid-item-content {
     margin-left: 2px;
     margin-right: 2px;
   }
