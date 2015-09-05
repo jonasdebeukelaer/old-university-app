@@ -134,6 +134,62 @@ angular.module('unisalad')
       extraInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi'
     }]
 
+    $scope.misc = [{
+        id: 1,
+      title: 'shanter',
+      postDate: new Date("2015-03-20"),
+      user: 'Helen Mart',
+      pics: [{
+        caption: 'is this 2005?',
+        img: 'images/Aug15/thumb.jpg'
+      }],
+      extraInfo: 'say chat here'
+    },
+    {
+      id: 2,
+      title: 'hey guys fish for likes',
+      postDate: new Date("2015-03-14"),
+      user: 'James Smith',
+      pics: [{
+        caption: 'rare',
+        img: 'images/Aug15/pepe.png'
+      },
+      {
+        caption: 'mrw',
+        img: 'images/Aug15/patrickface.jpg'
+      }],
+      extraInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi'
+    },
+    {
+      id: 3,
+      title: 'hahahar',
+      postDate: new Date("2015-03-21"),
+      user: 'James Bore',
+      pics: [],
+      extraInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incii'
+    }]
+
+    $scope.sale = [{
+      id: 1,
+      isOffering: true,
+      title: 'selling a polo',
+      postDate: new Date("2015-07-25"),
+      user: 'Tom Swirte',
+      cost: '10',
+      location: '26 Hetley Road, London, UK',
+      buyDate: new Date("2015-08-31"),
+      pics: [{
+        caption: 'polo',
+        img: 'images/Aug15/polo1.jpg'
+      },
+      {
+        caption: 'polo again',
+        img: 'images/Aug15/polo2.jpg'
+      }],
+      link: 'http://www.ebay.co.uk/',
+      extraInfo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi'
+    }]
+
     $scope.sortModes = [{
         label: 'Date added',
         code: 'postDate'

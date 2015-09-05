@@ -205,11 +205,11 @@
 
 		<fieldset  class="standard contact-methods" ng-if="!misc">
 			<legend>Contact me via</legend>
+			<md-checkbox md-no-ink ng-model="post.contact.call">
+        call
+      </md-checkbox>
       <md-checkbox md-no-ink ng-model="post.contact.text">
         text
-      </md-checkbox>
-      <md-checkbox md-no-ink ng-model="post.contact.facebook">
-        facebook
       </md-checkbox>
       <md-checkbox md-no-ink ng-model="post.contact.email">
         email

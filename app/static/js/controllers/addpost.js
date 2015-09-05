@@ -37,8 +37,8 @@ angular.module('unisalad')
     	cost: '',
     	location: '',
     	contact: {
+        call: true,
     		text: true,
-    		facebook: true,
     		email: true
     	}
 	};

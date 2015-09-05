@@ -13,7 +13,7 @@ angular.module('unisalad')
     {
       id: 2,
       name: 'James Smith',
-      number: 07412659637,
+      number: 07312659637,
       email: 'james.smith@gmail.com'
     }]
 

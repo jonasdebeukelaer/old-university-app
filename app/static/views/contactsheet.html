@@ -12,7 +12,7 @@
     </md-grid-list-item>
 
     <md-grid-list-item>
-    	<md-button class="md-grid-item-content" href="sms:+{{ contactNumber }}?body={{ smsTemplate }}">
+    	<md-button class="md-grid-item-content" ng-href="sms:{{ contactNumber }}?body={{ smsTemplate }}">
         	<md-icon md-svg-src="messageBig"></md-icon>
         	<div class="md-grid-text"> Text </div>
      	</md-button>

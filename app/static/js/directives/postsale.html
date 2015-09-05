@@ -1,0 +1,41 @@
+ <div class="post-card">
+	 <md-card id="idCard{{ info.id }}" class="md-card">
+		 <md-card-content class="post-card-content">
+		 	<!--<div class="fill-absolute"></div>-->
+		 	<div class="make-flex">
+				<h4>
+					{{ info.title | capitalise }}
+					<!-- MAKE CAPITALISATION HAPPEN ON STORAGE -->
+				</h4>
+			</div>
+
+			<md-divider></md-divider>
+
+			<div class="make-flex">
+				<p>avail: {{ info.moveDate | date:'dd/MM/yy' }}</p>
+				<span class="to-right">
+					<p>
+						<b>{{ info.cost | currency:"£":0 }} pcm</b>
+					</p>
+				</span>
+			</div>
+			
+			<div class="make-flex">
+				<p>
+					<md-icon md-svg-icon="place"></md-icon> {{ info.location }}
+				</p>
+				<p class="to-right card-username">{{ info.user }}</p>
+			</div>
+
+			<div class="post-picContainer">
+				<a href="{{ pic.img }}" ng-repeat="pic in info.pics" class="swipebox" title="{{ pic.caption }}">
+					<img src="{{ pic.img }}" alt="pic" class="post-img">
+				</a>
+			</div>
+
+			<a ng-href="{{ info.link }}" target="_blank"><p class="post-link">External page</p></a>
+
+			<p>{{ info.extraInfo }}</p>
+		</md-card-content>
+	</md-card>
+</div>
