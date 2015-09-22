@@ -31,7 +31,7 @@ angular.module('unisalad')
     },
     {
         label: 'misc',
-    	name: 'Miscellaneous',
+    	name: 'Anonimous',
     	posts: '100',
         icon: 'misc'
     },

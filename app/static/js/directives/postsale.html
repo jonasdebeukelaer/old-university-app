@@ -1,21 +1,19 @@
- <div class="post-card">
+ <div class="post-card" ng-controller="CardCtrl">
 	 <md-card id="idCard{{ info.id }}" class="md-card">
 		 <md-card-content class="post-card-content">
-		 	<!--<div class="fill-absolute"></div>-->
 		 	<div class="make-flex">
 				<h4>
 					{{ info.title | capitalise }}
-					<!-- MAKE CAPITALISATION HAPPEN ON STORAGE -->
 				</h4>
 			</div>
 
 			<md-divider></md-divider>
 
 			<div class="make-flex">
-				<p>avail: {{ info.moveDate | date:'dd/MM/yy' }}</p>
+				<p>get by: {{ info.buyDate | date:'dd/MM/yy' }}</p>
 				<span class="to-right">
 					<p>
-						<b>{{ info.cost | currency:"£":0 }} pcm</b>
+						<b>{{ info.cost | currency:"£":0 }}</b>
 					</p>
 				</span>
 			</div>
@@ -33,9 +31,16 @@
 				</a>
 			</div>
 
-			<a ng-href="{{ info.link }}" target="_blank"><p class="post-link">External page</p></a>
+			<a ng-href="{{ info.link }}" target="_blank">
+				<p class="post-link">External page</p>
+			</a>
 
-			<p>{{ info.extraInfo }}</p>
+			<p ng-if="show">{{ info.extraInfo }}</p>
+
 		</md-card-content>
+
+		<div id="expandDetails" ng-click="toggleDetails()" class="expand-details md-whiteframe-z4">
+			<md-icon id="expandDown" md-svg-icon="{{ arrow }}"></md-icon>
+		</div>
 	</md-card>
 </div>

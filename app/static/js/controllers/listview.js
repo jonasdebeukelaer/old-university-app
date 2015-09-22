@@ -233,14 +233,28 @@ angular.module('unisalad')
     };
 
     $scope.openPostDetails = function($event, clickedPost) {
-
+      if (currentList.label != 'misc') {
         var clickedElementClass = $event.target.className;
+        var clickedElementId = $event.target.id;
 
         if (clickedElementClass === 'post-img') {
           console.log('clicked pic');
 
         } else if (clickedElementClass === 'post-link') {
           console.log('clicked link');
+
+        } else if (clickedElementClass === 'show-details') {
+          console.log('clicked details');
+
+        } else if (clickedElementId === 'expandDetails') {
+          console.log('expand details');
+
+        } else if (clickedElementId === 'expandDown') {
+          console.log('expand down');
+
+        } else if (clickedElementId === 'contractUp') {
+          console.log('contract up');
+
 
         } else {
           tappedPost.post = clickedPost;
@@ -261,11 +275,11 @@ angular.module('unisalad')
               $('#listview').removeClass('bottom-sheet-open'); //add padding to bottom so lowest posts can still be brought up
           });
         };
-
+      };
     };
 
 
-  }]);
+  }]); //MAKE SCROLL AND SHADOW CHANGE NOT HAPPEN SIMULTANEOUSLY
 
 
 function ScrollOperation(clickedPost, $root, offset, wideScreen) {

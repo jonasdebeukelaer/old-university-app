@@ -35,7 +35,9 @@ angular.module('unisalad', [
      .icon('homeBig', 'images/icons/ic_home_48px.svg')
      .icon('messageBig', 'images/icons/ic_message_48px.svg')
      .icon('emailBig', 'images/icons/ic_email_48px.svg')
-     .icon('callBig', 'images/icons/ic_call_48px.svg');
+     .icon('callBig', 'images/icons/ic_call_48px.svg')
+     .icon('arrow_down', 'images/icons/ic_keyboard_arrow_down_black_24px.svg')
+     .icon('arrow_up', 'images/icons/ic_keyboard_arrow_up_black_24px.svg');
   })
   .config( [
     '$compileProvider',
