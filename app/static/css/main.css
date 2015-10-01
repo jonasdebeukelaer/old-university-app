@@ -368,8 +368,7 @@ md-backdrop.md-bottom-sheet-backdrop.md-opaque {
 
 div.listview-container {
   margin-bottom: 0;
-  -webkit-transition: margin-bottom 0.4s cubic-bezier(0.55, 0, 0.1, 1);
-  transition: margin-bottom 0.4s cubic-bezier(0.55, 0, 0.1, 1);
+  
 }
 
 div.listview-container.bottom-sheet-open {
@@ -540,8 +539,8 @@ md-icon.details-arrow {
 
 
 .ng-enter:not(md-bottom-sheet):not(.add-post):not(.page-addpost) {
-  animation: fadeIn 0.15s both ease-in;
-  -webkit-animation: fadeIn 0.15s both ease-in;
+  animation: fadeIn 0.3s both ease-in;
+  -webkit-animation: fadeIn 0.3s both ease-in;
   z-index: 2;
 }
 

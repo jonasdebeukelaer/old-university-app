@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('ListviewCtrl', ['$q', '$scope', '$http', 'searchText', 'filterFilter', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia', 'currentList', 'fetchPosts', '$location',
-                                function ($q, $scope, $http, searchText, filterFilter, $animate, $mdBottomSheet, tappedPost, $mdMedia, currentList, fetchPosts, $location) {
+  .controller('ListviewCtrl', ['$q', '$scope', '$http', 'searchText', 'filterFilter', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia', 'currentList', 'fetchPosts', '$location', '$timeout',
+                                function ($q, $scope, $http, searchText, filterFilter, $animate, $mdBottomSheet, tappedPost, $mdMedia, currentList, fetchPosts, $location, $timeout) {
 
     $scope.pageClass = 'page-listview';
     
@@ -115,6 +115,7 @@ angular.module('unisalad')
 
           ScrollOperation(clickedPost, $root, offset, wideScreen);
           
+          $timeout(function () {
           $mdBottomSheet.show({
               templateUrl: 'views/contactsheet.html',
               controller: 'ContactSheetCtrl',
@@ -128,6 +129,7 @@ angular.module('unisalad')
               $(focusedId).removeClass('bottom-sheet-open'); 
               $('#listview').removeClass('bottom-sheet-open'); //add padding to bottom so lowest posts can still be brought up
           });
+        }, 300);
         };
       };
     };
@@ -149,11 +151,6 @@ angular.module('unisalad')
 
 
 function ScrollOperation(clickedPost, $root, offset, wideScreen) {
-    var idFormatted = '#idCard' + clickedPost.id;
-    $(idFormatted).addClass('bottom-sheet-open');
-
-    $('#listview').addClass('bottom-sheet-open');
-
     if (wideScreen) {
       var post = $('#id' + clickedPost.id).offset().top;
       var page = $('.page').scrollTop();
@@ -166,7 +163,10 @@ function ScrollOperation(clickedPost, $root, offset, wideScreen) {
     $root.animate({
         scrollTop: position
     }, 300, function () {
-      console.log('finished scroll')
+      console.log('finished scroll');
+      var idFormatted = '#idCard' + clickedPost.id;
+      $(idFormatted).addClass('bottom-sheet-open');
+      $('#listview').addClass('bottom-sheet-open');
     });
 
   }
