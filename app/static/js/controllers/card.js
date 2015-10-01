@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('CardCtrl', function ($scope) {
+  .controller('CardCtrl', ['$scope', 'currentList', function ($scope, currentList) {
   	$scope.show = false;
     $scope.arrow = 'arrow_down';
+
+    $scope.list = function () {
+      return currentList.list;
+    }
 
   	$scope.showDetails = function () {
   		return $scope.show;
@@ -18,4 +22,4 @@ angular.module('unisalad')
         $scope.arrow = 'arrow_down';
   		};
   	};
-  });
+  }]);

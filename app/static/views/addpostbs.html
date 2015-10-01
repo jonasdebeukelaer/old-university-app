@@ -1,0 +1,206 @@
+<md-bottom-sheet class="bottom-sheet-addpost">
+
+
+	<div ng-if="ticket" class="add-ticket">
+
+		<md-input-container>
+			<label>Ticket</label>
+			<input type="text" ng-model="post.ticket">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Event date</label>
+			<input type="date" ng-model="post.date">
+		</md-input-container>
+
+    <md-input-container>
+    <label>Number of tickets</label>
+    <md-select ng-model="post.numberOftickets" class="select-withlabel" aria-label="Number of Tickets">
+      <md-option ng-repeat="number in possibleNumber" value="{{ number }}">{{ number }}</md-option>
+    </md-select>
+	  </md-input-container>
+
+	   <md-input-container>
+			<label>Cost per ticket (£)</label>
+			<input type="number" ng-model="post.cost">
+			<div ng-messages="projectForm.clientName.$error">
+			  <div class="price-notice" ng-message="ng-maxlength">Do not sell tickets above face value</div>
+			</div>
+		</md-input-container>
+
+		<md-input-container>
+			<label>Pick-up location</label>
+			<input type="text" ng-model="post.location">
+		</md-input-container>
+
+		<md-input-container flex>
+			<label>Additional info</label>
+			<textarea ng-model="post.extra"></textarea>
+		</md-input-container>
+
+	</div>
+
+	<!-- ------------------------------------------------------------------------------------------------ -->
+
+
+	<div ng-if="lift">
+
+		<md-input-container>
+			<label>From</label>
+			<input type="text" ng-model="post.from">
+		</md-input-container>
+
+		<md-input-container>
+			<label>To</label>
+			<input type="text" ng-model="post.to">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Date</label>
+			<input type="date" ng-model="post.date">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Flexibility (+/- days)</label>
+			<input type="number" ng-model="post.flexilibity">
+		</md-input-container>
+
+		<md-input-container>
+    <label>Number of spaces</label>
+    <md-select ng-model="post.numberOfSpaces" class="select-withlabel" aria-label="Number of spaces">
+      <md-option ng-repeat="number in possibleNumber" value="{{ number }}">{{ number }}</md-option>
+    </md-select>
+	  </md-input-container>
+
+	  <md-input-container>
+			<label>Cost per space (£)</label>
+			<input type="number" ng-model="post.cost">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Link to maps route (optional)</label>
+			<input type="url" ng-model="post.routeLink">
+		</md-input-container>
+
+		<md-input-container flex>
+			<label>Additional info (optional)</label>
+			<textarea ng-model="post.extra"></textarea>
+		</md-input-container>
+
+	</div>
+
+	<!-- ------------------------------------------------------------------------------------------------ -->
+
+	<div ng-if="house">
+
+		<md-input-container>
+			<label>Ad title</label>
+			<input type="text" ng-model="post.title">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Move-in Date</label>
+			<input type="date" ng-model="post.date">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Rent (pcm)</label>
+			<input type="number" ng-model="post.cost">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Location</label>
+			<input type="text" ng-model="post.location">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Link to location on maps (optional)</label>
+			<input type="url" ng-model="post.locationLink">
+		</md-input-container>
+
+		<md-input-container>
+			<p>upload images here</p>
+		</md-input-container>			
+
+		<md-input-container>
+			<label>Link to external site advert</label>
+			<input type="url" ng-model="post.externalLink">
+		</md-input-container>
+
+		<md-input-container flex>
+			<label>Additional info (optional)</label>
+			<textarea ng-model="post.extra"></textarea>
+		</md-input-container>
+
+	</div>
+
+	<!-- ------------------------------------------------------------------------------------------------ -->
+
+	<div ng-if="anon">
+
+		<md-input-container>
+			<label>Title</label>
+			<input type="text" ng-model="post.title">
+		</md-input-container>
+
+		<md-input-container>
+			<p>upload images here</p>
+		</md-input-container>	
+
+		<md-input-container flex>
+			<label>Say things</label>
+			<textarea ng-model="post.extra"></textarea>
+		</md-input-container>
+
+	</div>
+
+	<!-- ------------------------------------------------------------------------------------------------ -->
+
+	<div ng-if="sale">
+
+		<md-input-container>
+			<label>Title</label>
+			<input type="text" ng-model="post.title">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Needs to be taken by</label>
+			<input type="date" ng-model="post.date">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Location</label>
+			<input type="text" ng-model="post.location">
+		</md-input-container>
+
+		<md-input-container>
+			<label>Cost (£)</label>
+			<input type="number" ng-model="post.cost">
+		</md-input-container>
+
+		<md-input-container>
+			<p>upload images here</p>
+		</md-input-container>	
+
+		<md-input-container flex>
+			<label>Item description</label>
+			<textarea ng-model="post.extra"></textarea>
+		</md-input-container>
+
+	</div>
+
+	<fieldset  class="standard contact-methods" ng-if="!misc">
+		<legend>Contact me via</legend>
+		<md-checkbox md-no-ink ng-model="post.contact.call">
+      call
+    </md-checkbox>
+    <md-checkbox md-no-ink ng-model="post.contact.text">
+      text
+    </md-checkbox>
+    <md-checkbox md-no-ink ng-model="post.contact.email">
+      email
+    </md-checkbox>
+  </fieldset>
+
+  	<md-button class="md-raised md-primary button-wide" ng-click="add()">Post</md-button>
+</md-bottom-sheet>

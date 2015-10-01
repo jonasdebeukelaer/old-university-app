@@ -44,11 +44,22 @@ font-weight: normal;
 md-toolbar {
   background-color: #008D8C;
   background-color: #00BCBB;
+  background-color: #009688;
 }
 
 a.md-primary {
   background-color: #008D8C;
-  background-color: #00BCBB !important;
+  background-color: #00BCBB;
+  background-color: #009688 !important;
+}
+
+.md-primary:not(md-switch):not(.facebook) {
+  background-color: #FFC107 !important;
+  color: rgba(0,0,0,.87) !important;
+}
+
+md-content > md-tabs.login-tabs {
+  background-color: #E0F2F1;
 }
 
 md-toolbar.toolbar {
@@ -87,7 +98,7 @@ div.content {
 }
 
 .container-ng-view {
-  margin: 3%;
+  margin: 5px;
 }
 
 .container-welcome {
@@ -371,7 +382,7 @@ md-card {
 }
 
 md-card.bottom-sheet-open {
-  box-shadow: 0px 8px 10px -5px rgba(0, 141,140, 0.14), 0px 16px 24px 2px rgba(0, 141,140, 0.098), 0px 6px 30px 5px rgba(0, 141,140, 0.084);
+  box-shadow: 0px 8px 10px -5px rgba(0, 150, 136, 0.14), 0px 16px 24px 2px rgba(0, 150, 136, 0.098), 0px 6px 30px 5px rgba(0, 150, 136, 0.084);
 }
 
 md-icon.card-lifts-toArrow {
@@ -410,6 +421,29 @@ div > h3:first-child {
   margin: 4px;
 }
 
+div.list-intro {
+  margin: -5px;
+  padding: 10px;
+  background-color: #E0F2F1;
+  margin-bottom: 10px;
+}
+
+md-bottom-sheet.bottom-sheet-addpost {
+  max-height: 400px;
+}
+
+.add-ticket {
+  position: relative;
+  max-height: 400px;
+  overflow: auto; 
+}
+
+.add-post {
+  transform: translateY(110%);
+  animation: jumpUp 0.25s both cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------add post page-----------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -428,7 +462,7 @@ div .price-notice {
 md-toolbar.toolbar-addpost {
   z-index: 1;
   box-shadow: none;
-  background-color: #f6f6f6;
+  background-color: #E0F2F1;
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -450,6 +484,10 @@ fieldset.contact-methods {
 div.expand-details {
   height: 40px;
   text-align: center;
+}
+
+md-icon.details-arrow {
+  margin-top: 8px;
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -501,27 +539,25 @@ div.expand-details {
 }
 
 
-.ng-enter:not(md-bottom-sheet):not(.add-post) {
-  animation: fadeIn 0.2s both ease-in;
-  -webkit-animation: fadeIn 0.2s both ease-in;
+.ng-enter:not(md-bottom-sheet):not(.add-post):not(.page-addpost) {
+  animation: fadeIn 0.15s both ease-in;
+  -webkit-animation: fadeIn 0.15s both ease-in;
   z-index: 2;
 }
 
-.ng-leave:not(md-bottom-sheet):not(.add-post) {
-  animation: fadeOut 0.2s both ease-in;
-  -webkit-animation: fadeOut 0.2s both ease-in;
+.ng-leave:not(md-bottom-sheet):not(.add-post):not(.page-addpost) {
+  animation: fadeOut 0.3s both ease-in;
+  -webkit-animation: fadeOut 0.3s both ease-in;
   z-index: 10;
 }
 
-.add-post.ng-enter {
-  animation: jumpUp 0.2s both cubic-bezier(.25,.8,.25,1);
-  -webkit-animation: jumpUp 0.2s both cubic-bezier(.25,.8,.25,1);
-  z-index: 10; 
+.ng-enter.page-addpost, {
+  animation: jumpUp 0.3s both ease-in;
+  -webkit-animation: jumpUp 0.3s both ease-in;
 }
 
-.add-post.ng-leave {
-  animation: fallDown 0.2s both cubic-bezier(.25,.8,.25,1);
-  -webkit-animation: fallDown 0.2s both cubic-bezier(.25,.8,.25,1);
-  z-index: 10; 
+.ng-leave.page-addpost, .add-post.add-post-hide {
+  animation: fallDown 0.3s both ease-in;
+  -webkit-animation: fallDown 0.3s both ease-in;
 }
 

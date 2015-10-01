@@ -70,14 +70,10 @@
             </div>
           </md-toolbar>
 
-
           <div md-swipe-right="toggleLeft()" md-swipe-left="toggleRight()" class="content">
-              <div ng-view="" class="container-ng-view"></div>
+              <div ng-view="" class="container-ng-view {{ pageClass }}"></div>
           </div>
-        
-          <md-button ng-if="onListview" aria-label="Add post" href="#/addpost" class="md-fab md-primary add-post">
-            <md-icon md-svg-icon="add"></md-icon>
-          </md-button>
+          
         </div>
 
 
@@ -92,6 +88,7 @@
             <h1 class="to-right">My Things</h1>
           </div>
         </md-toolbar>
+
         <md-list class="personalinfo">
           <md-list-item class="md-2-line mythings-fix">
             <img ng-src="https://placekitten.com/110/110" class="md-avatar" alt="fbFace">
@@ -102,7 +99,9 @@
           </md-list-item>
           <md-divider></md-divider>
         </md-list>
+
         <md-content ng-if="loggedIn" class="mythings-fill" layout-padding ng-controller="RightCtrl">
+
           <md-list>
             <md-list-header>My things for Sale</md-list-header>
             <md-subheader>Tickets</md-subheader>
@@ -121,6 +120,7 @@
                 </md-grid-list-item>
               </md-grid-list>
             </md-list-item>
+
             <md-list-item>
               <p>Test item 2</p>
               <md-grid-list class="md-secondary">
@@ -136,6 +136,7 @@
                 </md-grid-list-item>
               </md-grid-list>
             </md-list-item>
+
             <md-list-item>
               <p>Test item 2</p>
               <md-grid-list class="md-secondary">
@@ -167,6 +168,7 @@
             <md-divider></md-divider>
             <md-subheader>For Sale</md-subheader>
           </md-list>
+
         </md-content>
       </md-sidenav>
 
@@ -210,16 +212,18 @@
   <script src="js/controllers/card.js"></script>
 
   <!--DIRECTIVES-->
+  <script src="js/directives/post_base.js"></script>
   <script src="js/directives/postticket.js"></script>
   <script src="js/directives/postlift.js"></script>
   <script src="js/directives/posthouse.js"></script>
-  <script src="js/directives/postmisc.js"></script>
+  <script src="js/directives/postanon.js"></script>
   <script src="js/directives/postsale.js"></script>
 
   <!--SERVICES-->
   <script src="js/services/searchtext.js"></script>
   <script src="js/services/tappedpost.js"></script>
   <script src="js/services/currentlist.js"></script>
+  <script src="js/services/fetchposts.js"></script>
 
   <!--FILTERS-->
   <script src="js/filters/capitalise.js"></script>

@@ -7,18 +7,6 @@
 <md-divider></md-divider>
 
 <div class="make-flex">
-	<p>get by: {{ info.buyDate | date:'dd/MM/yy' }}</p>
-	<span class="to-right">
-		<p>
-			<b>{{ info.cost | currency:"£":0 }}</b>
-		</p>
-	</span>
-</div>
-
-<div class="make-flex">
-	<p>
-		<md-icon md-svg-icon="place"></md-icon> {{ info.location }}
-	</p>
 	<p class="to-right card-username">{{ info.user }}</p>
 </div>
 
@@ -27,7 +15,3 @@
 		<img ng-src="{{ pic.img }}" alt="pic" class="post-img">
 	</a>
 </div>
-
-<a ng-href="{{ info.link }}" target="_blank">
-	<p class="post-link">External page</p>
-</a>

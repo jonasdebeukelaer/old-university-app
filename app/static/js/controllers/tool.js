@@ -1,17 +1,10 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name yomantutApp.controller:ToolCtrl
- * @description
- * # ToolCtrl
- * Controller of the yomantutApp
- */
 angular.module('unisalad')
   .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', 'currentList', '$mdSidenav', function ($scope, $location, localStorageService, currentList, $mdSidenav) {
     $scope.university = localStorageService.get('uni');
 
-    $scope.items = [ {
+    $scope.items = [{
         label: 'tickets',
     	name: 'Tickets',
     	posts: '10',
@@ -30,22 +23,25 @@ angular.module('unisalad')
         icon: 'bed'
     },
     {
-        label: 'misc',
-    	name: 'Anonimous',
+        label: 'anons',
+    	name: 'Anonymous',
     	posts: '100',
         icon: 'misc'
     },
     {
-        label: 'sale',
+        label: 'sales',
     	name: 'For sale',
     	posts: '20',
         icon: 'sell'
     }
     ];
 
+    currentList.list = $scope.items[0];
+
     $scope.goToList = function (list) {
+      console.log(list.label);
+      $location.path(list.label);
       currentList.list = list;
-      $location.path('/listview');
       $mdSidenav('left').close();
     };
   }]);

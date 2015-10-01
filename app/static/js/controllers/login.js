@@ -9,6 +9,8 @@
  */
 angular.module('unisalad')
   .controller('LoginCtrl', function ($scope, localStorageService) {
+    $scope.pageClass = 'page-login';
+
     $scope.university = localStorageService.get('uni');
     $scope.landingTo = localStorageService.get('sign');
 

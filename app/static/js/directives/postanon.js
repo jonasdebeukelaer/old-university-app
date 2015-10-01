@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('unisalad')
-  .directive('postTicket', function () {
+  .directive('postAnon', function () {
     return {
-      templateUrl: 'js/directives/postticket.html',
+      templateUrl: 'js/directives/postanon.html',
       restrict: 'E',
       scope: {
       	info: '='

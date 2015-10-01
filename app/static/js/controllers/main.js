@@ -10,6 +10,8 @@
 
 angular.module('unisalad')
   .controller('MainCtrl', function ($scope, localStorageService, $location) {
+    $scope.pageClass = 'page-main';
+
   	$scope.universities = ['Imperial College London', 'Nottingham University', 'Leeds University', 'Exeter University', 'Oxford University'];
   	$scope.uniSelected = function () {
   		console.log('User selected ' + $scope.university);

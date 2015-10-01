@@ -29,23 +29,9 @@ angular.module('unisalad')
     var viewHeight = $(window).height();
     $('md-sidenav').css('bottom', 'auto');
     $('md-sidenav').css('height', viewHeight);
-    $('div.page').css('min-height', viewHeight);
-    $('div.content').css('min-height', viewHeight);
+    $('div.page').css('min-height', viewHeight - 64);
+    $('div.content').css('min-height', viewHeight - 64);
 
-
-
-    $scope.onListview = false;
-    
-    $scope.$on('$routeChangeStart', function(event, next) {
-      var path = next.$$route.originalPath;
-      $log.debug('path is now ' + path);
-      if (path === '/listview') {
-         $scope.onListview = true;
-       } else {
-         $scope.onListview = false;
-       }
-       $scope.$evalAsync();
-    });
 
     function buildToggler(navID) {
       var debounceFn =  $mdUtil.debounce(function(){

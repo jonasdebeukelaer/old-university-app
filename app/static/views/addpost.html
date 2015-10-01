@@ -6,7 +6,7 @@
 	          <span>Add {{ lbl.item }} post</span>
 	        </h2>
 	        <span flex></span>
-	        <md-button ng-href="#/listview" class="md-icon-button" aria-label="close">
+	        <md-button ng-href="#/{{ postType }}" class="md-icon-button" aria-label="close">
 	          <md-icon md-svg-icon="close"></md-icon>
 	        </md-button>
 	      </div>
@@ -14,7 +14,7 @@
 
 	<md-content layout-padding>
 
-		<div ng-if="ticket">
+		<div ng-if="postType === 'tickets'">
 
 			<md-input-container>
 				<label>Ticket</label>
@@ -57,7 +57,7 @@
 		<!-- ------------------------------------------------------------------------------------------------ -->
 
 
-		<div ng-if="lift">
+		<div ng-if="postType === 'lifts'">
 
 			<md-input-container>
 				<label>From</label>
@@ -105,7 +105,7 @@
 
 		<!-- ------------------------------------------------------------------------------------------------ -->
 
-		<div ng-if="house">
+		<div ng-if="postType === 'houses'">
 
 			<md-input-container>
 				<label>Ad title</label>
@@ -150,7 +150,7 @@
 
 		<!-- ------------------------------------------------------------------------------------------------ -->
 
-		<div ng-if="misc">
+		<div ng-if="postType === 'anons'">
 
 			<md-input-container>
 				<label>Title</label>
@@ -170,7 +170,7 @@
 
 		<!-- ------------------------------------------------------------------------------------------------ -->
 
-		<div ng-if="sale">
+		<div ng-if="postType === 'sales'">
 
 			<md-input-container>
 				<label>Title</label>

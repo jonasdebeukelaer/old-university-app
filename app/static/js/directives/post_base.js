@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('unisalad')
-  .directive('postMisc', function () {
+  .directive('post', function () {
     return {
-      templateUrl: 'js/directives/postmisc.html',
+      templateUrl: 'js/directives/post_base.html',
       restrict: 'E',
       scope: {
-      	info: '='
+      	postInfo: '='
       }
     };
   });

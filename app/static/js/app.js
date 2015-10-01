@@ -63,8 +63,24 @@ angular.module('unisalad', [
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/listview', {
-        templateUrl: 'views/listview.html',
+      .when('/tickets', {
+        templateUrl: 'views/lists/listTickets.html',
+        controller: 'ListviewCtrl'
+      })
+      .when('/lifts', {
+        templateUrl: 'views/lists/listLifts.html',
+        controller: 'ListviewCtrl'
+      })
+      .when('/houses', {
+        templateUrl: 'views/lists/listHouses.html',
+        controller: 'ListviewCtrl'
+      })
+      .when('/anons', {
+        templateUrl: 'views/lists/listAnons.html',
+        controller: 'ListviewCtrl'
+      })
+      .when('/sales', {
+        templateUrl: 'views/lists/listSales.html',
         controller: 'ListviewCtrl'
       })
       .when('/addpost', {
