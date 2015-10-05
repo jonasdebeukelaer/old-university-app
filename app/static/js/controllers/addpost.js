@@ -29,6 +29,7 @@ angular.module('unisalad')
 	};
     
 	$scope.add = function () {
+		$scope.toastAdded();
 		$location.path('/' + currentList.list.label);
 		//send info to server
 	};

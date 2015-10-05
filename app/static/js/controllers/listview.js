@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('ListviewCtrl', ['$q', '$scope', '$http', 'searchText', 'filterFilter', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia', 'currentList', 'fetchPosts', '$location', '$timeout',
+  .controller('ListviewCtrl', ['$q', '$scope', '$http', 'searchText', 'filterFilter', '$animate', '$mdBottomSheet', 'tappedPost', '$mdMedia', 'currentList', 'fetchPosts', '$location', '$timeout', 
                                 function ($q, $scope, $http, searchText, filterFilter, $animate, $mdBottomSheet, tappedPost, $mdMedia, currentList, fetchPosts, $location, $timeout) {
 
     $scope.pageClass = 'page-listview';

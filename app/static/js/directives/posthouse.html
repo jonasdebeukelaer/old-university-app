@@ -10,8 +10,8 @@
 <div class="make-flex">
 	<p>avail: {{ info.moveDate | date:'dd/MM/yy' }}</p>
 	<span class="to-right">
-		<p>
-			<b>{{ info.cost | currency:"£":0 }} pcm</b>
+		<p class="item-price">
+			{{ info.cost | currency:"£":0 }} pcm
 		</p>
 	</span>
 </div>

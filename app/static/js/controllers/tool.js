@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', 'currentList', '$mdSidenav', function ($scope, $location, localStorageService, currentList, $mdSidenav) {
+  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', 'currentList', function ($scope, $location, localStorageService, currentList) {
     $scope.university = localStorageService.get('uni');
 
     $scope.items = [{
@@ -36,12 +36,17 @@ angular.module('unisalad')
     }
     ];
 
+    $scope.toggleSidebar = function(side) {
+      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
+      $('body').toggleClass('sidebar-open');
+    };
+
     currentList.list = $scope.items[0];
 
     $scope.goToList = function (list) {
       console.log(list.label);
       $location.path(list.label);
       currentList.list = list;
-      $mdSidenav('left').close();
+      $scope.toggleSidebar('left');
     };
   }]);

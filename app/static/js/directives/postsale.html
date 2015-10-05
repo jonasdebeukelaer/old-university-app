@@ -9,8 +9,8 @@
 <div class="make-flex">
 	<p>get by: {{ info.buyDate | date:'dd/MM/yy' }}</p>
 	<span class="to-right">
-		<p>
-			<b>{{ info.cost | currency:"£":0 }}</b>
+		<p class="item-price">
+			{{ info.cost | currency:"£":0 }}
 		</p>
 	</span>
 </div>

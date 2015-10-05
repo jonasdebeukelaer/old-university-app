@@ -14,166 +14,64 @@
 </head>
 <body ng-app="unisalad" ng-controller="AppCtrl">
 
-      <md-sidenav class="md-sidenav-left" md-swipe-left="toggleLeft()" md-component-id="left" md-is-locked-open="wideScreen">
-        <md-toolbar class="md-theme-indigo" ng-click="toggleLeft()">
-          <div class="md-toolbar-tools">
-            <h1>Menu</h1>
-            <md-button ng-if="!wideScreen" class="md-icon-button to-right" aria-label="Settings" >
-                <md-icon md-svg-icon="arrow_back"></md-icon>
-              </md-button>
-          </div>
-        </md-toolbar>
-        <md-content layout-padding ng-controller="LeftCtrl">
-          <md-list ng-controller="ToolCtrl">
-            <md-list-item ng-click="closeAndChangePage('')">
-              <md-icon md-svg-icon="home"></md-icon>
-              <p>Home</p>
-            </md-list-item>
-            <md-divider></md-divider>
+  <!-- -------------------------------------------------------------------------- -->
 
-            <md-list-item ng-click="goToList(option)" ng-repeat="option in items">
-              <md-icon md-svg-icon="{{ option.icon }}"></md-icon>
-                <p>{{ option.name }}</p>
-            </md-list-item>
+  <div ng-if="!wideScreen" id="left-sidebar" class="sidebar left-sidebar">
+    <left-content></left-content>
+  </div>
 
-            <md-divider></md-divider>
-            <md-list-item ng-click="closeAndChangePage('/about')">
-              <md-icon md-svg-icon="info"></md-icon>
-              <p>About</p>
-            </md-list-item>
-          </md-list>
-        </md-content>
-      </md-sidenav>
+  <md-sidenav ng-if="wideScreen" class="md-sidenav-left" md-component-id="left" md-is-locked-open="wideScreen">
+    <left-content></left-content>
+  </md-sidenav>
 
-        <!-- -------------------------------------------------------------------------- -->
+  <!-- -------------------------------------------------------------------------- -->
 
-        <div class="page">
-          <md-toolbar class="toolbar" id="toolbar">
-            <div class="md-toolbar-tools">
-              <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
-                <md-icon md-svg-icon="menu"></md-icon>
-              </md-button>
-              <h2>
-                <span>unisalad</span>
-              </h2>
-              <md-switch ng-model="loggedIn" ng-change="debugLoggedIn()" class="md-primary" aria-label="debugging tool">
-                *
-              </md-switch>
-              <md-button ng-if="loggedIn && !wideScreen" class="md-icon-button to-right" aria-label="My things" ng-click="toggleRight()">
-                <md-icon md-svg-icon="person"></md-icon>
-              </md-button>
+  <div class="page">
 
-              <md-button ng-if="!loggedIn" class="to-right" aria-label="My things" ng-click="goTo('/login')">
-                <md-icon md-svg-icon="person"></md-icon>
-                Login
-              </md-button>
-            </div>
-          </md-toolbar>
-
-          <div md-swipe-right="toggleLeft()" md-swipe-left="toggleRight()" class="content">
-              <div ng-view="" class="container-ng-view {{ pageClass }}"></div>
-          </div>
-          
-        </div>
+    
+    <md-toolbar class="toolbar" id="toolbar">
+      <div class="md-toolbar-tools">
+        <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings" ng-click="toggleSidebar('left')">
+          <md-icon md-svg-icon="menu"></md-icon>
+        </md-button>
+        <h2>
+          <span>unisalad</span>
+        </h2>
+        <md-switch ng-model="loggedIn" ng-change="debugLoggedIn()" class="md-primary" aria-label="debugging tool">
+          *
+        </md-switch>
 
 
-      <!-- -------------------------------------------------------------------------- -->
+        <md-button ng-if="loggedIn && !wideScreen" class="md-icon-button to-right" aria-label="My things" ng-click="toggleSidebar('right')">
+          <md-icon md-svg-icon="person"></md-icon>
+        </md-button>
 
-      <md-sidenav md-component-id="right" md-swipe-right="toggleRight()" md-is-locked-open="wideScreen" class="md-sidenav-right mythings-sidenav">
-        <md-toolbar class="mythings-fix" ng-click="toggleRight()">
-          <div class="md-toolbar-tools">
-            <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings">
-                <md-icon md-svg-icon="arrow_forward"></md-icon>
-              </md-button>
-            <h1 class="to-right">My Things</h1>
-          </div>
-        </md-toolbar>
+        <md-button ng-if="!loggedIn" class="to-right" aria-label="My things" ng-click="goTo('/login')">
+          <md-icon md-svg-icon="person"></md-icon>
+          Login
+        </md-button>
+      </div>
+    </md-toolbar>
 
-        <md-list class="personalinfo">
-          <md-list-item class="md-2-line mythings-fix">
-            <img ng-src="https://placekitten.com/110/110" class="md-avatar" alt="fbFace">
-            <div class="md-list-item-text">
-              <h3>My name</h3>
-              <p>My University</p>
-            </div>
-          </md-list-item>
-          <md-divider></md-divider>
-        </md-list>
+    <div  class="content">
+        <div ng-view="" class="container-ng-view {{ pageClass }}"></div>
+    </div>
 
-        <md-content ng-if="loggedIn" class="mythings-fill" layout-padding ng-controller="RightCtrl">
-
-          <md-list>
-            <md-list-header>My things for Sale</md-list-header>
-            <md-subheader>Tickets</md-subheader>
-            <md-list-item>
-              <p>Test item</p>
-              <md-grid-list class="md-secondary">
-                <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
-                    <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
-                  </md-button>
-                </md-grid-list-item>
-                <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="">
-                    <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-                  </md-button>
-                </md-grid-list-item>
-              </md-grid-list>
-            </md-list-item>
-
-            <md-list-item>
-              <p>Test item 2</p>
-              <md-grid-list class="md-secondary">
-                <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
-                    <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
-                  </md-button>
-                </md-grid-list-item>
-                <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="">
-                    <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-                  </md-button>
-                </md-grid-list-item>
-              </md-grid-list>
-            </md-list-item>
-
-            <md-list-item>
-              <p>Test item 2</p>
-              <md-grid-list class="md-secondary">
-                <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
-                    <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
-                  </md-button>
-                </md-grid-list-item>
-                <md-grid-list-item>
-                  <md-button class="md-grid-item-content list-button" ng-click="">
-                    <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-                  </md-button>
-                </md-grid-list-item>
-              </md-grid-list>
-            </md-list-item>
-
-            <md-divider></md-divider>
-            <md-subheader>Lifts</md-subheader>
-
-            <md-divider></md-divider>
-            <md-subheader>Miscellaneous</md-subheader>
-            <md-list-item>
-              <p>Test item</p>
-              <span class="md-secondary">
-                <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
-                <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-              </span>
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-subheader>For Sale</md-subheader>
-          </md-list>
-
-        </md-content>
-      </md-sidenav>
+  </div>
 
 
-    <!-- ---------------------------------------------------------------------------- -->
+  <!-- -------------------------------------------------------------------------- -->
+
+  <div ng-if="!wideScreen" id="right-sidebar" class="sidebar right-sidebar">
+    <right-content></right-content>
+  </div>
+
+  <md-sidenav ng-if="wideScreen" md-component-id="right" md-is-locked-open="wideScreen" class="md-sidenav-right mythings-sidenav">
+    <right-content></right-content>
+  </md-sidenav>
+
+
+<!-- ---------------------------------------------------------------------------- -->
 
 
   
@@ -212,6 +110,8 @@
   <script src="js/controllers/card.js"></script>
 
   <!--DIRECTIVES-->
+  <script src="js/directives/leftcontent.js"></script>
+  <script src="js/directives/rightcontent.js"></script>
   <script src="js/directives/post_base.js"></script>
   <script src="js/directives/postticket.js"></script>
   <script src="js/directives/postlift.js"></script>

@@ -15,6 +15,10 @@ body {
   height: auto;
 }
 
+body.sidebar-open {
+  overflow: hidden;
+}
+
 @media screen and (min-width: 800px) {
   html, body {
     height: 100%;
@@ -442,6 +446,10 @@ md-bottom-sheet.bottom-sheet-addpost {
   animation: jumpUp 0.25s both cubic-bezier(0.55, 0, 0.1, 1);
 }
 
+md-toast.md-bottom {
+  z-index: 9000;
+  position: fixed;
+}
 
 /*----------------------------------------------------------------------------------*/
 /*----------------------------------add post page-----------------------------------*/
@@ -452,6 +460,10 @@ p.select-label {
   padding-top: 26px;
   padding-bottom: 26px;
   height: 26px;
+}
+
+p.item-price, span.item-price {
+  color: #009688;
 }
 
 div .price-notice {
@@ -538,19 +550,19 @@ md-icon.details-arrow {
 }
 
 
-.ng-enter:not(md-bottom-sheet):not(.add-post):not(.page-addpost) {
+.ng-enter:not(md-bottom-sheet):not(.add-post):not(.page-addpost):not(md-toast) {
   animation: fadeIn 0.3s both ease-in;
   -webkit-animation: fadeIn 0.3s both ease-in;
   z-index: 2;
 }
 
-.ng-leave:not(md-bottom-sheet):not(.add-post):not(.page-addpost) {
+.ng-leave:not(md-bottom-sheet):not(.add-post):not(.page-addpost):not(md-toast) {
   animation: fadeOut 0.3s both ease-in;
   -webkit-animation: fadeOut 0.3s both ease-in;
   z-index: 10;
 }
 
-.ng-enter.page-addpost, {
+.ng-enter.page-addpost {
   animation: jumpUp 0.3s both ease-in;
   -webkit-animation: jumpUp 0.3s both ease-in;
 }
@@ -558,5 +570,43 @@ md-icon.details-arrow {
 .ng-leave.page-addpost, .add-post.add-post-hide {
   animation: fallDown 0.3s both ease-in;
   -webkit-animation: fallDown 0.3s both ease-in;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+
+.sidebar {
+    position: fixed;
+    background:white;
+    width: 280px;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.sidebar.left-sidebar {
+  left: -286px;
+  transition: left 0.35s cubic-bezier(0.55, 0, .1, 1);
+  box-shadow: 3px 0 6px rgba(0,0,0,.26);
+}
+
+.sidebar.left-sidebar.left-sidebar-open {
+  left: 0;
+  transition: left 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.sidebar.right-sidebar {
+  right: -286px;
+  top: 0;
+  transition: right 0.35s cubic-bezier(0.55, 0, .1, 1);
+  box-shadow: -3px 0 6px rgba(0,0,0,.26);
+}
+
+.sidebar.right-sidebar.right-sidebar-open {
+  right: 0;
+  transition: right 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 

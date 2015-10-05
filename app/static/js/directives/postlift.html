@@ -4,8 +4,6 @@
 	</h4>
 </div>
 
-<md-divider></md-divider>
-
 <div class="make-flex">
 	<md-icon class="card-lifts-toArrow" md-svg-icon="arrow_forward"></md-icon>
 	<h4>
@@ -23,7 +21,7 @@
 	<span class="to-right">
 		<p>
 			<span ng-if="info.spaces != 1">{{ info.spaces }} x </span>
-			<b>{{ info.cost | currency:"£" }}</b>
+			<span class="item-price">{{ info.cost | currency:"£" }}</span>
 		</p>
 	</span>
 </div>
