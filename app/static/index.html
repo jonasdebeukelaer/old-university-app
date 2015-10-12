@@ -23,11 +23,12 @@
   <md-sidenav ng-if="wideScreen" class="md-sidenav-left" md-component-id="left" md-is-locked-open="wideScreen">
     <left-content></left-content>
   </md-sidenav>
-
+  <div class="swipe-area-left"></div>
+  <div class="swipe-area-right"></div>
   <!-- -------------------------------------------------------------------------- -->
 
   <div class="page">
-
+    
     
     <md-toolbar class="toolbar" id="toolbar">
       <div class="md-toolbar-tools">
@@ -62,7 +63,7 @@
 
   <!-- -------------------------------------------------------------------------- -->
 
-  <div ng-if="!wideScreen" id="right-sidebar" class="sidebar right-sidebar">
+  <div ng-if="!wideScreen" id="right-sidebar" class="sidebar right-sidebar mythings-sidenav">
     <right-content></right-content>
   </div>
 
@@ -89,6 +90,7 @@
   <script src="lib/fastclick/lib/fastclick.js"></script>
   <script src="lib/headroom/headroom.min.js"></script>
   <script src="lib/scrollTo/scrollTo.js"></script>
+  <script type="text/javascript" src="lib/jquery-touchswipe/jquery.touchSwipe.min.js"></script>
 
   <!--ANGULAR PLUGINS-->
   <script src="lib/angular-resource/angular-resource.js"></script>

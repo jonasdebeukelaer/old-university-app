@@ -52,6 +52,35 @@ angular.module('unisalad')
     }
 
     $scope.wideScreen = $mdMedia('gt-md');
+
+    $('.swipe-area-left').swipe({
+    swipeStatus:function(event, phase, direction, distance, duration, fingers)
+        {
+            if (phase=='move' && direction =='right') {
+                 $('#left-sidebar').addClass('left-sidebar-open');
+                 return false;
+            }
+            if (phase=='move' && direction =='left') {
+                 $('#left-sidebar').removeClass('left-sidebar-open');
+                 return false;
+            }
+        }
+    });
+
+    $('.swipe-area-right').swipe({
+    swipeStatus:function(event, phase, direction, distance, duration, fingers)
+        {
+          console.log(distance)
+            if (phase=='move' && direction =='left') {
+                 $('#right-sidebar').addClass('right-sidebar-open');
+                 return false;
+            }
+            if (phase=='move' && direction =='right') {
+                 $('#right-sidebar').removeClass('right-sidebar-open');
+                 return false;
+            }
+        }
+    });
     
   }])
   .controller('LeftCtrl', ['$scope', '$location', 'localStorageService', function ($scope, $location, localStorageService) {

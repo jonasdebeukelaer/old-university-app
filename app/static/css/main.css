@@ -192,7 +192,8 @@ md-select-label {
   margin: 0;
 }
 
-.mythings-sidenav {
+right-content {
+  height: 100%;
   display: flex;
   display: -webkit-flex;
   flex-direction:column;
@@ -608,5 +609,25 @@ md-icon.details-arrow {
 .sidebar.right-sidebar.right-sidebar-open {
   right: 0;
   transition: right 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.swipe-area-left {
+    position: absolute;
+    width: 30px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    opacity: 0;
+    z-index: 20;
+}
+
+.swipe-area-right {
+    position: absolute;
+    width: 30px;
+    right: 0;
+    top: 0;
+    height: 100%;
+    opacity: 0;
+    z-index: 20;
 }
 

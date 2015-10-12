@@ -8,7 +8,7 @@
 		 	<post-anon ng-if="list().label === 'anons'" info="postInfo"></post-anon>
 		 	<post-sale ng-if="list().label === 'sales'" info="postInfo"></post-sale>
 
-			<p ng-if="show">{{ postInfo.extraInfo }}</p>
+			<p id="extraInfo" ng-if="show" ng-click="toggleDetails()">{{ postInfo.extraInfo }}</p>
 
 		</md-card-content>
 

@@ -106,9 +106,8 @@ angular.module('unisalad')
         } else if (clickedElementId === 'expandDown') {
           console.log('expand down');
 
-        } else if (clickedElementId === 'contractUp') {
+        } else if (clickedElementId === 'contractUp' || clickedElementId === 'extraInfo') {
           console.log('contract up');
-
 
         } else {
           tappedPost.post = clickedPost;
