@@ -67,6 +67,7 @@ md-content > md-tabs.login-tabs {
 }
 
 md-toolbar.toolbar {
+  z-index: 10;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   position: fixed;
   width: 100%;
@@ -612,22 +613,31 @@ md-icon.details-arrow {
 }
 
 .swipe-area-left {
-    position: absolute;
-    width: 30px;
-    left: 0;
-    top: 0;
-    height: 100%;
-    opacity: 0;
-    z-index: 20;
+  position: absolute;
+  width: 30px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+  z-index: 8;
+}
+
+div.swipe-area-left.left-sidebar-open {
+  z-index: 9;
+  width: 100%;
 }
 
 .swipe-area-right {
-    position: absolute;
-    width: 30px;
-    right: 0;
-    top: 0;
-    height: 100%;
-    opacity: 0;
-    z-index: 20;
+  position: absolute;
+  width: 30px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+  z-index: 8;
 }
 
+div.swipe-area-right.right-sidebar-open {
+  z-index: 9;
+  width: 100%;
+}

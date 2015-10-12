@@ -24,11 +24,6 @@ angular.module('unisalad')
     $('div.page').css('min-height', viewHeight - 64);
     $('div.content').css('min-height', viewHeight - 64);
 
-    $scope.toggleSidebar = function(side) {
-      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
-      $('body').toggleClass('sidebar-open');
-    };
-
     $scope.toastAdded = function () {
       $mdToast.show(
       $mdToast.simple()
@@ -53,34 +48,44 @@ angular.module('unisalad')
 
     $scope.wideScreen = $mdMedia('gt-md');
 
-    $('.swipe-area-left').swipe({
-    swipeStatus:function(event, phase, direction, distance, duration, fingers)
+    $scope.toggleSidebar = function(side) {
+      toggleSide(side)
+    };
+
+    $('.swipe-area-left').swipe({ swipeStatus:function(event, phase, direction, distance, duration, fingers)
         {
             if (phase=='move' && direction =='right') {
-                 $('#left-sidebar').addClass('left-sidebar-open');
+                 toggleSide('left')
                  return false;
             }
             if (phase=='move' && direction =='left') {
-                 $('#left-sidebar').removeClass('left-sidebar-open');
+                 toggleSide('left')
                  return false;
             }
         }
     });
 
-    $('.swipe-area-right').swipe({
-    swipeStatus:function(event, phase, direction, distance, duration, fingers)
+    $('.swipe-area-right').swipe({ swipeStatus:function(event, phase, direction, distance, duration, fingers)
         {
           console.log(distance)
             if (phase=='move' && direction =='left') {
                  $('#right-sidebar').addClass('right-sidebar-open');
+                 $('.swipe-area-right').addClass('right-sidebar-open');
                  return false;
             }
             if (phase=='move' && direction =='right') {
                  $('#right-sidebar').removeClass('right-sidebar-open');
+                 $('.swipe-area-right').removeClass('right-sidebar-open');
                  return false;
             }
         }
     });
+
+    var toggleSide = function (side) {
+      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
+      $('.swipe-area-' + side).toggleClass(side + '-sidebar-open');
+      $('body').toggleClass('sidebar-open');
+    }
     
   }])
   .controller('LeftCtrl', ['$scope', '$location', 'localStorageService', function ($scope, $location, localStorageService) {
