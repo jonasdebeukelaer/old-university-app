@@ -4,6 +4,6 @@
 *.swp
 *~
 db_repository
-flask
+virtualenv
 node_modules
 app/static/images/
