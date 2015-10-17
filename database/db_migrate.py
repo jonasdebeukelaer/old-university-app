@@ -1,4 +1,9 @@
-#!flask/bin/python
+#!virtualenv/bin/python
+import sys
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+sys.path = [os.path.join(basedir, '..')] + sys.path
+
 import imp
 from migrate.versioning import api
 from app import db

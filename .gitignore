@@ -4,7 +4,7 @@
 *.swp
 *~
 db_repository
-flask
+virtualenv
 node_modules
 salad/
 build/
