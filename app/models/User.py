@@ -18,14 +18,14 @@ class User(db.Model):
 
 	def toDict(self):
 		return {
-			id : self.id,
-			username : self.username,
-			email : self.email,
-			password : self.password,
-			upVotes : self.upVotes,
-			downVotes : self.downVotes,
-			phoneNumber : self.phoneNumber,
-			fullName : self.fullName,
-			emailContactable : self.emailContactable,
-			phoneContactable : self.phoneContactable
+			"id" : self.id,
+			"username" : self.username,
+			"email" : self.email,
+			"password" : self.password,
+			"upVotes" : self.upVotes,
+			"downVotes" : self.downVotes,
+			"phoneNumber" : self.phoneNumber,
+			"fullName" : self.fullName,
+			"emailContactable" : self.emailContactable,
+			"phoneContactable" : self.phoneContactable
 		}
