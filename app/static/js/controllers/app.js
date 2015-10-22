@@ -55,11 +55,11 @@ angular.module('unisalad')
     $('.swipe-area-left').swipe({ swipeStatus:function(event, phase, direction, distance, duration, fingers)
         {
             if (phase=='move' && direction =='right') {
-                 toggleSide('left')
+                 toggleSide('left');
                  return false;
             }
             if (phase=='move' && direction =='left') {
-                 toggleSide('left')
+                 toggleSide('left');
                  return false;
             }
         }
@@ -67,15 +67,12 @@ angular.module('unisalad')
 
     $('.swipe-area-right').swipe({ swipeStatus:function(event, phase, direction, distance, duration, fingers)
         {
-          console.log(distance)
             if (phase=='move' && direction =='left') {
-                 $('#right-sidebar').addClass('right-sidebar-open');
-                 $('.swipe-area-right').addClass('right-sidebar-open');
+                 toggleSide('right');
                  return false;
             }
             if (phase=='move' && direction =='right') {
-                 $('#right-sidebar').removeClass('right-sidebar-open');
-                 $('.swipe-area-right').removeClass('right-sidebar-open');
+                 toggleSide('right');
                  return false;
             }
         }
@@ -118,6 +115,5 @@ angular.module('unisalad')
     $scope.editPost = function(postId) {
       $scope.toggleSidebar('right');
       $location.path('/addpost');
-      //populate addpost with post info
     }
   }]);

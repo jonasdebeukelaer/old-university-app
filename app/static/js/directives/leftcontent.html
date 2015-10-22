@@ -8,21 +8,28 @@
 </md-toolbar>
 <md-content layout-padding ng-controller="LeftCtrl">
   <md-list ng-controller="ToolCtrl">
-    <md-list-item ng-click="closeAndChangePage('')">
+    <md-list-item ng-click="goToPage('')">
       <md-icon md-svg-icon="home"></md-icon>
       <p>Home</p>
     </md-list-item>
     <md-divider></md-divider>
 
-    <md-list-item ng-click="goToList(option)" ng-repeat="option in items">
+    <md-list-item ng-click="goToPage(option.label)" ng-repeat="option in items">
       <md-icon md-svg-icon="{{ option.icon }}"></md-icon>
         <p>{{ option.name }}</p>
     </md-list-item>
 
     <md-divider></md-divider>
-    <md-list-item ng-click="closeAndChangePage('/about')">
+    <md-list-item ng-click="goToPage('/about')">
       <md-icon md-svg-icon="info"></md-icon>
       <p>About</p>
+    </md-list-item>
+
+    <md-divider></md-divider>
+
+    <md-list-item ng-click="goToPage('/admin_page')">
+      <md-icon md-svg-icon="info"></md-icon>
+      <p>Flagged page</p>
     </md-list-item>
   </md-list>
 </md-content>

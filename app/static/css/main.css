@@ -134,7 +134,7 @@ div.content {
 
   md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed.md-sidenav-right  {
     flex: 0 1 auto;
-    z-index: 4;
+    z-index: 20;
   }
 
   div.page {
@@ -576,9 +576,80 @@ md-icon.details-arrow {
 
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------admin page---------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
+
+.admin-header {
+  background-color: #DDDDDD;
+  margin: -5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  padding-left: 15px;
+}
+
+.admin-header > h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+div.admin-content.make-flex {
+  flex-flow: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 130px;
+}
+
+div.flagged-preview {
+  flex: 1 1 auto;
+}
+
+div.flagged-posts-list-container {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+
+}
+
+md-list.flagged-posts-list {
+  background-color: #FFFFFF;
+  left: 5px;
+  right: 5px;
+  overflow: scroll;
+  bottom: 0;
+  z-index: 5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------welcome page-------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+.welcome-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.welcome-1 {
+  height: 2000px;
+  background-image: url("/images/Stock-Dock-House.jpg");
+  background-position: center;
+}
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------navbar tings-------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
 
 .sidebar {
     position: fixed;
@@ -641,3 +712,5 @@ div.swipe-area-right.right-sidebar-open {
   z-index: 9;
   width: 100%;
 }
+
+

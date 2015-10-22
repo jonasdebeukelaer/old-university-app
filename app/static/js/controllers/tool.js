@@ -43,10 +43,12 @@ angular.module('unisalad')
 
     currentList.list = $scope.items[0];
 
-    $scope.goToList = function (list) {
-      console.log(list.label);
-      $location.path(list.label);
-      currentList.list = list;
+    $scope.goToPage = function (page) {
+      var lists = ['/tickets', '/lifts', '/houses', '/anons', '/sales']
+      $location.path(page);
+      if (page in lists) {
+        currentList.list = list;
+      }
       $scope.toggleSidebar('left');
     };
   }]);

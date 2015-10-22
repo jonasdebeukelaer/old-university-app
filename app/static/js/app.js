@@ -37,7 +37,8 @@ angular.module('unisalad', [
      .icon('emailBig', 'images/icons/ic_email_48px.svg')
      .icon('callBig', 'images/icons/ic_call_48px.svg')
      .icon('arrow_down', 'images/icons/ic_keyboard_arrow_down_black_24px.svg')
-     .icon('arrow_up', 'images/icons/ic_keyboard_arrow_up_black_24px.svg');
+     .icon('arrow_up', 'images/icons/ic_keyboard_arrow_up_black_24px.svg')
+     .icon('put_back', 'images/icons/ic_call_missed_24px.svg');
   })
   .config( [
     '$compileProvider',
@@ -90,6 +91,10 @@ angular.module('unisalad', [
       .when('/confirmationsent', {
         templateUrl: 'views/confirmationsent.html',
         controller: 'ConfirmationsentCtrl'
+      })
+      .when('/admin_page', {
+        templateUrl: 'views/admin_page.html',
+        controller: 'AdminPageCtrl'
       })
       .otherwise({
         redirectTo: '/'

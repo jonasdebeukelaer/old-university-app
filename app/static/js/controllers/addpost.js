@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name yomantutApp.controller:AddpostCtrl
- * @description
- * # AddpostCtrl
- * Controller of the yomantutApp
- */
 angular.module('unisalad')
   .controller('AddpostCtrl', [ '$scope', '$location', 'currentList', function ($scope, $location, currentList) {	
 
