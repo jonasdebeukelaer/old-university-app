@@ -1,42 +1,37 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name yomantutApp.controller:AppCtrl
- * @description
- * # AppCtrl
- * Controller of the yomantutApp
- */
 angular.module('unisalad')
-  .controller('AppCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$animate', '$mdMedia', '$location', 'localStorageService', 
-                    function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $animate, $mdMedia, $location, localStorageService) {
+  .controller('AppCtrl', ['$scope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 
+                    function ($scope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast) {
 
-    $scope.onListview = false;
-    
-    $scope.$on('$routeChangeStart', function(event, next) {
-      var path = next.$$route.originalPath;
-      $log.debug('path is now ' + path);
-      if (path === '/listview') {
-         $scope.onListview = true;
-       } else {
-         $scope.onListview = false;
-       }
-       $scope.$evalAsync();
+    //in future load splash image instead of hiding everything
+    document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+    var headroom = new Headroom(document.getElementById("toolbar"), {
+      "offset": 10,
+      "tolerance": 10,
+      "classes": {
+        "initial": "animated",
+        "pinned": "slideDown",
+        "unpinned": "slideUp"
+      }
     });
+    headroom.init();
 
-    function buildToggler(navID) {
-      var debounceFn =  $mdUtil.debounce(function(){
-        $mdSidenav(navID)
-          .toggle()
-          .then(function () {
-            $log.debug('toggle ' + navID + ' is done');
-          });
-      },300);
-      return debounceFn;
+    var viewHeight = $(window).height();
+    $('md-sidenav').css('bottom', 'auto');
+    $('md-sidenav').css('height', viewHeight);
+    $('div.page').css('min-height', viewHeight - 64);
+    $('div.content').css('min-height', viewHeight - 64);
+
+    $scope.toastAdded = function () {
+      $mdToast.show(
+      $mdToast.simple()
+        .content('Post added!')
+        .position('bottom')
+        .hideDelay(1200)
+      ); 
     }
-
-    $scope.toggleLeft = buildToggler('left');
-    $scope.toggleRight = buildToggler('right');
 
     $scope.loggedIn = true;
 
@@ -52,9 +47,47 @@ angular.module('unisalad')
     }
 
     $scope.wideScreen = $mdMedia('gt-md');
+
+    $scope.toggleSidebar = function(side) {
+      toggleSide(side)
+    };
+
+    $('.swipe-area-left').swipe({ swipeStatus:function(event, phase, direction, distance, duration, fingers)
+        {
+            if (phase=='move' && direction =='right') {
+                 toggleSide('left');
+                 return false;
+            }
+            if (phase=='move' && direction =='left') {
+                 toggleSide('left');
+                 return false;
+            }
+        }
+    });
+
+    $('.swipe-area-right').swipe({ swipeStatus:function(event, phase, direction, distance, duration, fingers)
+        {
+            if (phase=='move' && direction =='left') {
+                 toggleSide('right');
+                 return false;
+            }
+            if (phase=='move' && direction =='right') {
+                 toggleSide('right');
+                 return false;
+            }
+        }
+    });
+
+    var toggleSide = function (side) {
+      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
+      $('.swipe-area-' + side).toggleClass(side + '-sidebar-open');
+      $('body').toggleClass('sidebar-open');
+    }
     
   }])
-  .controller('LeftCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$location', 'localStorageService', function ($scope, $timeout, $mdSidenav, $log, $location, localStorageService) {
+  .controller('LeftCtrl', ['$scope', '$location', 'localStorageService', function ($scope, $location, localStorageService) {
+    
+
     $scope.closeAndChangePage = function (view) {
       var loggedIn = localStorageService.get('loggedIn');
 
@@ -67,17 +100,20 @@ angular.module('unisalad')
       } else {
         $location.path(view);
       };
-      $mdSidenav('left').close();
+      $scope.toggleSidebar('left');
     };
   }])
-  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$location', function ($scope, $timeout, $mdSidenav, $log, $location) {
+  .controller('RightCtrl', ['$scope', '$timeout', '$log', '$location', function ($scope, $location) {
+    $scope.toggleSidebar = function(side) {
+      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
+      $('body').toggleClass('sidebar-open');
+    };
     $scope.closeRight = function () {
-      $mdSidenav('right').close();
+      $scope.toggleSidebar('right');
     };
 
     $scope.editPost = function(postId) {
-      $scope.closeRight();
+      $scope.toggleSidebar('right');
       $location.path('/addpost');
-      //populate addpost with post info
     }
   }]);

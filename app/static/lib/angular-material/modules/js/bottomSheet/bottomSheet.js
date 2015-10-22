@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.10.1-master-8c71d0c
+ * v0.10.1
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -25,7 +25,6 @@ function MdBottomSheetDirective() {
     restrict: 'E'
   };
 }
-
 
 /**
  * @ngdoc service
@@ -149,7 +148,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
     };
 
 
-    function onShow(scope, element, options, controller) {
+    function onShow(scope, element, options) {
 
       element = $mdUtil.extractElementByName(element, 'md-bottom-sheet');
 
@@ -170,12 +169,13 @@ function MdBottomSheetProvider($$interimElementProvider) {
       $mdTheming.inherit(bottomSheet.element, options.parent);
 
       if (options.disableParentScroll) {
-        options.restoreScroll = $mdUtil.disableScrollAround(options.parent);
+        options.lastOverflow = options.parent.css('overflow');
+        options.parent.css('overflow', 'hidden');
       }
 
       return $animate.enter(bottomSheet.element, options.parent)
         .then(function() {
-          var focusable = $mdUtil.findFocusTarget(element) || angular.element(
+          var focusable = angular.element(
             element[0].querySelector('button') ||
             element[0].querySelector('a') ||
             element[0].querySelector('[ng-click]')
@@ -201,8 +201,8 @@ function MdBottomSheetProvider($$interimElementProvider) {
       $animate.leave(backdrop);
       return $animate.leave(bottomSheet.element).then(function() {
         if (options.disableParentScroll) {
-          options.restoreScroll();
-          delete options.restoreScroll;
+          options.parent.css('overflow', options.lastOverflow);
+          delete options.lastOverflow;
         }
 
         bottomSheet.cleanup();
@@ -225,9 +225,9 @@ function MdBottomSheetProvider($$interimElementProvider) {
         element: element,
         cleanup: function cleanup() {
           deregister();
-          parent.off('$md.dragstart', onDragStart);
-          parent.off('$md.drag', onDrag);
-          parent.off('$md.dragend', onDragEnd);
+          parent.off('$md.dragstart', onDragStart)
+            .off('$md.drag', onDrag)
+            .off('$md.dragend', onDragEnd);
         }
       };
 

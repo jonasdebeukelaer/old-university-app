@@ -11,6 +11,10 @@
 angular.module('unisalad')
   .filter('capitalise', function() {
     return function(input) {
-      return input.charAt(0).toUpperCase() + input.substr(1).toLowerCase();
+    	if (input != undefined) {
+      	return input.charAt(0).toUpperCase() + input.substr(1).toLowerCase();
+		  } else {
+		  	return '';
+  		}
     }
 });

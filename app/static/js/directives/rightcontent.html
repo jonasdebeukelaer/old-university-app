@@ -1,0 +1,138 @@
+<md-toolbar ng-controller="AppCtrl" class="mythings-fix" ng-click="toggleSidebar('right')">
+  <div class="md-toolbar-tools">
+    <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings">
+        <md-icon md-svg-icon="arrow_forward"></md-icon>
+      </md-button>
+    <h1 class="to-right">My Things</h1>
+  </div>
+</md-toolbar>
+
+<md-list class="personalinfo">
+  <md-list-item class="md-2-line mythings-fix">
+    <img ng-src="https://placekitten.com/110/110" class="md-avatar" alt="fbFace">
+    <div class="md-list-item-text">
+      <h3>My name</h3>
+      <p>My University</p>
+    </div>
+  </md-list-item>
+  <md-divider></md-divider>
+</md-list>
+
+<md-content class="mythings-fill" layout-padding ng-controller="RightCtrl">
+
+  <md-list>
+    <md-list-title>My things for Sale</md-list-title>
+
+    <md-list-item>
+      <p>Test item</p>
+      <md-grid-list class="md-secondary">
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+            <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="">
+            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+      </md-grid-list>
+    </md-list-item>
+
+    <md-list-item>
+      <p>Test item 2</p>
+      <md-grid-list class="md-secondary">
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+            <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="">
+            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+      </md-grid-list>
+    </md-list-item>
+
+    <md-list-item>
+      <p>Test item 2</p>
+      <md-grid-list class="md-secondary">
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+            <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="">
+            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+      </md-grid-list>
+    </md-list-item>
+
+
+    <md-list-item>
+      <p>Test item 3</p>
+      <md-grid-list class="md-secondary">
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+            <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="">
+            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+      </md-grid-list>
+    </md-list-item>
+
+    <md-list-item>
+      <p>Test item 4</p>
+      <md-grid-list class="md-secondary">
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+            <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="">
+            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+      </md-grid-list>
+    </md-list-item>
+    <md-list-item>
+      <p>Test item 4</p>
+      <md-grid-list class="md-secondary">
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+            <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="">
+            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+      </md-grid-list>
+    </md-list-item>
+    <md-list-item>
+      <p>Test item 4</p>
+      <md-grid-list class="md-secondary">
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">
+            <md-icon aria-label="Edit" md-svg-icon="edit"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+        <md-grid-list-item>
+          <md-button class="md-grid-item-content list-button" ng-click="">
+            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
+          </md-button>
+        </md-grid-list-item>
+      </md-grid-list>
+    </md-list-item>
+  </md-list>
+
+</md-content>

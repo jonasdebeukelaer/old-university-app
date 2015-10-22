@@ -1,17 +1,10 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name yomantutApp.controller:ToolCtrl
- * @description
- * # ToolCtrl
- * Controller of the yomantutApp
- */
 angular.module('unisalad')
-  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', function ($scope, $location, localStorageService) {
+  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', 'currentList', function ($scope, $location, localStorageService, currentList) {
     $scope.university = localStorageService.get('uni');
 
-    $scope.items = [ {
+    $scope.items = [{
         label: 'tickets',
     	name: 'Tickets',
     	posts: '10',
@@ -27,24 +20,35 @@ angular.module('unisalad')
         label: 'houses',
         name: 'Houses',
         posts: '-20',
-        icon: 'homeBig'
+        icon: 'bed'
     },
     {
-        label: 'misc',
-    	name: 'Miscellaneous',
+        label: 'anons',
+    	name: 'Anonymous',
     	posts: '100',
         icon: 'misc'
     },
     {
-        label: 'sale',
+        label: 'sales',
     	name: 'For sale',
     	posts: '20',
         icon: 'sell'
     }
     ];
 
-    $scope.goToList = function (list) {
-        $location.path('/listview');
-        localStorageService.set('list', list);
+    $scope.toggleSidebar = function(side) {
+      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
+      $('body').toggleClass('sidebar-open');
+    };
+
+    currentList.list = $scope.items[0];
+
+    $scope.goToPage = function (page) {
+      var lists = ['/tickets', '/lifts', '/houses', '/anons', '/sales']
+      $location.path(page);
+      if (page in lists) {
+        currentList.list = list;
+      }
+      $scope.toggleSidebar('left');
     };
   }]);
