@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('AppCtrl', ['$scope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 
-                    function ($scope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast) {
+  .controller('AppCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 
+                    function ($scope, $rootScope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast) {
 
     //in future load splash image instead of hiding everything
     document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+    $scope.wideScreen = $rootScope.wideScreen;
 
     var headroom = new Headroom(document.getElementById("toolbar"), {
       "offset": 10,
@@ -45,8 +47,6 @@ angular.module('unisalad')
       };
       $location.path(view);
     }
-
-    $scope.wideScreen = $mdMedia('gt-md');
 
     $scope.toggleSidebar = function(side) {
       toggleSide(side)

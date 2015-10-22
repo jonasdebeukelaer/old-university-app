@@ -12,70 +12,9 @@
 
   <link href="css/main.css" rel="stylesheet">
 </head>
-<body ng-app="unisalad" ng-controller="AppCtrl">
+<body ng-app="unisalad" ng-controller="GeneralCtrl">
 
-  <!-- -------------------------------------------------------------------------- -->
-
-  <div ng-if="!wideScreen" id="left-sidebar" class="sidebar left-sidebar">
-    <left-content></left-content>
-  </div>
-
-  <md-sidenav ng-if="wideScreen" class="md-sidenav-left" md-component-id="left" md-is-locked-open="wideScreen">
-    <left-content></left-content>
-  </md-sidenav>
-  <div class="swipe-area-left"></div>
-  <div class="swipe-area-right"></div>
-  <!-- -------------------------------------------------------------------------- -->
-
-  <div class="page">
-    
-    
-    <md-toolbar class="toolbar" id="toolbar">
-      <div class="md-toolbar-tools">
-        <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings" ng-click="toggleSidebar('left')">
-          <md-icon md-svg-icon="menu"></md-icon>
-        </md-button>
-        <h2>
-          <span>unisalad</span>
-        </h2>
-        <md-switch ng-model="loggedIn" ng-change="debugLoggedIn()" class="md-primary" aria-label="debugging tool">
-          *
-        </md-switch>
-
-
-        <md-button ng-if="loggedIn && !wideScreen" class="md-icon-button to-right" aria-label="My things" ng-click="toggleSidebar('right')">
-          <md-icon md-svg-icon="person"></md-icon>
-        </md-button>
-
-        <md-button ng-if="!loggedIn" class="to-right" aria-label="My things" ng-click="goTo('/login')">
-          <md-icon md-svg-icon="person"></md-icon>
-          Login
-        </md-button>
-      </div>
-    </md-toolbar>
-
-    <div  class="content">
-        <div ng-view="" class="container-ng-view {{ pageClass }}"></div>
-    </div>
-
-  </div>
-
-
-  <!-- -------------------------------------------------------------------------- -->
-
-  <div ng-if="!wideScreen" id="right-sidebar" class="sidebar right-sidebar mythings-sidenav">
-    <right-content></right-content>
-  </div>
-
-  <md-sidenav ng-if="wideScreen" md-component-id="right" md-is-locked-open="wideScreen" class="md-sidenav-right mythings-sidenav">
-    <right-content></right-content>
-  </md-sidenav>
-
-
-<!-- ---------------------------------------------------------------------------- -->
-
-
-  
+  <div ui-view class="root"></div>
 
   <script src="lib/jquery/dist/jquery.js"></script>
   
@@ -96,10 +35,12 @@
   <script src="lib/angular-resource/angular-resource.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
   <script src="lib/angular-ui-date/src/date.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
 
   <!--CONTROLLERS-->
   <script src="js/app.js"></script>
+  <script src="js/controllers/general.js"></script>
   <script src="js/controllers/app.js"></script>
   <script src="js/controllers/main.js"></script>
   <script src="js/controllers/about.js"></script>

@@ -1,0 +1,55 @@
+<div ng-if="!wideScreen" id="left-sidebar" class="sidebar left-sidebar">
+  <left-content></left-content>
+</div>
+
+<md-sidenav ng-if="wideScreen" class="md-sidenav-left" md-component-id="left" md-is-locked-open="true">
+  <left-content></left-content>
+</md-sidenav>
+<div ng-if="!wideScreen" class="swipe-area-left"></div>
+<div ng-if="!wideScreen" class="swipe-area-right"></div>
+<!-- -------------------------------------------------------------------------- -->
+
+<div class="page">
+  
+  
+  <md-toolbar class="toolbar" id="toolbar">
+    <div class="md-toolbar-tools">
+      <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings" ng-click="toggleSidebar('left')">
+        <md-icon md-svg-icon="menu"></md-icon>
+      </md-button>
+      <h2>
+        <span ui-sref="base.main">unisalad</span>
+      </h2>
+      <md-switch ng-model="loggedIn" ng-change="debugLoggedIn()" class="md-primary" aria-label="debugging tool">
+        *
+      </md-switch>
+
+
+      <md-button ng-if="loggedIn && !wideScreen" class="md-icon-button to-right" aria-label="My things" ng-click="toggleSidebar('right')">
+        <md-icon md-svg-icon="person"></md-icon>
+      </md-button>
+
+      <md-button ng-if="!loggedIn" class="to-right" aria-label="My things" ng-click="goTo('/login')">
+        <md-icon md-svg-icon="person"></md-icon>
+        Login
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <div  class="content">
+      
+      <div ui-view class="container-ng-view {{ pageClass }}"></div>
+  </div>
+
+</div>
+
+
+<!-- -------------------------------------------------------------------------- -->
+
+<div ng-if="!wideScreen" id="right-sidebar" class="sidebar right-sidebar mythings-sidenav">
+  <right-content></right-content>
+</div>
+
+<md-sidenav ng-if="wideScreen" md-component-id="right" md-is-locked-open="true" class="md-sidenav-right mythings-sidenav">
+  <right-content></right-content>
+</md-sidenav>

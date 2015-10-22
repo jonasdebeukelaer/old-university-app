@@ -19,8 +19,12 @@ body.sidebar-open {
   overflow: hidden;
 }
 
+root {
+  width: 100%;
+}
+
 @media screen and (min-width: 800px) {
-  html, body {
+  html, body, .root {
     height: 100%;
     width: 100%;
     display: flex;

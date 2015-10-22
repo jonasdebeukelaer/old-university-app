@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('AddpostCtrl', [ '$scope', '$location', 'currentList', function ($scope, $location, currentList) {	
+  .controller('AddPostCtrl', [ '$scope', '$location', 'currentList', function ($scope, $location, currentList) {	
 
   	$scope.list = currentList.list;
 

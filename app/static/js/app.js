@@ -3,11 +3,13 @@ angular.module('unisalad', [
 	'ngAnimate',
 	'ngResource',
 	'ngRoute',
+  'ui.router',
   'LocalStorageModule',
   'ngMaterial'
 	])
-  .run(function() {
+  .run(function($mdMedia, $rootScope) {
     FastClick.attach(document.body);
+    $rootScope.wideScreen = $mdMedia('gt-md');
     })
 	.config(['localStorageServiceProvider', function(localStorageServiceProvider){
 	  localStorageServiceProvider.setPrefix('us');
@@ -47,56 +49,71 @@ angular.module('unisalad', [
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|tel|mailto|sms):/);
     }
   ])
-  .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html', 
-        controller: 'MainCtrl'})
-      .when('/about', {
+  .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    //$urlRouterProvider.otherwise('/main');
+    $stateProvider
+      .state('hello', {
+        url: 'hello',
+        templateUrl: 'views/hello.html'
+      })
+      .state('base', {
+        url: '/',
+        templateUrl: 'views/base.html',
+        controller: 'AppCtrl'
+      })
+      .state('base.main', {
+        url: 'main',
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .state('base.about', {
+        url: 'about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/tool', {
+      .state('base.tool', {
+        url: 'tool',
         templateUrl: 'views/tool.html',
         controller: 'ToolCtrl'
       })
-      .when('/login', {
+      .state('base.login', {
+        url: 'login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/tickets', {
-        templateUrl: 'views/lists/listTickets.html',
-        controller: 'ListviewCtrl'
-      })
-      .when('/lifts', {
-        templateUrl: 'views/lists/listLifts.html',
-        controller: 'ListviewCtrl'
-      })
-      .when('/houses', {
-        templateUrl: 'views/lists/listHouses.html',
-        controller: 'ListviewCtrl'
-      })
-      .when('/anons', {
-        templateUrl: 'views/lists/listAnons.html',
-        controller: 'ListviewCtrl'
-      })
-      .when('/sales', {
-        templateUrl: 'views/lists/listSales.html',
-        controller: 'ListviewCtrl'
-      })
-      .when('/addpost', {
-        templateUrl: 'views/addpost.html',
-        controller: 'AddpostCtrl'
-      })
-      .when('/confirmationsent', {
+      .state('base.confirmationsent', {
+        url: 'confirmationsent',
         templateUrl: 'views/confirmationsent.html',
-        controller: 'ConfirmationsentCtrl'
+        controller: 'ConfirmationSentCtrl'
       })
-      .when('/admin_page', {
+      .state('base.admin_page', {
+        url: 'admin_page',
         templateUrl: 'views/admin_page.html',
         controller: 'AdminPageCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
+      .state('base.addpost', {
+        url: 'addpost',
+        templateUrl: 'views/addpost.html',
+        controller: 'AddPostCtrl'
+      })
+      .state('base.tickets', {
+        url: 'tickets',
+        templateUrl: 'views/lists/listTickets.html',
+        controller: 'ListviewCtrl'
+      })
+      .state('base.lifts', {
+        url: 'lifts',
+        templateUrl: 'views/lists/listLifts.html',
+        controller: 'ListviewCtrl'
+      })
+      .state('base.houses', {
+        url: 'houses',
+        templateUrl: 'views/lists/listHouses.html',
+        controller: 'ListviewCtrl'
+      })
+      .state('base.sales', {
+        url: 'sales',
+        templateUrl: 'views/lists/listSales.html',
+        controller: 'ListviewCtrl'
+      })
   }]);
