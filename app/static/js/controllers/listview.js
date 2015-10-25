@@ -5,7 +5,7 @@ angular.module('unisalad')
                                 function ($q, $scope, $http, searchText, filterFilter, $animate, $mdBottomSheet, tappedPost, $mdMedia, currentList, fetchPosts, $location, $timeout) {
 
     $scope.pageClass = 'page-listview';
-    
+  
     $scope.list = currentList.list;
 
     $scope.searchText = searchText;

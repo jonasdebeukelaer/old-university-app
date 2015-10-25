@@ -5,8 +5,8 @@
 <md-sidenav ng-if="wideScreen" class="md-sidenav-left" md-component-id="left" md-is-locked-open="true">
   <left-content></left-content>
 </md-sidenav>
-<div ng-if="!wideScreen" class="swipe-area-left"></div>
-<div ng-if="!wideScreen" class="swipe-area-right"></div>
+<div ng-if="!wideScreen" class="swipe-area-left" ng-click="clickArea('left')"></div>
+<div ng-if="!wideScreen" class="swipe-area-right" ng-click="clickArea('right')"></div>
 <!-- -------------------------------------------------------------------------- -->
 
 <div class="page">
@@ -18,7 +18,7 @@
         <md-icon md-svg-icon="menu"></md-icon>
       </md-button>
       <h2>
-        <span ui-sref="base.main">unisalad</span>
+        <span ui-sref="hello">unisalad</span>
       </h2>
       <md-switch ng-model="loggedIn" ng-change="debugLoggedIn()" class="md-primary" aria-label="debugging tool">
         *

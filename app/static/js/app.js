@@ -50,69 +50,85 @@ angular.module('unisalad', [
     }
   ])
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    //$urlRouterProvider.otherwise('/main');
+    $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('hello', {
-        url: 'hello',
-        templateUrl: 'views/hello.html'
-      })
-      .state('base', {
         url: '/',
-        templateUrl: 'views/base.html',
-        controller: 'AppCtrl'
+        templateUrl: 'views/hello.html',
+        controller: 'HelloCtrl'
       })
-      .state('base.main', {
-        url: 'main',
+      .state('pre', {
+        url: '/do',
+        templateUrl: 'views/pre.html',
+        controller: 'PreCtrl'
+      })
+      .state('pre.main', {
+        url: '/main',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .state('pre.login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .state('pre.confirmationsent', {
+        url: '/confirmationsent',
+        templateUrl: 'views/confirmationsent.html',
+        controller: 'ConfirmationSentCtrl'
+      })
+      .state('pre.about', {
+        url: '/about',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .state('base', {
+        url: '/app',
+        templateUrl: 'views/base.html',
+        controller: 'AppCtrl'
+      })
       .state('base.about', {
-        url: 'about',
+        url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
       .state('base.tool', {
-        url: 'tool',
+        url: '/tool',
         templateUrl: 'views/tool.html',
         controller: 'ToolCtrl'
       })
-      .state('base.login', {
-        url: 'login',
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-      .state('base.confirmationsent', {
-        url: 'confirmationsent',
-        templateUrl: 'views/confirmationsent.html',
-        controller: 'ConfirmationSentCtrl'
-      })
       .state('base.admin_page', {
-        url: 'admin_page',
+        url: '/admin_page',
         templateUrl: 'views/admin_page.html',
         controller: 'AdminPageCtrl'
       })
       .state('base.addpost', {
-        url: 'addpost',
+        url: '/addpost',
         templateUrl: 'views/addpost.html',
         controller: 'AddPostCtrl'
       })
       .state('base.tickets', {
-        url: 'tickets',
+        url: '/tickets',
         templateUrl: 'views/lists/listTickets.html',
         controller: 'ListviewCtrl'
       })
       .state('base.lifts', {
-        url: 'lifts',
+        url: '/lifts',
         templateUrl: 'views/lists/listLifts.html',
         controller: 'ListviewCtrl'
       })
       .state('base.houses', {
-        url: 'houses',
+        url: '/houses',
         templateUrl: 'views/lists/listHouses.html',
         controller: 'ListviewCtrl'
       })
       .state('base.sales', {
-        url: 'sales',
+        url: '/sales',
+        templateUrl: 'views/lists/listSales.html',
+        controller: 'ListviewCtrl'
+      })
+      .state('base.general', {
+        url: '/general',
         templateUrl: 'views/lists/listSales.html',
         controller: 'ListviewCtrl'
       })

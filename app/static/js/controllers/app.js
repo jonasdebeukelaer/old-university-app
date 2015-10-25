@@ -4,9 +4,6 @@ angular.module('unisalad')
   .controller('AppCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 
                     function ($scope, $rootScope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast) {
 
-    //in future load splash image instead of hiding everything
-    document.getElementsByTagName("html")[0].style.visibility = "visible";
-
     $scope.wideScreen = $rootScope.wideScreen;
 
     var headroom = new Headroom(document.getElementById("toolbar"), {
@@ -46,6 +43,13 @@ angular.module('unisalad')
         localStorageService.set('sign', 'in');
       };
       $location.path(view);
+    }
+
+    $scope.clickArea = function (side) {
+      var bodyClass = $('body').attr('class');
+      if (bodyClass.indexOf('sidebar-open') > -1) {
+        $scope.toggleSidebar(side);
+      }
     }
 
     $scope.toggleSidebar = function(side) {
