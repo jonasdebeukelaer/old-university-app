@@ -5,6 +5,12 @@ angular.module('unisalad')
     $scope.university = localStorageService.get('uni');
 
     $scope.items = [{
+        label: 'general',
+        name: 'General',
+        posts: '100',
+        icon: 'misc'
+    },
+    {
         label: 'tickets',
     	name: 'Tickets',
     	posts: '10',
@@ -23,12 +29,6 @@ angular.module('unisalad')
         icon: 'bed'
     },
     {
-        label: 'anons',
-    	name: 'Anonymous',
-    	posts: '100',
-        icon: 'misc'
-    },
-    {
         label: 'sales',
     	name: 'For sale',
     	posts: '20',
@@ -39,14 +39,21 @@ angular.module('unisalad')
     $scope.toggleSidebar = function(side) {
       $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
       $('body').toggleClass('sidebar-open');
+      $('.swipe-area-' + side).toggleClass(side + '-sidebar-open');
     };
 
     currentList.list = $scope.items[0];
 
-    $scope.goToList = function (list) {
-      console.log(list.label);
-      $location.path(list.label);
-      currentList.list = list;
+    $scope.goToPage = function (option) {
+      var page = option.label;
+      console.log(page)
+      var lists = ['general', 'tickets', 'lifts', 'houses', 'sales']
+      
+      if ($.inArray(page, lists)) {
+        console.log('FOUND!')
+        currentList.list = option;
+      }
+      $location.path('app/' + page)
       $scope.toggleSidebar('left');
     };
   }]);

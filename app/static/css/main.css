@@ -11,16 +11,28 @@ html {
   padding: 0.2em 0;
 }
 
-body {
+body, .root {
   height: auto;
+}
+
+body {
+  background-image: url("../images/noise.png");
+  background-repeat: repeat;
 }
 
 body.sidebar-open {
   overflow: hidden;
 }
 
+@media screen and (max-width: 800px) {
+  html {
+    background-image: url("../images/noise.png");
+    background-repeat: repeat;
+  }
+}
+
 @media screen and (min-width: 800px) {
-  html, body {
+  html, body, .root {
     height: 100%;
     width: 100%;
     display: flex;
@@ -48,25 +60,26 @@ font-weight: normal;
 md-toolbar {
   background-color: #008D8C;
   background-color: #00BCBB;
-  background-color: #009688;
+  background-color: #00796B;
 }
 
 a.md-primary {
   background-color: #008D8C;
   background-color: #00BCBB;
-  background-color: #009688 !important;
+  background-color: #00796B !important;
 }
 
-.md-primary:not(md-switch):not(.facebook) {
+.md-primary:not(md-switch):not(.facebook):not(md-checkbox) {
   background-color: #FFC107 !important;
   color: rgba(0,0,0,.87) !important;
 }
 
 md-content > md-tabs.login-tabs {
-  background-color: #E0F2F1;
+  background-color: #B2DFDB;
 }
 
 md-toolbar.toolbar {
+  z-index: 10;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   position: fixed;
   width: 100%;
@@ -103,10 +116,16 @@ div.content {
 
 .container-ng-view {
   margin: 5px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.container-welcome {
-  padding: 4%;
+.container-university {
+  position: relative;
+  padding: 5px;
+  max-width: 500px;
+  margin: 5px;
   background-color: white;
   display: flex;
   display: -webkit-flex;
@@ -114,10 +133,21 @@ div.content {
   -webkit-flex-flow: column;
 }
 
+@media screen and (min-width: 800px) {
+  .container-university {
+    margin-left: auto;
+    margin-right: auto;
+  } 
+}
+
+.container-university p, .container-university h1 {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
 .container-tool {
-  padding: 4%;
-  margin-top: 4%;
-  margin-bottom: 4%;
+  padding: 10px;
+  margin: 5px;
   background-color: white;
 }
 
@@ -133,16 +163,13 @@ div.content {
 
   md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed.md-sidenav-right  {
     flex: 0 1 auto;
-    z-index: 4;
+    z-index: 20;
   }
 
   div.page {
     flex: 1 1 auto;
-    max-width: 800px;
     overflow: scroll;
   }
-
-  md-bottom-sheet.
 
 }
 
@@ -192,7 +219,8 @@ md-select-label {
   margin: 0;
 }
 
-.mythings-sidenav {
+right-content {
+  height: 100%;
   display: flex;
   display: -webkit-flex;
   flex-direction:column;
@@ -233,6 +261,9 @@ md-grid-list.md-secondary > md-grid-list-item {
 /*------------------------------------login page------------------------------------*/
 /*----------------------------------------------------------------------------------*/
 
+div.login-container {
+  margin: 5px;
+}
 
 md-content .login-signup {
   background-color: transparent !important; 
@@ -253,14 +284,41 @@ md-content md-input-container:last-child {
   padding-bottom: 0;
 }
 
-md-tabs.login-tabs {
-  margin-bottom: 60px;
-}
-
 md-tab-content.md-no-scroll {
   bottom: 0;
 }
 
+md-tabs .md-tab.md-active {
+  color: rgba(0,0,0,0.87);
+}
+
+md-ink-bar {
+  background-color: #FFC107 !important;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*-----------------------------------confirm page-----------------------------------*/
+/*----------------------------------------------------------------------------------*/
+
+
+.container-confirm {
+  position: relative;
+  padding: 5px;
+  max-width: 500px;
+  margin: 5px;
+  background-color: white;
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: column;
+  -webkit-flex-flow: column;
+}
+
+@media screen and (min-width: 800px) {
+  .container-confirm {
+    margin-left: auto;
+    margin-right: auto;
+  } 
+}
 
 /*----------------------------------------------------------------------------------*/
 /*-------------------------------------tools page-----------------------------------*/
@@ -427,7 +485,7 @@ div > h3:first-child {
 div.list-intro {
   margin: -5px;
   padding: 10px;
-  background-color: #E0F2F1;
+  background-color: #B2DFDB;
   margin-bottom: 10px;
 }
 
@@ -463,7 +521,7 @@ p.select-label {
 }
 
 p.item-price, span.item-price {
-  color: #009688;
+  color: #00796B;
 }
 
 div .price-notice {
@@ -574,9 +632,126 @@ md-icon.details-arrow {
 
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
-/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------admin page---------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------------------------------------*/
 
+
+.admin-header {
+  background-color: #DDDDDD;
+  margin: -5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  padding-left: 15px;
+}
+
+.admin-header > h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+div.admin-content.make-flex {
+  flex-flow: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 130px;
+}
+
+div.flagged-preview {
+  flex: 1 1 auto;
+}
+
+div.flagged-posts-list-container {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+
+}
+
+md-list.flagged-posts-list {
+  background-color: #FFFFFF;
+  left: 5px;
+  right: 5px;
+  overflow: scroll;
+  bottom: 0;
+  z-index: 5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------welcome page-------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+.welcome-container {
+  width: 100%;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.welcome-1 {
+  height: 2000px;
+  width: 100%;
+  background-image: url("/images/Stock-Dock-House.jpg");
+  background-position: center;
+  text-align: center;
+}
+
+.welcome-container h1, .welcome-1 p, .welcome-container md-icon {
+  margin-top: 0;
+  margin-right: auto;
+  margin-left: auto;
+  color: rgba(255,255,255,0.87);
+}
+
+.welcome-1 p {
+  margin-top: 5px;
+}
+
+.welcome-1 > h1 {
+  padding-top: 150px;
+}
+
+.welcome-1 > button {
+  margin-top: 60px;
+}
+
+.welcome-1 .find-out {
+  text-align: center;
+}
+
+.welcome-2 {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+}
+
+.welcome-2 p {
+  position: relative;
+  margin: 30px;
+  margin-top: 60px;
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 1 1 auto;
+}
+
+.welcome-2 a {
+  padding: 20px;
+  position: relative;
+  flex: 0 1 auto;
+}
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------navbar tings-------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
 
 .sidebar {
     position: fixed;
@@ -609,4 +784,41 @@ md-icon.details-arrow {
   right: 0;
   transition: right 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
+
+.swipe-area-left {
+  position: absolute;
+  width: 30px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+  z-index: 8;
+  background-color: #555555;
+  transition: opacity 0.35s cubic;
+}
+
+div.swipe-area-left.left-sidebar-open {
+  z-index: 9;
+  width: 100%;
+  opacity: 0.3;
+}
+
+.swipe-area-right {
+  position: absolute;
+  width: 30px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+  z-index: 8;
+  background-color: #555555;
+  transition: opacity 0.35s cubic;
+}
+
+div.swipe-area-right.right-sidebar-open {
+  z-index: 9;
+  width: 100%;
+  opacity: 0.3;
+}
+
 

@@ -3,11 +3,13 @@ angular.module('unisalad', [
 	'ngAnimate',
 	'ngResource',
 	'ngRoute',
+  'ui.router',
   'LocalStorageModule',
   'ngMaterial'
 	])
-  .run(function() {
+  .run(function($mdMedia, $rootScope) {
     FastClick.attach(document.body);
+    $rootScope.wideScreen = $mdMedia('gt-md');
     })
 	.config(['localStorageServiceProvider', function(localStorageServiceProvider){
 	  localStorageServiceProvider.setPrefix('us');
@@ -37,7 +39,8 @@ angular.module('unisalad', [
      .icon('emailBig', 'images/icons/ic_email_48px.svg')
      .icon('callBig', 'images/icons/ic_call_48px.svg')
      .icon('arrow_down', 'images/icons/ic_keyboard_arrow_down_black_24px.svg')
-     .icon('arrow_up', 'images/icons/ic_keyboard_arrow_up_black_24px.svg');
+     .icon('arrow_up', 'images/icons/ic_keyboard_arrow_up_black_24px.svg')
+     .icon('put_back', 'images/icons/ic_call_missed_24px.svg');
   })
   .config( [
     '$compileProvider',
@@ -46,52 +49,87 @@ angular.module('unisalad', [
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|tel|mailto|sms):/);
     }
   ])
-  .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html', 
-        controller: 'MainCtrl'})
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+  .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+      .state('hello', {
+        url: '/',
+        templateUrl: 'views/hello.html',
+        controller: 'HelloCtrl'
       })
-      .when('/tool', {
-        templateUrl: 'views/tool.html',
-        controller: 'ToolCtrl'
+      .state('pre', {
+        url: '/do',
+        templateUrl: 'views/pre.html',
+        controller: 'PreCtrl'
       })
-      .when('/login', {
+      .state('pre.main', {
+        url: '/main',
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .state('pre.login', {
+        url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/tickets', {
+      .state('pre.confirmationsent', {
+        url: '/confirmationsent',
+        templateUrl: 'views/confirmationsent.html',
+        controller: 'ConfirmationSentCtrl'
+      })
+      .state('pre.about', {
+        url: '/about',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .state('base', {
+        url: '/app',
+        templateUrl: 'views/base.html',
+        controller: 'AppCtrl'
+      })
+      .state('base.about', {
+        url: '/about',
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .state('base.tool', {
+        url: '/tool',
+        templateUrl: 'views/tool.html',
+        controller: 'ToolCtrl'
+      })
+      .state('base.admin_page', {
+        url: '/admin_page',
+        templateUrl: 'views/admin_page.html',
+        controller: 'AdminPageCtrl'
+      })
+      .state('base.addpost', {
+        url: '/addpost',
+        templateUrl: 'views/addpost.html',
+        controller: 'AddPostCtrl'
+      })
+      .state('base.tickets', {
+        url: '/tickets',
         templateUrl: 'views/lists/listTickets.html',
         controller: 'ListviewCtrl'
       })
-      .when('/lifts', {
+      .state('base.lifts', {
+        url: '/lifts',
         templateUrl: 'views/lists/listLifts.html',
         controller: 'ListviewCtrl'
       })
-      .when('/houses', {
+      .state('base.houses', {
+        url: '/houses',
         templateUrl: 'views/lists/listHouses.html',
         controller: 'ListviewCtrl'
       })
-      .when('/anons', {
-        templateUrl: 'views/lists/listAnons.html',
-        controller: 'ListviewCtrl'
-      })
-      .when('/sales', {
+      .state('base.sales', {
+        url: '/sales',
         templateUrl: 'views/lists/listSales.html',
         controller: 'ListviewCtrl'
       })
-      .when('/addpost', {
-        templateUrl: 'views/addpost.html',
-        controller: 'AddpostCtrl'
+      .state('base.general', {
+        url: '/general',
+        templateUrl: 'views/lists/listSales.html',
+        controller: 'ListviewCtrl'
       })
-      .when('/confirmationsent', {
-        templateUrl: 'views/confirmationsent.html',
-        controller: 'ConfirmationsentCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
   }]);

@@ -8,7 +8,7 @@
  * Controller of the yomantutApp
  */
 angular.module('unisalad')
-  .controller('ConfirmationsentCtrl', function ($scope) {
+  .controller('ConfirmationSentCtrl', function ($scope) {
   	$scope.pageClass = 'page-emailsent';
 
     $scope.awesomeThings = [

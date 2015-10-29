@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('AppCtrl', ['$scope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 
-                    function ($scope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast) {
+  .controller('AppCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 
+                    function ($scope, $rootScope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast) {
 
-    //in future load splash image instead of hiding everything
-    document.getElementsByTagName("html")[0].style.visibility = "visible";
+    $scope.wideScreen = $rootScope.wideScreen;
 
     var headroom = new Headroom(document.getElementById("toolbar"), {
       "offset": 10,
@@ -23,11 +22,6 @@ angular.module('unisalad')
     $('md-sidenav').css('height', viewHeight);
     $('div.page').css('min-height', viewHeight - 64);
     $('div.content').css('min-height', viewHeight - 64);
-
-    $scope.toggleSidebar = function(side) {
-      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
-      $('body').toggleClass('sidebar-open');
-    };
 
     $scope.toastAdded = function () {
       $mdToast.show(
@@ -51,7 +45,48 @@ angular.module('unisalad')
       $location.path(view);
     }
 
-    $scope.wideScreen = $mdMedia('gt-md');
+    $scope.clickArea = function (side) {
+      var bodyClass = $('body').attr('class');
+      if (bodyClass.indexOf('sidebar-open') > -1) {
+        $scope.toggleSidebar(side);
+      }
+    }
+
+    $scope.toggleSidebar = function(side) {
+      toggleSide(side)
+    };
+
+    $('.swipe-area-left').swipe({ swipeStatus:function(event, phase, direction, distance, duration, fingers)
+        {
+            if (phase=='move' && direction =='right') {
+                 toggleSide('left');
+                 return false;
+            }
+            if (phase=='move' && direction =='left') {
+                 toggleSide('left');
+                 return false;
+            }
+        }
+    });
+
+    $('.swipe-area-right').swipe({ swipeStatus:function(event, phase, direction, distance, duration, fingers)
+        {
+            if (phase=='move' && direction =='left') {
+                 toggleSide('right');
+                 return false;
+            }
+            if (phase=='move' && direction =='right') {
+                 toggleSide('right');
+                 return false;
+            }
+        }
+    });
+
+    var toggleSide = function (side) {
+      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
+      $('.swipe-area-' + side).toggleClass(side + '-sidebar-open');
+      $('body').toggleClass('sidebar-open');
+    }
     
   }])
   .controller('LeftCtrl', ['$scope', '$location', 'localStorageService', function ($scope, $location, localStorageService) {
@@ -84,6 +119,5 @@ angular.module('unisalad')
     $scope.editPost = function(postId) {
       $scope.toggleSidebar('right');
       $location.path('/addpost');
-      //populate addpost with post info
     }
   }]);
