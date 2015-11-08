@@ -109,27 +109,27 @@ angular.module('unisalad', [
       })
       .state('base.tickets', {
         url: '/tickets',
-        templateUrl: 'views/lists/listTickets.html',
-        controller: 'ListviewCtrl'
+        templateUrl: 'views/list_template.html',
+        controller: 'ListTicketsCtrl'
       })
       .state('base.lifts', {
         url: '/lifts',
-        templateUrl: 'views/lists/listLifts.html',
-        controller: 'ListviewCtrl'
+        templateUrl: 'views/list_template.html',
+        controller: 'ListLiftsCtrl'
       })
       .state('base.houses', {
         url: '/houses',
-        templateUrl: 'views/lists/listHouses.html',
-        controller: 'ListviewCtrl'
+        templateUrl: 'views/list_template.html',
+        controller: 'ListHousesCtrl'
       })
       .state('base.sales', {
         url: '/sales',
-        templateUrl: 'views/lists/listSales.html',
-        controller: 'ListviewCtrl'
+        templateUrl: 'views/list_template.html',
+        controller: 'ListSalesCtrl'
       })
       .state('base.general', {
         url: '/general',
-        templateUrl: 'views/lists/listSales.html',
-        controller: 'ListviewCtrl'
+        templateUrl: 'views/list_template.html',
+        controller: 'ListGeneralCtrl'
       })
   }]);

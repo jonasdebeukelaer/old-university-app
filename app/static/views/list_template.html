@@ -17,10 +17,10 @@
 
   </div>
 
-  <md-button id="addpost" aria-label="Add a post" ng-click="goToAddpost()" class="md-fab md-primary add-post">
+  <md-button id="addpost" ng-href="#" aria-label="Add a post" ui-sref="base.addpost" ng-click="hideAddpostButton()" class="md-fab md-primary add-post">
     <md-icon md-svg-icon="add"></md-icon>
   </md-button>
 
-	<post id="id{{ pst.id }}" ng-repeat="pst in tickets" ng-click="openPostDetails($event, pst)" post-info="pst"></post>
+	<post id="id{{ pst.id }}" ng-repeat="pst in posts" ng-click="openPostDetails($event, pst)" post-info="pst"></post>
 	
 </div>

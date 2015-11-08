@@ -24,6 +24,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.1/angular-material.min.js"></script>
+  <!-- FALL BACKS -->
+  <script>!window.angular && document.write('<script src="lib/angular/angular.min.js"><\/script>')</script>
+  <script>!window.angular.module("ngAnimate") && document.write('<script src="lib/angular-animate/angular-animate.min.js"><\/script>')</script>
+  <script>!window.angular.module("ngAria") && document.write('<script src="lib/angular-aria/angular-aria.min.js"><\/script>')</script>
+  <script>!window.angular.module("ngMaterial") && document.write('<script src="lib/angular-material/angular-material.min.js"><\/script>')</script>
 
   <!--JQUERY PLUGINS-->
   <script src="lib/swipebox/src/js/jquery.swipebox.js"></script>
@@ -49,7 +54,11 @@
   <script src="js/controllers/about.js"></script>
   <script src="js/controllers/tool.js"></script>
   <script src="js/controllers/login.js"></script>
-  <script src="js/controllers/listview.js"></script>
+  <script src="js/controllers/lists/listTickets.js"></script>
+  <script src="js/controllers/lists/listLifts.js"></script>
+  <script src="js/controllers/lists/listHouses.js"></script>
+  <script src="js/controllers/lists/listSales.js"></script>
+  <script src="js/controllers/lists/listGeneral.js"></script>
   <script src="js/controllers/addpost.js"></script>
   <script src="js/controllers/contactsheet.js"></script>
   <script src="js/controllers/confirmationsent.js"></script>
@@ -67,6 +76,7 @@
   <script src="js/directives/postsale.js"></script>
 
   <!--SERVICES-->
+  <script src="js/services/listFunctions.js"></script>
   <script src="js/services/searchtext.js"></script>
   <script src="js/services/tappedpost.js"></script>
   <script src="js/services/currentlist.js"></script>

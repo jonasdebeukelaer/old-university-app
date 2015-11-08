@@ -1,13 +1,15 @@
 <div class="make-flex">
-	<h4>
-		{{ info.title | capitalise }}
-	</h4>
+	<p>
+		{{{{ info.title | capitalise }}}}
+	</p>
 </div>
 
 <md-divider></md-divider>
 
+<p>{{ info.extraInfo }}</p>
+
 <div class="make-flex">
-	<p class="to-right card-username">?</p>
+	<p class="to-right card-username">{{ info.user }}</p>
 </div>
 
 <div class="post-picContainer">

@@ -1,18 +1,19 @@
 <div class="post-card" ng-controller="CardCtrl">
 	 <md-card id="idCard{{ postInfo.id }}" class="md-card">
 		 <md-card-content class="post-card-content">
-		 	
+		 
+		 	<post-gen ng-if="list().label === 'gen' && postInfo.user != 'undefined'" info="postInfo"></post-gen>
+		 	<post-anon ng-if="list().label === 'gen' && typeof(postInfo.user) == 'undefined'" info="postInfo"></post-anon>
 		 	<post-ticket ng-if="list().label === 'tickets'" info="postInfo"></post-ticket>
 		 	<post-lift ng-if="list().label === 'lifts'" info="postInfo"></post-lift>
 		 	<post-house ng-if="list().label === 'houses'" info="postInfo"></post-house>
-		 	<post-anon ng-if="list().label === 'anons'" info="postInfo"></post-anon>
 		 	<post-sale ng-if="list().label === 'sales'" info="postInfo"></post-sale>
 
 			<p id="extraInfo" ng-if="show" ng-click="toggleDetails()">{{ postInfo.extraInfo }}</p>
 
 		</md-card-content>
 
-		<div id="expandDetails" ng-click="toggleDetails()" class="expand-details">
+		<div ng-if="list().label != 'anons' && list().label != 'gen'" id="expandDetails" ng-click="toggleDetails()" class="expand-details">
 			<md-divider></md-divider>
 			<md-icon id="expandDown" class="details-arrow" md-svg-icon="{{ arrow }}"></md-icon>
 		</div>
