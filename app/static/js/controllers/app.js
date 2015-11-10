@@ -89,24 +89,6 @@ angular.module('unisalad')
     }
     
   }])
-  .controller('LeftCtrl', ['$scope', '$location', 'localStorageService', function ($scope, $location, localStorageService) {
-    
-
-    $scope.closeAndChangePage = function (view) {
-      var loggedIn = localStorageService.get('loggedIn');
-
-      if (view == '') {
-        if (loggedIn) {
-          $location.path('/tool');
-        }else {
-          $location.path('/');
-        }
-      } else {
-        $location.path(view);
-      };
-      $scope.toggleSidebar('left');
-    };
-  }])
   .controller('RightCtrl', ['$scope', '$timeout', '$log', '$location', function ($scope, $location) {
     $scope.toggleSidebar = function(side) {
       $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');

@@ -92,11 +92,6 @@ angular.module('unisalad', [
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .state('base.tool', {
-        url: '/tool',
-        templateUrl: 'views/tool.html',
-        controller: 'ToolCtrl'
-      })
       .state('base.admin_page', {
         url: '/admin_page',
         templateUrl: 'views/admin_page.html',

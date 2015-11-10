@@ -1,6 +1,6 @@
 <div class="make-flex">
 	<p>
-		{{{{ info.title | capitalise }}}}
+		{{ info.title | capitalise }}
 	</p>
 </div>
 
@@ -9,7 +9,7 @@
 <p>{{ info.extraInfo }}</p>
 
 <div class="make-flex">
-	<p class="to-right card-username">{{ info.user }}</p>
+	<p ng-if="info.user" class="to-right card-username">{{ info.user }}</p>
 </div>
 
 <div class="post-picContainer">

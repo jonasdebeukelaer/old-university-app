@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('ToolCtrl', ['$scope', '$location', 'localStorageService', 'currentList', function ($scope, $location, localStorageService, currentList) {
-    $scope.university = localStorageService.get('uni');
-
+	.controller('LeftCtrl', ['$scope', '$location', 'currentList', function ($scope, $location, currentList) {
+    
     $scope.items = [{
       label: 'general',
       name: 'General',
@@ -48,10 +47,9 @@ angular.module('unisalad')
       var lists = ['general', 'tickets', 'lifts', 'houses', 'sales'];
       
       if ($.inArray(page, lists)) {
-        console.log(option)
         currentList.list = option;
       }
       $location.path('app/' + page)
       $scope.toggleSidebar('left');
-    };
-  }]);
+    }
+  }])

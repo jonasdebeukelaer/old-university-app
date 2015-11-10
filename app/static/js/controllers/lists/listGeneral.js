@@ -8,7 +8,7 @@ angular.module('unisalad')
       label: 'general',
       name: 'General',
       posts: '10',
-      icon: 'general'
+      icon: 'misc'
     }
     listFunctions.setList($scope.list);
 

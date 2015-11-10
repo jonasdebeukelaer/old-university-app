@@ -147,6 +147,13 @@
         "user": "James Bore",
         "pics": [],
         "extraInfo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incii"
+      },
+      {
+        "id": 4,
+        "title": "This is highly anon",
+        "postDate": "2015-03-01",
+        "pics": [],
+        "extraInfo": "very sneaky post"
       }],
 
 "sales": [{
