@@ -1,36 +1,69 @@
 from app import app, db
 from app.models.User import User
-from flask import request, abort, json
+from app.utils import password
+from flask import request, abort, json, session
 
 @app.route("/user/create", methods=["POST"])
 def createUser():
 	try:
-		newUser = User(
-			username = request.form['username'],
-			email = request.form['email'],
-			password = request.form['password'],
-			fullName = request.form['fullName'],
-			phoneNumber = request.form['phoneNumber'],
-		)
-
-		if('emailContactable' in request.form):
-			newUser.emailContactable = request.form['emailContactable']
-		if('phoneContactable' in request.form):
-			newUser.phoneContactable = request.form['phoneContactable']
-
+		newUser = User(request.form)
 		db.session.add(newUser)
 		db.session.commit()
 
 		return newUser.id
-	except KeyError:
-		abort(422)
+	except e:
+		return json.jsonify({"errorMessage" : "Could not create user"}), 500
 
 @app.route("/user/<int:userId>", methods=["GET"])
 def getUser(userId):
-	user = User.query.get(userId)
-	print "Getting user %d" % userId
-	return json.jsonify(user.toDict())
+	user = User.query.filter_by(id=userId).first()
+	if not user:
+		return json.jsonify({"errorMessage" : "No matching user found"}), 422
+	else:
+		return json.jsonify(user.toDict())
 
-@app.route("/user/", methods=["GET"])
-def a():
-	return "HELLO WORLD!"
+@app.route("/user/<int:userId>/verify", methods=["GET"])
+def verifyUser(userId):
+	user = User.query.filter_by(id=userId).first()
+	if not user:
+		return json.jsonify({
+				"verified" : False,
+				"errorMessage" : "No matching user found"
+				}), 422
+	else:
+		user.verified = True
+		try:
+			db.session.commit()
+			return json.jsonify({"verified" : True})
+		except e:
+			return json.jsonify({
+				"verified" : False,
+				"errorMessage" : "Could not verify user"
+				}), 500
+
+@app.route('/login', methods=['POST'])
+def login():
+	if request.method == 'POST':
+		username = request.form['username']
+
+		user = User.query.filter_by(id=userId).first()
+
+		if not user:
+			return json.jsonify({
+				"errorMessage" : "No such user"
+				}), 422
+
+		if not password.checkPassword(user.password, request.form['password']):
+			return json.jsonify({
+				"errorMessage" : "Incorrect password"
+				}), 403
+
+		session['userId'] = user.id
+
+		return redirect(url_for('index'))
+
+@app.route('/logout')
+def logout():
+	# remove the username from the session if it's there
+	session.pop('username', None)
+	return redirect(url_for('index'))
