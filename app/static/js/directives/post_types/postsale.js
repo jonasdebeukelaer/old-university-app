@@ -1,7 +1,7 @@
 angular.module('unisalad')
-  .directive('postGen', function () {
+  .directive('postSale', function () {
     return {
-      templateUrl: 'js/directives/postgen.html',
+      templateUrl: 'js/directives/post_types/postsale.html',
       restrict: 'E',
       scope: {
       	info: '='

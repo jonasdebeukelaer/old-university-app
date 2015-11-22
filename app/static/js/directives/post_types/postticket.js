@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('unisalad')
-  .directive('postLift', function () {
+  .directive('postTicket', function () {
     return {
-      templateUrl: 'js/directives/postlift.html',
+      templateUrl: 'js/directives/post_types/postticket.html',
       restrict: 'E',
       scope: {
       	info: '='

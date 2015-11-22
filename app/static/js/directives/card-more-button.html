@@ -27,5 +27,14 @@
           </div>
       </md-button>
     </md-menu-item>
+    </md-menu-item>
+    <md-menu-item ng-if="thisUsersPost()">
+      <md-button ng-click="">
+          <div layout="row">
+            <p flex>Unanonymise</p>
+            <md-icon md-menu-align-target md-svg-icon="info"></md-icon>
+          </div>
+      </md-button>
+    </md-menu-item>
   </md-menu-content>
 </md-menu>
