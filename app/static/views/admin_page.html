@@ -1,99 +1,52 @@
-<div class="admin-header">
-	<h2>Flagged posts</h2>
-</div>
+<div class="login-container">
+		<md-tabs md-selected="selectedTab" md-dynamic-height md-border-bottom class="login-tabs">
+      <md-tab label="Admins">
+        <md-content class="md-padding">
+        
+        	<md-input-container flex>
+            <label>Search admins</label>
+            <input ng-model="search">
+          </md-input-container>
 
-<div class="admin-content make-flex">
+          <md-list class="">
+						<md-list-item ng-repeat="admin in admins" ng-click="" md-no-ink>
+				      {{ admin.name }}
+				    </md-list-item>
+				  </md-list>
 
-	<div class="flagged-preview">
-		<post info="samplePost"></post>
-	</div>
+      	</md-content>
+    	</md-tab>
+    	<md-tab label="Mods">
+        <md-content class="md-padding">
 
+        	<md-input-container flex>
+            <label>Search Moderators</label>
+            <input ng-model="search">
+          </md-input-container>
 
-	<div class="flagged-posts-list-container">
-	<md-list class="flagged-posts-list md-whiteframe-z2">
+          <md-list class="">
+						<md-list-item ng-repeat="mod in mods" ng-click="" md-no-ink>
+				      {{ mod.name }}
+				    </md-list-item>
+				  </md-list>
 
-		<md-list-item ng-click="showPost('1')" md-no-ink>
-      <p>Test post</p>
-      <md-grid-list class="md-secondary">
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button">
-            <md-icon aria-label="Edit" md-svg-icon="put_back"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button" ng-click="">
-            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-      </md-grid-list>
-    </md-list-item>
+      	</md-content>
+    	</md-tab>
+    	<md-tab label="Users">
+        <md-content class="md-padding">
 
-    <md-list-item ng-click="showPost('2')">
-      <p>Test post 2</p>
-      <md-grid-list class="md-secondary">
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button">
-            <md-icon aria-label="Edit" md-svg-icon="put_back"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button" ng-click="">
-            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-      </md-grid-list>
-    </md-list-item>
+        	<md-input-container flex>
+            <label>Search Users</label>
+            <input ng-model="search">
+          </md-input-container>
 
-    <md-list-item  ng-click="showPost('3')" md-no-ink>
-      <p>Test item 3</p>
-      <md-grid-list class="md-secondary">
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button">
-            <md-icon aria-label="Edit" md-svg-icon="put_back"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button" ng-click="">
-            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-      </md-grid-list>
-    </md-list-item>
+          <md-list class="">
+						<md-list-item ng-repeat="user in users" ng-click="" md-no-ink>
+				      {{ user.name }}
+				    </md-list-item>
+				  </md-list>
 
-    <md-list-item  ng-click="showPost('3')" md-no-ink>
-      <p>Test item 3</p>
-      <md-grid-list class="md-secondary">
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button">
-            <md-icon aria-label="Edit" md-svg-icon="put_back"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button" ng-click="">
-            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-      </md-grid-list>
-    </md-list-item>
-
-    <md-list-item  ng-click="showPost('3')" md-no-ink>
-      <p>Test item 3</p>
-      <md-grid-list class="md-secondary">
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button">
-            <md-icon aria-label="Edit" md-svg-icon="put_back"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-        <md-grid-list-item>
-          <md-button class="md-grid-item-content list-button" ng-click="">
-            <md-icon aria-label="Delete" md-svg-icon="delete"></md-icon>
-          </md-button>
-        </md-grid-list-item>
-      </md-grid-list>
-    </md-list-item>
-
-  </div>
-
-
-	</md-list>
+      	</md-content>
+    	</md-tab>
+	</md-tabs>
 </div>

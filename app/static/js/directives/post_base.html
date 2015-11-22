@@ -2,8 +2,7 @@
 	 <md-card id="idCard{{ postInfo.id }}" class="md-card">
 		 <md-card-content class="post-card-content">
 		 
-		 	<post-gen ng-if="list().label === 'general' && postInfo.user != 'undefined'" info="postInfo"></post-gen>
-		 	<post-anon ng-if="list().label === 'general' && typeof(postInfo.user) == 'undefined'" info="postInfo"></post-anon>
+		 	<post-gen ng-if="list().label === 'general'" info="postInfo"></post-gen>
 		 	<post-ticket ng-if="list().label === 'tickets'" info="postInfo"></post-ticket>
 		 	<post-lift ng-if="list().label === 'lifts'" info="postInfo"></post-lift>
 		 	<post-house ng-if="list().label === 'houses'" info="postInfo"></post-house>

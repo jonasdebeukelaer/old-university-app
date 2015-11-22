@@ -74,7 +74,7 @@ a.md-primary {
   color: rgba(0,0,0,.87) !important;
 }
 
-md-content > md-tabs.login-tabs {
+md-content > md-tabs.login-tabs, .login-container > md-tabs.login-tabs {
   background-color: #B2DFDB;
 }
 
@@ -256,6 +256,19 @@ md-grid-list.md-secondary > md-grid-list-item {
   border-radius: 50%;
 }
 
+left-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+left-content > md-toolbar { 
+  flex: 0 1 auto;
+}
+
+left-content > md-content {
+  flex: 1 1 auto;
+}
 
 /*----------------------------------------------------------------------------------*/
 /*------------------------------------login page------------------------------------*/
@@ -371,31 +384,66 @@ md-card {
 .post-card {
   margin-right: 0;
   margin-left: 0;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .post-card-content {
-  color: rgba(0,0,0,0.87);
-  -webkit-transition: color 0.4s;
-  transition: color 0.4s;
-  -webkit-transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  padding: 0;
 }
 
-.post-card-content :last-child {
+.card-title, .card-body {
+  padding: 6px;
+}
+
+.card-title > h4 {
+  flex: 1 1 auto;
   margin-bottom: 0;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.card-more {
+  flex: 0 1 auto;
+}
+
+.card-body p {
+  margin: 6px 2px;
+}
+
+.post-card-content md-divider {
+  border-top-color: #B2DFDB;
+}
+
+.post-card .md-button.md-icon-button {
+  height: 36px;
+  width: 36px;
+  line-height: 36px;
+  margin: 0;
+}
+
+.post-card .md-menu {
+  padding: 0;
 }
 
 .make-flex {
-  display: flex;
   display: -webkit-flex;
+  display: flex;
 }
 
-.card-username {
+.card-body .card-date {
+  padding-left: 6px;
+}
+
+.card-body .card-username {
   color: #555;
   font-size: 0.8em;
-  margin-top: 18px;
+  margin-top: 12px;
   margin-bottom: auto;
+  text-align: right;
+}
+
+.location-user-container, .lift-title {
+  flex-wrap: wrap;
 }
 
 md-bottom-sheet.post-detail-sheet {
@@ -597,39 +645,18 @@ md-icon.details-arrow {
   to    { -webkit-transform: translateY(110%); }
 }
 
-@keyframes jumpUp {
-  from  { transform: translateY(100%); }
-  to    { transform: translateY(0); }
-}
 
-@keyframes fallDown {
-  from  { transform: translateY(0); }
-  to    { transform: translateY(100%); }
-}
-
-
-.ng-enter:not(md-bottom-sheet):not(.add-post):not(.page-addpost):not(md-toast) {
+.ng-enter:not(md-bottom-sheet):not(.page-addpost):not(md-toast) {
   animation: fadeIn 0.3s both ease-in;
   -webkit-animation: fadeIn 0.3s both ease-in;
   z-index: 2;
 }
 
-.ng-leave:not(md-bottom-sheet):not(.add-post):not(.page-addpost):not(md-toast) {
+.ng-leave:not(md-bottom-sheet):not(.page-addpost):not(md-toast) {
   animation: fadeOut 0.3s both ease-in;
   -webkit-animation: fadeOut 0.3s both ease-in;
   z-index: 10;
 }
-
-.ng-enter.page-addpost {
-  animation: jumpUp 0.3s both ease-in;
-  -webkit-animation: jumpUp 0.3s both ease-in;
-}
-
-.ng-leave.page-addpost, .add-post.add-post-hide {
-  animation: fallDown 0.3s both ease-in;
-  -webkit-animation: fallDown 0.3s both ease-in;
-}
-
 
 /*--------------------------------------------------------------------------------------------------------------------------*/
 /*-------------------------------------------------------admin page---------------------------------------------------------*/
@@ -819,6 +846,10 @@ div.swipe-area-right.right-sidebar-open {
   z-index: 9;
   width: 100%;
   opacity: 0.3;
+}
+
+md-content.left-nav {
+  overflow-y: scroll;
 }
 
 

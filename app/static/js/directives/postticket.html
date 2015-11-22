@@ -1,24 +1,29 @@
-<div class="make-flex">
+<div class="card-title make-flex">
 	<h4>
 		{{ info.item | capitalise }}
 	</h4>
+	<more-button></more-button>
 </div>
 
 <md-divider></md-divider>
 
-<div class="make-flex">
-	<p>{{ info.eventDate | date:'dd/MM/yy' }}</p>
-	<span class="to-right">
-		<p>
-			<span ng-if="info.number != 1">{{ info.number }} x </span>
-			<span class="item-price">{{ info.cost | currency:"£" }}</span>
-		</p>
-	</span>
-</div>
+<div class="card-body">
+	<div class="make-flex">
+		<p class="card-date">{{ info.eventDate | date:'dd/MM/yy' }}</p>
+		<span class="to-right">
+			<p>
+				<span ng-if="info.number != 1">{{ info.number }}x </span>
+				<span class="item-price">{{ info.cost | currency:"£" }}</span>
+			</p>
+		</span>
+	</div>
 
-<div class="make-flex">
-	<p>
-		<md-icon md-svg-icon="place"></md-icon> {{ info.meet }}
-	</p>
-	<p class="to-right card-username">{{ info.user }}</p>
+	<div class="make-flex location-user-container">
+		<p>
+			<md-icon md-svg-icon="place"></md-icon> {{ info.meet }}
+		</p>
+		<span class="to-right">
+			<p class="card-username">{{ info.user }}</p>
+		</span>
+	</div>
 </div>

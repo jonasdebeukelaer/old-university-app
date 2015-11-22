@@ -1,25 +1,30 @@
-<div class="make-flex">
+<div class="card-title make-flex">
 	<h4>
 		{{ info.title | capitalise }}
 	</h4>
+	<more-button></more-button>
 </div>
 
 <md-divider></md-divider>
 
-<div class="make-flex">
-	<p>get by: {{ info.buyDate | date:'dd/MM/yy' }}</p>
-	<span class="to-right">
-		<p class="item-price">
-			{{ info.cost | currency:"£":0 }}
-		</p>
-	</span>
-</div>
+<div class="card-body">
+	<div class="make-flex">
+		<p class="card-date">get by: {{ info.buyDate | date:'dd/MM/yy' }}</p>
+		<span class="to-right">
+			<p>
+				<span class="item-price">{{ info.cost | currency:"£" }}</span>
+			</p>
+		</span>
+	</div>
 
-<div class="make-flex">
-	<p>
-		<md-icon md-svg-icon="place"></md-icon> {{ info.location }}
-	</p>
-	<p class="to-right card-username">{{ info.user }}</p>
+	<div class="make-flex location-user-container">
+		<p>
+			<md-icon md-svg-icon="place"></md-icon> {{ info.location }}
+		</p>
+		<span class="to-right">
+			<p class="card-username">{{ info.user }}</p>
+		</span>
+	</div>
 </div>
 
 <div class="post-picContainer">

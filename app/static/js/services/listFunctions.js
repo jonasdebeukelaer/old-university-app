@@ -47,6 +47,7 @@ angular.module('unisalad')
 	    };
 
       var clickedElementClass = $event.target.className;
+      var clickedElementParentClass = $event.target.parentNode.className
       var clickedElementId = $event.target.id;
 
       if (clickedElementClass === 'post-img') {
@@ -66,6 +67,9 @@ angular.module('unisalad')
 
       } else if (clickedElementId === 'contractUp' || clickedElementId === 'extraInfo') {
         console.log('contract up');
+
+      } else if (clickedElementClass.indexOf('md-icon-button more') > -1 || clickedElementParentClass.indexOf('md-icon-button more') > -1) {
+        console.log('more');
 
       } else {
         tappedPost.post = clickedPost;

@@ -40,7 +40,8 @@ angular.module('unisalad', [
      .icon('callBig', 'images/icons/ic_call_48px.svg')
      .icon('arrow_down', 'images/icons/ic_keyboard_arrow_down_black_24px.svg')
      .icon('arrow_up', 'images/icons/ic_keyboard_arrow_up_black_24px.svg')
-     .icon('put_back', 'images/icons/ic_call_missed_24px.svg');
+     .icon('put_back', 'images/icons/ic_call_missed_24px.svg')
+     .icon('more_vert', 'images/icons/ic_more_vert_24px.svg');
   })
   .config( [
     '$compileProvider',
@@ -92,8 +93,13 @@ angular.module('unisalad', [
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .state('base.mod_page', {
+        url: '/mod',
+        templateUrl: 'views/mod_page.html',
+        controller: 'ModPageCtrl'
+      })
       .state('base.admin_page', {
-        url: '/admin_page',
+        url: '/admin',
         templateUrl: 'views/admin_page.html',
         controller: 'AdminPageCtrl'
       })

@@ -8,7 +8,7 @@
         "number": 1,
       	"cost": 20,
       	"meet": "Lenn pick up",
-      	"evenDate": "2015-03-25",
+      	"eventDate": "2015-03-25",
         "extraInfo": "Extra info about the ticket goes here"
       },
       {
@@ -19,7 +19,7 @@
         "number": 2,
         "cost": 18.5,
         "meet": "your house",
-        "evenDate": "2015-03-25",
+        "eventDate": "2015-03-25",
         "extraInfo": "Extra info about the ticket goes here"
       },
       {
@@ -30,7 +30,7 @@
         "number": 2,
         "cost": 22,
         "meet": "the moon",
-        "evenDate": "2015-03-26",
+        "eventDate": "2015-03-26",
         "extraInfo": "Extra info about the ticket goes here"
       },
       {
@@ -41,7 +41,7 @@
         "number": 1,
       	"cost": 12,
       	"meet": "Lentonn pick up",
-      	"evenDate": "2015-03-19",
+      	"eventDate": "2015-03-19",
         "extraInfo": "Extra info about the ticket goes here"
       },
       {
@@ -52,7 +52,7 @@
         "number": 3,
         "cost": 5,
         "meet": "library",
-        "evenDate": "2015-12-19",
+        "eventDate": "2015-12-19",
         "extraInfo": "Extra info about the ticket goes here"
       },
       {
@@ -63,7 +63,7 @@
         "number": 1,
         "cost": 10,
         "meet": "SN8 massive",
-        "evenDate": "2015-10-19",
+        "eventDate": "2015-10-19",
         "extraInfo": "Extra info about the ticket goes here"
       }],
 

@@ -6,7 +6,7 @@
       </md-button>
   </div>
 </md-toolbar>
-<md-content layout-padding ng-controller="LeftCtrl">
+<md-content class="left-nav" layout-padding ng-controller="LeftCtrl">
   <md-list>
     <md-list-item ui-sref="base.general">
       <md-icon md-svg-icon="home"></md-icon>
@@ -27,9 +27,14 @@
 
     <md-divider></md-divider>
 
-    <md-list-item ng-click="goToPage({label: 'admin_page'})" >
+    <md-list-item ng-click="goToPage({label: 'mod'})" >
       <md-icon md-svg-icon="info"></md-icon>
       <p>Flagged page</p>
+    </md-list-item>
+
+    <md-list-item ng-click="goToPage({label: 'admin'})" >
+      <md-icon md-svg-icon="info"></md-icon>
+      <p>Admin page</p>
     </md-list-item>
   </md-list>
 </md-content>

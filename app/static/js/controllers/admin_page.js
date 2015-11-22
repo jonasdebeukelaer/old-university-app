@@ -3,15 +3,33 @@
 angular.module('unisalad')
   .controller('AdminPageCtrl', function ($scope) {
   	$scope.pageClass = "admin-page";
-  	$scope.examplePost = {
-  		"id": 1,
-    	"item": "Crisis ticket",
-    	"postDate": "2015-03-20",
-    	"user": "Helen Mart",
-      "number": 1,
-    	"cost": 20,
-    	"meet": "Lenn pick up",
-    	"evenDate": "2015-03-25",
-      "extraInfo": "Extra info about the ticket goes here"
-  	}
+  	$scope.admins = [{
+      name: 'reb'
+    }, 
+    {
+      name: 'Jonas'
+    }]
+
+    $scope.mods = [{
+      name: 'Molly'
+    }, 
+    {
+      name: 'a mod'
+    }]
+
+    $scope.users = [{
+      name: 'basic user 1'
+    },
+    {
+      name: 'basic user 2'
+    },
+    {
+      name: 'basic user 3'
+    },
+    {
+      name: 'basic user 4'
+    },
+    {
+      name: 'basic user 5'
+    }]
   });
