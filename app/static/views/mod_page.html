@@ -5,7 +5,7 @@
 <div class="">
 
 	<div class="flagged-preview">
-		<post post-info="examplePost"></post>
+		<post id="id{{ post.id }}" ng-repeat="post in posts" ng-click="openPostDetails($event, post)" post-info="post"></post>
 	</div>
 
 </div>

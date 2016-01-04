@@ -41,7 +41,11 @@ angular.module('unisalad', [
      .icon('arrow_down', 'images/icons/ic_keyboard_arrow_down_black_24px.svg')
      .icon('arrow_up', 'images/icons/ic_keyboard_arrow_up_black_24px.svg')
      .icon('put_back', 'images/icons/ic_call_missed_24px.svg')
-     .icon('more_vert', 'images/icons/ic_more_vert_24px.svg');
+     .icon('more_vert', 'images/icons/ic_more_vert_24px.svg')
+     .icon('flag', 'images/icons/ic_flag_24px.svg')
+     .icon('remove', 'images/icons/ic_remove_circle_outline_24px.svg')
+     .icon('tick', 'images/icons/ic_check_24px.svg')
+     .icon('mood_bad', 'images/icons/ic_mood_bad_24px.svg');
   })
   .config( [
     '$compileProvider',

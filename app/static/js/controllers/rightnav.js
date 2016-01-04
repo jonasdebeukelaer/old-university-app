@@ -1,15 +1,15 @@
 angular.module('unisalad')
-.controller('RightCtrl', ['$scope', '$timeout', '$log', '$location', function ($scope, $location) {
+.controller('RightCtrl', ['$scope', '$timeout', '$location', 'sidenavs', function ($scope, $timeout, $location, sidenavs) {
     $scope.toggleSidebar = function(side) {
-      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
-      $('body').toggleClass('sidebar-open');
+      sidenavs.toggleSidebar(side);
     };
+    
     $scope.closeRight = function () {
       $scope.toggleSidebar('right');
     };
 
     $scope.editPost = function(postId) {
       $scope.toggleSidebar('right');
-      $location.path('/addpost');
+      $location.path('app/addpost');
     }
   }]);

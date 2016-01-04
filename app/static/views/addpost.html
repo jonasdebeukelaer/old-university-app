@@ -150,7 +150,7 @@
 
 		<!-- ------------------------------------------------------------------------------------------------ -->
 
-		<div ng-if="postType === 'anons'">
+		<div ng-if="postType === 'general'">
 
 			<md-input-container>
 				<label>Title</label>
@@ -165,6 +165,10 @@
 				<label>Say things</label>
 				<textarea ng-model="post.extra"></textarea>
 			</md-input-container>
+
+			 <md-switch ng-model="post.anonymous" aria-label="make anonymous?">
+		    Anonymous
+		  </md-switch>
 
 		</div>
 
@@ -203,7 +207,7 @@
 
 		</div>
 
-		<fieldset  class="standard contact-methods" ng-if="!misc">
+		<fieldset  class="standard contact-methods" ng-if="postType != 'general'">
 			<legend>Contact me via</legend>
 			<md-checkbox md-no-ink ng-model="post.contact.call">
         call

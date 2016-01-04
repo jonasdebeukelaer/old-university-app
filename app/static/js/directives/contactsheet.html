@@ -1,0 +1,58 @@
+<md-bottom-sheet class="post-detail-sheet">
+<div id="bottom-sheet">
+
+    <div ng-if="page == 'mod'">
+        <md-grid-list class="bottomsheet-options">
+            <md-grid-list-item>
+            <md-button class="md-grid-item-content" ng-click="keepPost(post.id)">
+                <md-icon md-svg-src="tick"></md-icon>
+                <div class="md-grid-text"> Keep </div>
+            </md-button>
+        </md-grid-list-item>
+
+        <md-grid-list-item>
+            <md-button class="md-grid-item-content" ng-click="unsure(post.id)">
+                <md-icon md-svg-src="mood_bad"></md-icon>
+                <div class="md-grid-text"> Unsure </div>
+            </md-button>
+        </md-grid-list-item>
+
+        <md-grid-list-item>
+            <md-button class="md-grid-item-content" ng-click="removePost(post.id)">
+                <md-icon md-svg-src="remove"></md-icon>
+                <div class="md-grid-text"> Remove </div>
+            </md-button>
+        </md-grid-list-item>
+
+        </md-grid-list>
+    </div>
+    <div ng-if="page != 'mod'">
+    	<h3>Contact {{ post.user }}</h3>
+
+    	<md-grid-list class="bottomsheet-options">
+    		<md-grid-list-item>
+        	<md-button class="md-grid-item-content" ng-href="tel:{{ contactNumber }}">
+            	<md-icon md-svg-src="callBig"></md-icon>
+            	<div class="md-grid-text"> Call </div>
+         	</md-button>
+        </md-grid-list-item>
+
+        <md-grid-list-item>
+        	<md-button class="md-grid-item-content" ng-href="sms:{{ contactNumber }}?body={{ smsTemplate }}">
+            	<md-icon md-svg-src="messageBig"></md-icon>
+            	<div class="md-grid-text"> Text </div>
+         	</md-button>
+        </md-grid-list-item>
+
+        <md-grid-list-item>
+        	<md-button class="md-grid-item-content" ng-href="mailto:{{ contactEmail }}?subject={{ emailSubject }}&body={{ emailBody }}">
+            	<md-icon md-svg-src="emailBig"></md-icon>
+            	<div class="md-grid-text"> Email </div>
+         	</md-button>
+        </md-grid-list-item>
+
+    	</md-grid-list>
+    </div>
+
+</div>
+</md-bottom-sheet>

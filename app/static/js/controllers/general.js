@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('GeneralCtrl', ['$scope', '$mdMedia',function ($scope, $mdMedia) {
+  .controller('GeneralCtrl', ['$scope', function ($scope) {
   	//in future load splash image instead of hiding everything
-    document.getElementsByTagName("html")[0].style.visibility = "visible";
-
+  	$('#splashScreen').fadeOut('3000', function () {
+  		$('#rootRoot').css("visibility", "visible");
+  	});
   }]);

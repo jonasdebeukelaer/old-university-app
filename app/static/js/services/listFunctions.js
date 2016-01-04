@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('unisalad')
-  .service('listFunctions', ['tappedPost', '$mdMedia', '$timeout', '$mdBottomSheet', 'fetchPosts', 'currentList', function (tappedPost, $mdMedia, $timeout, $mdBottomSheet, fetchPosts, currentList) {
+  .service('listFunctions', ['tappedPost', '$location','$mdMedia', '$timeout', '$mdBottomSheet', 'fetchPosts', 'currentList', 
+                    function (tappedPost, $location, $mdMedia, $timeout, $mdBottomSheet, fetchPosts, currentList) {
+    var thisPage = $location.path().split("/").pop();
 
   	this.hideAddpostButton = $('#addpost').addClass('add-post-hide');
   	this.setList = function (list) {
@@ -30,7 +32,18 @@ angular.module('unisalad')
             }
           }
         }
-        callback(JSONfile[list]);
+        console.log(list)
+        if (list == 'flagged') {
+          var allPosts = []
+          for (var thisList in JSONfile) {
+            for (var i = 0; i < JSONfile[thisList].length; i++) {
+              allPosts.push(JSONfile[thisList][i])
+            }
+          }
+          callback(allPosts)
+        } else {
+          callback(JSONfile[list]);
+        }
       })
   	}
 
@@ -78,11 +91,11 @@ angular.module('unisalad')
         
         $timeout(function () {
         $mdBottomSheet.show({
-            templateUrl: 'views/contactsheet.html',
+            templateUrl: 'js/directives/contactsheet.html',
             controller: 'ContactSheetCtrl',
             targetEvent: $event
         }).then(function () {
-            console.log('clicked a contact method');
+            console.log('clicked bottom sheet option');
         }, function () {
             console.log('cancelled bottom-sheet');
 
@@ -115,3 +128,7 @@ function ScrollOperation(clickedPost, $root, offset, wideScreen) {
     });
 
   }
+
+function ClickNextPost(clickedPost) {
+  console.log(clickedPost)
+}

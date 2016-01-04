@@ -1,22 +1,29 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('ModPageCtrl', function ($scope) {
+  .controller('ModPageCtrl', ['$scope', 'listFunctions', function ($scope, listFunctions) {
+    $scope.modPage = true
   	$scope.pageClass = "mod-page";
-  	$scope.examplePost = {
-      "type":"ticket",
-  		"id": 1,
-    	"item": "Crisis ticket",
-    	"postDate": "2015-03-20",
-    	"user": "Helen Mart",
-      "number": 1,
-    	"cost": 20,
-    	"meet": "Lenn pick up",
-    	"evenDate": "2015-03-25",
-      "extraInfo": "Extra info about the ticket goes here"
-  	}
+
+    listFunctions.loadPosts('flagged', function(data) {
+        $scope.posts = data;
+    });
 
     $scope.list = function () {
       return "ticket"
     }
-  });
+
+    $scope.openPostDetails = function ($event, clickedPost) {
+      listFunctions.postTapped($event, clickedPost);
+    }
+  }]);
+
+  function removePost(card) {
+    $(card).remove()
+    //delete
+  }
+
+  function unflagPost(card) {
+    $(card).remove()
+    //unflag
+  }

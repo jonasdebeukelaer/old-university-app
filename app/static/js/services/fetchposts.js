@@ -5,4 +5,8 @@ angular.module('unisalad')
   	this.getPosts = function() {
   		return $http.get('data/datalist.json')
   	}
+
+  	this.getFlaggedPosts = function() {
+  		return $http.get('data/datalist_flagged.json')
+  	}
   }]);

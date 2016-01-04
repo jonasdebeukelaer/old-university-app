@@ -8,12 +8,7 @@
 </md-toolbar>
 <md-content class="left-nav" layout-padding ng-controller="LeftCtrl">
   <md-list>
-    <md-list-item ui-sref="base.general">
-      <md-icon md-svg-icon="home"></md-icon>
-      <p>Home</p>
-    </md-list-item>
-    <md-divider></md-divider>
-
+    
     <md-list-item ng-click="goToPage(option)" ng-repeat="option in items">
       <md-icon md-svg-icon="{{ option.icon }}"></md-icon>
         <p>{{ option.name }}</p>

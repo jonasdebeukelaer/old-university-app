@@ -10,7 +10,7 @@
 		        <input ng-model="searchText.words">
 		    </md-input-container>
 
-		    <md-select class="sort-list" ng-model="sortBy" placeholder="Sort">
+		    <md-select ng-if="list.label != 'general'" class="sort-list" ng-model="sortBy" placeholder="Sort">
 		    	<md-option ng-repeat="mode in sortModes" value="{{ mode.code }}">{{ mode.label }}</md-option>
 			</md-select>
 	  	</div>

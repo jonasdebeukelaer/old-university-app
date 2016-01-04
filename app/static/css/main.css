@@ -1,6 +1,5 @@
 
 html { 
-  visibility: hidden;
   height: auto;
 }
 
@@ -13,6 +12,10 @@ html {
 
 body, .root {
   height: auto;
+}
+
+div#rootRoot {
+  visibility: hidden;
 }
 
 body {
@@ -176,6 +179,23 @@ div.content {
 /*prevent focus glow */
 post-ticket, div, md-toolbar, post-ticket:focus, div:focus, md-toolbar:focus, *:focus  {
   outline: none;
+}
+
+div.splash {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #00796B;
+}
+
+div.splash > h1 {
+  padding-top: 100px;
+  color: #eeeeee;
 }
 
 
@@ -464,12 +484,16 @@ md-bottom-sheet.post-detail-sheet {
 }
 
 
-md-grid-list.contact-methods {
+md-grid-list.bottomsheet-options {
   text-align: center;
   margin-right: auto;
   margin-left: auto;
   max-width: 325px;
 }
+
+md-grid-list.bottomsheet-options .md-button {
+    margin: 6px 2px;
+  }
 
 /*prevent bottom-sheet backdrop default*/
 md-backdrop.md-bottom-sheet-backdrop.md-opaque {
@@ -531,7 +555,7 @@ div > h3:first-child {
 }
 
 div.list-intro {
-  margin: -5px;
+  margin-top: -5px;
   padding: 10px;
   background-color: #B2DFDB;
   margin-bottom: 10px;
@@ -784,7 +808,7 @@ md-icon.details-arrow {
 
 .swipe-area-left {
   position: absolute;
-  width: 30px;
+  width: 20px;
   left: 0;
   top: 0;
   height: 100%;
@@ -802,7 +826,7 @@ div.swipe-area-left.left-sidebar-open {
 
 .swipe-area-right {
   position: absolute;
-  width: 30px;
+  width: 20px;
   right: 0;
   top: 0;
   height: 100%;

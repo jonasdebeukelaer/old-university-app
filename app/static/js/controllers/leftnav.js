@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('unisalad')
-	.controller('LeftCtrl', ['$scope', '$location', 'currentList', function ($scope, $location, currentList) {
+	.controller('LeftCtrl', ['$scope', '$location', 'currentList', 'sidenavs', function ($scope, $location, currentList, sidenavs) {
     
     $scope.items = [{
       label: 'general',
@@ -36,9 +36,7 @@ angular.module('unisalad')
     ];
 
     $scope.toggleSidebar = function(side) {
-      $('#' + side + '-sidebar').toggleClass(side + '-sidebar-open');
-      $('body').toggleClass('sidebar-open');
-      $('.swipe-area-' + side).toggleClass(side + '-sidebar-open');
+      sidenavs.toggleSidebar(side);
     };
 
     $scope.goToPage = function (option) {

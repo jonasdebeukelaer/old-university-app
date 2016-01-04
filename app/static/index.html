@@ -4,18 +4,26 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unisalad</title>
+  <title>UniSalad</title>
   <link rel="icon" href="images/lettuce.jpg">
   <link href="lib/angular-material/angular-material.min.css" rel="stylesheet">
   <!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">-->
   <link rel="stylesheet" href="lib/swipebox/src/css/swipebox.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/1.5.2/assets/css/emojione.min.css" />
 
   <link href="css/main.css" rel="stylesheet">
   <base href="/">
 </head>
 <body ng-app="unisalad" ng-controller="GeneralCtrl">
 
-  <div ui-view class="root"></div>
+  <div id="splashScreen" class="splash">
+    <h1>UniSalad</h1>
+  </div>
+  <div id="rootRoot">
+    <div ui-view class="root"></div>
+  </div>
+
+  <script src="//cdn.jsdelivr.net/emojione/1.5.2/lib/js/emojione.min.js"></script>
 
   <script src="lib/jquery/dist/jquery.js"></script>
   
@@ -65,7 +73,6 @@
   <script src="js/controllers/lists/listSales.js"></script>
   <script src="js/controllers/lists/listGeneral.js"></script>
   <script src="js/controllers/addpost.js"></script>
-  <script src="js/controllers/contactsheet.js"></script>
   <script src="js/controllers/confirmationsent.js"></script>
   <script src="js/controllers/card.js"></script>
   <script src="js/controllers/mod_page.js"></script>
@@ -81,6 +88,7 @@
   <script src="js/directives/post_types/postgen.js"></script>
   <script src="js/directives/post_types/postsale.js"></script>
   <script src="js/directives/card-more-button.js"></script>
+  <script src="js/directives/contactsheet.js"></script>
 
   <!--SERVICES-->
   <script src="js/services/listFunctions.js"></script>
@@ -88,6 +96,7 @@
   <script src="js/services/tappedpost.js"></script>
   <script src="js/services/currentlist.js"></script>
   <script src="js/services/fetchposts.js"></script>
+  <script src="js/services/sidenavs.js"></script>
 
   <!--FILTERS-->
   <script src="js/filters/capitalise.js"></script>
