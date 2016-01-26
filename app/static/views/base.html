@@ -17,9 +17,7 @@
       <md-button ng-if="!wideScreen" class="md-icon-button" aria-label="Settings" ng-click="toggleSidebar('left')">
         <md-icon md-svg-icon="menu"></md-icon>
       </md-button>
-      <h2>
-        <span ui-sref="hello">UniSalad</span>
-      </h2>
+        <div class="toolbar-name-container"><img class="toolbar-name" src="images/unisalad-text.png"></div>
 
 
       <md-button ng-if="loggedIn && !wideScreen" class="md-icon-button to-right" aria-label="My things" ng-click="toggleSidebar('right')">
@@ -35,7 +33,7 @@
 
   <div  class="content">
       
-      <div ui-view class="container-ng-view {{ pageClass }}"></div>
+      <div ui-view class="{{ pageClass }}"></div>
   </div>
 
 </div>

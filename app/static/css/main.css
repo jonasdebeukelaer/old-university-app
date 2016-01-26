@@ -34,18 +34,6 @@ body.sidebar-open {
   }
 }
 
-@media screen and (min-width: 800px) {
-  html, body, .root {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    display: -webkit-flex;
-    flex-flow: row;
-    -webkit-flex-flow: row;
-    overflow: auto;
-  }
-}
-
 h1 {
   font-weight: normal;
   font-size: 3em;
@@ -77,7 +65,7 @@ a.md-primary {
   color: rgba(0,0,0,.87) !important;
 }
 
-md-content > md-tabs.login-tabs, .login-container > md-tabs.login-tabs {
+md-content > md-tabs.login-tabs, .container-card > md-tabs.login-tabs {
   background-color: #B2DFDB;
 }
 
@@ -103,6 +91,15 @@ md-toolbar.toolbar {
   }
 }
 
+div.toolbar-name-container {
+  height: 24px;
+}
+
+img.toolbar-name {
+  height: 24px;
+  width: 134px;
+}
+
 div.page {
   width: 100%;
 }
@@ -117,35 +114,22 @@ div.content {
   background-repeat: repeat;
 }
 
-.container-ng-view {
-  margin: 5px;
+div.container-card {
+  position: relative;
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 4px;
+  background-color: white;
 }
 
-.container-university {
-  position: relative;
-  padding: 5px;
-  max-width: 500px;
-  margin: 5px;
-  background-color: white;
+.flex-column {
   display: flex;
   display: -webkit-flex;
   flex-flow: column;
   -webkit-flex-flow: column;
 }
 
-@media screen and (min-width: 800px) {
-  .container-university {
-    margin-left: auto;
-    margin-right: auto;
-  } 
-}
-
-.container-university p, .container-university h1 {
-  margin-left: 12px;
-  margin-right: 12px;
+.padded-std {
+  padding: 12px;
 }
 
 .container-tool {
@@ -162,40 +146,45 @@ div.content {
   padding-bottom: 10px;
 }
 
-@media screen and (min-width: 800px) {
-
-  md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed.md-sidenav-right  {
-    flex: 0 1 auto;
-    z-index: 20;
-  }
-
-  div.page {
-    flex: 1 1 auto;
-    overflow: scroll;
-  }
-
-}
-
 /*prevent focus glow */
 post-ticket, div, md-toolbar, post-ticket:focus, div:focus, md-toolbar:focus, *:focus  {
   outline: none;
 }
 
 div.splash {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  vertical-align: middle;
   text-align: center;
   background-color: #00796B;
 }
 
-div.splash > h1 {
-  padding-top: 100px;
-  color: #eeeeee;
+div.splash > .splash-logo-container {
+  top: 30%;
+  margin-top: 150px;
+  height: 100px;
+  width: 100%;
+  opacity: 0;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from { 
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+img.splash-logo {
+  height: 100px;
+  width: 100px;
 }
 
 
@@ -294,9 +283,6 @@ left-content > md-content {
 /*------------------------------------login page------------------------------------*/
 /*----------------------------------------------------------------------------------*/
 
-div.login-container {
-  margin: 5px;
-}
 
 md-content .login-signup {
   background-color: transparent !important; 
@@ -334,25 +320,6 @@ md-ink-bar {
 /*----------------------------------------------------------------------------------*/
 
 
-.container-confirm {
-  position: relative;
-  padding: 5px;
-  max-width: 500px;
-  margin: 5px;
-  background-color: white;
-  display: flex;
-  display: -webkit-flex;
-  flex-flow: column;
-  -webkit-flex-flow: column;
-}
-
-@media screen and (min-width: 800px) {
-  .container-confirm {
-    margin-left: auto;
-    margin-right: auto;
-  } 
-}
-
 /*----------------------------------------------------------------------------------*/
 /*-------------------------------------tools page-----------------------------------*/
 /*----------------------------------------------------------------------------------*/
@@ -378,6 +345,7 @@ post {
 
 md-card {
   margin: 4px;
+  margin-bottom: 0;
 }
 
 .search-posts {
@@ -395,16 +363,10 @@ md-card {
   right: 0;
 }
 
-@media screen and (min-width: 800px) {
-  .add-post {
-    right: 305px;
-  }
-}
-
 .post-card {
   margin-right: 0;
   margin-left: 0;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .post-card-content {
@@ -470,20 +432,7 @@ md-bottom-sheet.post-detail-sheet {
   position: fixed;
   box-shadow: 0 0px 5px 0 rgba(0,0,0,.26);
 }
-
-
-@media screen and (min-width: 800px) {
-  md-bottom-sheet.post-detail-sheet {
-    width: 400px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-    
-  }
-}
-
-
+  
 md-grid-list.bottomsheet-options {
   text-align: center;
   margin-right: auto;
@@ -558,7 +507,7 @@ div.list-intro {
   margin-top: -5px;
   padding: 10px;
   background-color: #B2DFDB;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 md-bottom-sheet.bottom-sheet-addpost {
@@ -846,4 +795,54 @@ md-content.left-nav {
   overflow-y: scroll;
 }
 
+.hidden {
+  display: none;
+}
 
+
+@media screen and (min-width: 800px) {
+  html, body, .root {
+    height: 100%;
+    width: 100%;
+  }
+
+  .root {
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row;
+    -webkit-flex-flow: row;
+    overflow: auto;
+  }
+
+  .container-card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed.md-sidenav-right  {
+    flex: 0 1 auto;
+    z-index: 20;
+  }
+
+  div.page {
+    flex: 1 1 auto;
+    overflow: scroll;
+  }
+
+  .container-confirm {
+    margin-left: auto;
+    margin-right: auto;
+  } 
+
+  .add-post {
+    right: 305px;
+  }
+
+  md-bottom-sheet.post-detail-sheet {
+    width: 400px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+  }
+}

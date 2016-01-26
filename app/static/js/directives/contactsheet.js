@@ -31,6 +31,7 @@ angular.module('unisalad')
     $scope.emailSubject = encodeURIComponent('UniSalad - Re: ' + postTitle);
     $scope.emailBody = encodeURIComponent('Helloooo,\n\nsomething something');
 
+    //---------------------------------------------------------------------------------------------------
 
     $scope.keepPost = function (postId) {
       //re add post to listing
@@ -60,6 +61,12 @@ angular.module('unisalad')
         },0);
         
       }
+    }
+
+    //---------------------------------------------------------------------------------------------------
+
+    $scope.comment = function (postId) {
+      $('#commentInput').toggleClass('hidden');
     }
 
   }]);
