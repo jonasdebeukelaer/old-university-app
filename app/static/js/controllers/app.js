@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('AppCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 
-                    function ($scope, $rootScope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast) {
+  .controller('AppCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 'userData', 
+                    function ($scope, $rootScope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast, userData) {
 
     $scope.wideScreen = $rootScope.wideScreen;
 
@@ -32,7 +32,8 @@ angular.module('unisalad')
       ); 
     }
 
-    $scope.loggedIn = true;
+
+    $scope.loggedIn = (userData.userId != null);
 
     $scope.goTo = function (view) {
       if(view == '/login') {

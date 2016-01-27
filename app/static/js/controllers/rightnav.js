@@ -1,5 +1,9 @@
 angular.module('unisalad')
-.controller('RightCtrl', ['$scope', '$timeout', '$location', 'sidenavs', function ($scope, $timeout, $location, sidenavs) {
+.controller('RightCtrl', ['$scope', '$timeout', '$location', 'sidenavs', 'userData', function ($scope, $timeout, $location, sidenavs, userData) {
+
+  $scope.forename = userData.forename
+    $scope.uni = userData.university
+
     $scope.toggleSidebar = function(side) {
       sidenavs.toggleSidebar(side);
     };

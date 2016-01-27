@@ -137,4 +137,9 @@ angular.module('unisalad', [
         templateUrl: 'views/list_template.html',
         controller: 'ListGeneralCtrl'
       })
+      .state('base.profile', {
+        url: '/profile',
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      })
   }]);
