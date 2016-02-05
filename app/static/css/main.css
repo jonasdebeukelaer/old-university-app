@@ -814,7 +814,7 @@ md-content.left-nav {
     overflow: auto;
   }
 
-  .container-card {
+  div.container-card {
     margin-left: auto;
     margin-right: auto;
   }
@@ -836,6 +836,12 @@ md-content.left-nav {
 
   .add-post {
     right: 305px;
+  }
+
+  .post-card {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   md-bottom-sheet.post-detail-sheet {

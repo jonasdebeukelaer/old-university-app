@@ -4,6 +4,11 @@ angular.module('unisalad')
   .controller('LoginCtrl', ['$scope', '$http', 'localStorageService', '$location', function ($scope, $http, localStorageService, $location) {
     $scope.pageClass = 'page-login';
 
+    var viewHeight = $(window).height();
+    var cardHeight = $('.container-card').height()
+    $('.container-card').css('margin-top', Math.floor(0.5*(viewHeight-cardHeight-420)))
+
+
     $scope.login = {
         email: '',
         password: '',

@@ -5,7 +5,7 @@ angular.module('unisalad')
     $scope.pageClass = 'page-main';
     var viewHeight = $(window).height();
     var cardHeight = $('.container-card').height()
-    $('.container-card').css('margin-top', Math.floor(0.5*(viewHeight-cardHeight-64)))
+    $('.container-card').css('margin-top', Math.floor(0.5*(viewHeight-cardHeight-120)))
 
 
   	$scope.universities = ['Imperial College London', 'Nottingham University', 'Leeds University', 'Exeter University', 'Oxford University'];

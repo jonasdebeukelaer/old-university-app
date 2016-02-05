@@ -10,14 +10,10 @@ angular.module('unisalad')
 
     $scope.openMore = function ($mdOpenMenu, ev) {
       var thisCardId = $(ev.target).parents('.more-button')[0].id
-      console.log(thisCardId)
       thisCardId = thisCardId.substring(4, thisCardId.length)
-      console.log(thisCardId)
-      console.log(userData.postIds)
       if (contains(userData.postIds, thisCardId)) {
         $scope.userOwned = true
       }
-      console.log($scope.userOwned)
       $mdOpenMenu(ev)
     }
 
