@@ -6,7 +6,7 @@ angular.module('unisalad')
       templateUrl: 'js/directives/card-more-button.html',
       restrict: 'E',
       scope: {
-      	nfo: '='
+      	cardId: '='
       }
     };
   })

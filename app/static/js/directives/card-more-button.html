@@ -1,5 +1,5 @@
-<md-menu md-position-mode="target-right target">
-  <md-button aria-label="more" class="md-icon-button more" ng-click="$mdOpenMenu($event)">
+<md-menu md-position-mode="target-right target" ng-controller="CardCtrl">
+  <md-button aria-label="more" class="md-icon-button more" ng-click="openMore($mdOpenMenu, $event)">
     <md-icon md-menu-origin md-svg-icon="more_vert"></md-icon>
   </md-button>
   <md-menu-content width="3">
@@ -11,7 +11,7 @@
           </div>
       </md-button>
     </md-menu-item>
-    <md-menu-item ng-if="thisUsersPost()">
+    <md-menu-item ng-if="userOwned">
       <md-button ng-click="">
           <div layout="row">
             <p flex>Edit</p>
@@ -19,7 +19,7 @@
           </div>
       </md-button>
     </md-menu-item>
-    <md-menu-item ng-if="thisUsersPost()">
+    <md-menu-item ng-if="userOwned">
       <md-button ng-click="">
           <div layout="row">
             <p flex>Delete</p>
@@ -28,7 +28,7 @@
       </md-button>
     </md-menu-item>
     </md-menu-item>
-    <md-menu-item ng-if="thisUsersPost()">
+    <md-menu-item ng-if="userOwned && anonymous">
       <md-button ng-click="">
           <div layout="row">
             <p flex>Unanonymise</p>

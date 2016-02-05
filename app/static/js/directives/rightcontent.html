@@ -24,8 +24,8 @@
   <md-list>
     <md-list-title>My things for Sale</md-list-title>
 
-    <md-list-item>
-      <p>Test item</p>
+    <md-list-item ng-repeat="post in userPosts">
+      <p>{{ post.title }}</p>
       <md-grid-list class="md-secondary">
         <md-grid-list-item>
           <md-button class="md-grid-item-content list-button" ng-click="editPost(1)">

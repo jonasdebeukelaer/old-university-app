@@ -2,7 +2,7 @@
 	<h4>
 		{{ info.title }}
 	</h4>
-	<more-button></more-button>
+	<more-button class="more-button" id="more{{ info.id }}"></more-button>
 </div>
 
 <md-divider></md-divider>
@@ -10,7 +10,7 @@
 <div class="card-body">
 	<p>{{ info.extraInfo }}</p>
 	<span class="to-right">
-			<p class="card-username">{{ info.user }}</p>
+		<p class="card-username">{{ info.user }}</p>
 	</span>
 	<div class="post-picContainer">
 		<a href="{{ pic.img }}" ng-repeat="pic in info.pics" class="swipebox" title="{{ pic.caption }}">
