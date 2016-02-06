@@ -7,3 +7,5 @@ db_repository
 flask
 node_modules
 salad/
+build/
+build_temp/
