@@ -17,4 +17,9 @@ angular.module('unisalad')
       $scope.toggleSidebar('right');
       $location.path('app/addpost');
     }
+
+    $scope.openProfile = function () {
+      $scope.toggleSidebar('right');
+      $location.path('app/profile');
+    }
   }]);

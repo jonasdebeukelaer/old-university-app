@@ -1,4 +1,34 @@
-<div class="container-card padded-std md-whiteframe-z2">
-<p><br>Someone's profile<br>.</p>
+<div class="profile-container">
+	<div class="list-intro profile-heading">
+		<div class="make-flex">
+			<img class="profile-image" ng-src="{{ user.avatarUrl }}"/>
+			<div class="profile-title">
+				<h3>{{ user.name }}</h3>
+				<p class="profile-uni">{{ user.uni }}</p>
+			</div>
+		</div>
+		<div class="profile-ratings md-whiteframe-z2 md-primary" ng-click="doThing($event)">
+			<table id="ratings">
+				<tbody>
+					<tr>
+						<td>general</td>
+						<td>seller</td>
+						<td>buyer</td>
+					</tr>
+					<tr class="ratings">
+						<td>{{ user.ratings.gen }}</td>
+						<td>{{ user.ratings.seller }}</td>
+						<td>{{ user.ratings.buyer }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="container-card padded-std md-whiteframe-z2 profile-bio">
+		<p>{{ user.bio }}</p>
+	</div>
+
+	<post id="id{{ pst.id }}" ng-repeat="pst in posts" ng-click="openPostDetails($event, pst)" post-info="pst"></post>
 
 </div>

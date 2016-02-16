@@ -44,6 +44,11 @@ h2 {
   font-size: 2em;
 }
 
+h3 {
+  font-weight: normal;
+  font-size: 1.3em;
+}
+
 h4 { 
 font-weight: normal;
 }
@@ -798,6 +803,63 @@ md-content.left-nav {
 .hidden {
   display: none;
 }
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------profile page-------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+
+div.profile-heading {
+  padding: 15px;
+  padding-top:20px;
+  padding-bottom: 50px;
+}
+
+img.profile-image {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+div.profile-title {
+  padding: 10px;
+  padding-top:15px;
+}
+
+div.profile-title > p.profile-uni {
+  color: rgba(0,0,0,0.62);
+}
+
+div.profile-ratings {
+  margin-top: 20px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+}
+
+div.profile-ratings > table {
+  width: 100%;
+  text-align: center;
+}
+
+div.profile-ratings > table td {
+  font-size: 0.8em;
+  color: rgba(0,0,0,0.62);
+  width: 33%;
+}
+
+div.profile-ratings > table tr.ratings > td {
+  color: #00796B;
+  font-size: 1.2em;
+}
+
+div.profile-bio {
+  margin-top: -30px;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------ */
 
 
 @media screen and (min-width: 800px) {

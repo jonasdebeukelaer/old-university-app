@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('CardCtrl', ['$scope', 'currentList', 'userData', function ($scope, currentList, userData) {
+  .controller('CardCtrl', ['$scope', '$location','currentList', 'userData', function ($scope, $location, currentList, userData) {
   	$scope.show = false;
     $scope.arrow = 'arrow_down';
     $scope.userOwned = false
@@ -34,6 +34,10 @@ angular.module('unisalad')
         $scope.arrow = 'arrow_down';
   		};
   	};
+
+    $scope.viewUser = function (ev) {
+      $location.path('app/profile');
+    }
 
     var contains = function(list, needle) {
       for(var i = 0; i < list.length; i++) {
