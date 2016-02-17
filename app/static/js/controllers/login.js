@@ -6,7 +6,7 @@ angular.module('unisalad')
 
     var viewHeight = $(window).height();
     var cardHeight = $('.container-card').height()
-    $('.container-card').css('margin-top', Math.floor(0.5*(viewHeight-cardHeight-420)))
+    $('.container-card').css('margin-top', Math.max(Math.floor(0.5*(viewHeight-cardHeight-420)), 5))
 
 
     $scope.login = {
