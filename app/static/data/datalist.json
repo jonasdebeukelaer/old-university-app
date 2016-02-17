@@ -3,7 +3,7 @@
 "tickets": [{
         "type": "ticket",
         "id": 42,
-      	"item": "Crisis ticket",
+      	"title": "Crisis ticket",
       	"postDate": "2015-03-20",
       	"user": "Helen Mart",
         "number": 1,
@@ -15,7 +15,7 @@
       {
         "type": "ticket",
         "id": 2,
-        "item": "Crisis ticket",
+        "title": "Crisis ticket",
         "postDate": "2015-03-14",
         "user": "James Smith",
         "number": 2,
@@ -27,7 +27,7 @@
       {
         "type": "ticket",
         "id": 3,
-        "item": "Crisis ticket",
+        "title": "Crisis ticket",
         "postDate": "2015-03-21",
         "user": "James Bore",
         "number": 2,
@@ -39,7 +39,7 @@
       {
         "type": "ticket",
         "id": 4,
-      	"item": "crisis ticket",
+      	"title": "crisis ticket",
       	"postDate": "2015-02-22",
       	"user": "Bob toodd",
         "number": 1,
@@ -51,7 +51,7 @@
       {
         "type": "ticket",
         "id": 5,
-        "item": "Ocean",
+        "title": "Ocean",
         "postDate": "2014-02-25",
         "user": "Rad Cliff",
         "number": 3,
@@ -63,7 +63,7 @@
       {
         "type": "ticket",
         "id": 6,
-        "item": "Boiler Room",
+        "title": "Boiler Room",
         "postDate": "2014-02-25",
         "user": "Hudmo lol",
         "number": 1,

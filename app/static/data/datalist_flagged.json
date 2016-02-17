@@ -3,7 +3,7 @@
 "tickets": [{
         "type": "ticket",
         "id": 1,
-        "item": "Crisis ticket",
+        "title": "Crisis ticket",
         "postDate": "2015-03-20",
         "user": "Helen Mart",
         "number": 1,
@@ -15,7 +15,7 @@
       {
         "type": "ticket",
         "id": 4,
-        "item": "crisis ticket",
+        "title": "crisis ticket",
         "postDate": "2015-02-22",
         "user": "Bob toodd",
         "number": 1,
@@ -27,7 +27,7 @@
       {
         "type": "ticket",
         "id": 6,
-        "item": "Boiler Room",
+        "title": "Boiler Room",
         "postDate": "2014-02-25",
         "user": "Hudmo lol",
         "number": 1,
