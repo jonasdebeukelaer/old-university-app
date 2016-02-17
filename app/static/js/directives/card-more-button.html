@@ -6,13 +6,13 @@
     <md-menu-item>
       <md-button ng-click="viewUser($event)">
           <div layout="row">
-            <p flex>View user</p>
+            <p flex>See profile</p>
             <md-icon md-menu-align-target md-svg-icon="person"></md-icon>
           </div>
       </md-button>
     </md-menu-item>
-    <md-menu-item>
-      <md-button ng-click="">
+    <md-menu-item ng-if="!userOwned">
+      <md-button ng-click="reportUser($event)">
           <div layout="row">
             <p flex>Report</p>
             <md-icon md-menu-align-target md-svg-icon="flag"></md-icon>

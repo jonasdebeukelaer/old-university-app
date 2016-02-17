@@ -53,7 +53,7 @@ h4 {
 font-weight: normal;
 }
 
-md-toolbar {
+md-toolbar.toolbar, md-toolbar.mythings-fix, md-toolbar.left-toolbar {
   background-color: #008D8C;
   background-color: #00BCBB;
   background-color: #00796B;
@@ -343,6 +343,13 @@ md-icon.large-icon.title-icon {
 /*-------------------------------------posts page-----------------------------------*/
 /*----------------------------------------------------------------------------------*/
 
+div.search-container {
+  margin: 4px;
+  padding: 4px;
+  margin-top: -30px;
+  background-color: white;
+}
+
 post {
   position: relative;
   z-index: 1;
@@ -511,6 +518,7 @@ div > h3:first-child {
 div.list-intro {
   margin-top: -5px;
   padding: 10px;
+  padding-bottom: 20px;
   background-color: #B2DFDB;
   margin-bottom: 4px;
 }
@@ -531,8 +539,13 @@ md-bottom-sheet.bottom-sheet-addpost {
 }
 
 md-toast.md-bottom {
+  background-color: #323232;
   z-index: 9000;
   position: fixed;
+}
+
+md-toast.md-bottom span {
+  font-size: 1.2em;
 }
 
 /*----------------------------------------------------------------------------------*/

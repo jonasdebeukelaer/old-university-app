@@ -15,14 +15,14 @@ angular.module('unisalad')
     	cost: '',
     	location: '',
     	contact: {
-        call: true,
+            call: true,
     		text: true,
     		email: true
     	}
 	};
     
 	$scope.add = function () {
-		$scope.toastAdded();
+		$scope.toastNotification('Post added!');
 		$location.path('app/' + currentList.list.label);
 		//send info to server
 	};

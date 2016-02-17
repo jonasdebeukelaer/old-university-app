@@ -4,18 +4,19 @@
 			<md-icon class="large-icon title-icon" md-svg-icon="{{ list.icon }}"></md-icon>
 			<h2 ng-click="getList()">{{ list.name }}</h2>
 		</span>
-	    <div class="search-container">
-	    	<md-input-container class="search-posts">
-		    	<label>Search</label>
-		        <input ng-model="searchText.words">
-		    </md-input-container>
-
-		    <md-select ng-if="list.label != 'general'" class="sort-list" ng-model="sortBy" placeholder="Sort">
-		    	<md-option ng-repeat="mode in sortModes" value="{{ mode.code }}">{{ mode.label }}</md-option>
-			</md-select>
-	  	</div>
-
+	    
   </div>
+
+  	<div class="search-container md-whiteframe-z3">
+		<md-input-container class="search-posts">
+	    	<label>Search</label>
+	        <input ng-model="searchText.words">
+	    </md-input-container>
+
+	    <!--<md-select ng-if="list.label != 'general'" class="sort-list" ng-model="sortBy" placeholder="Sort">
+	    	<md-option ng-repeat="mode in sortModes" value="{{ mode.code }}">{{ mode.label }}</md-option>
+		</md-select>-->
+	</div>
 
   <md-button id="addpost" ng-href="#" aria-label="Add a post" ui-sref="base.addpost" ng-click="hideAddpostButton()" class="md-fab md-primary add-post">
     <md-icon md-svg-icon="add"></md-icon>

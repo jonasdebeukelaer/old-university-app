@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('AppCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', '$mdToast', 'userData', 
-                    function ($scope, $rootScope, $mdSidenav, $mdMedia, $location, localStorageService, $mdToast, userData) {
+  .controller('AppCtrl', ['$scope', '$rootScope', '$mdSidenav', '$mdMedia', '$location', 'localStorageService', 'toast', 'userData', 
+                    function ($scope, $rootScope, $mdSidenav, $mdMedia, $location, localStorageService, toast, userData) {
 
     $scope.wideScreen = $rootScope.wideScreen;
 
@@ -23,13 +23,9 @@ angular.module('unisalad')
     $('div.page').css('min-height', viewHeight - 64);
     $('div.content').css('min-height', viewHeight - 64);
 
-    $scope.toastAdded = function () {
-      $mdToast.show(
-      $mdToast.simple()
-        .content('Post added!')
-        .position('bottom')
-        .hideDelay(1200)
-      ); 
+
+    $scope.toastNotification = function (message) {
+      toast.displayToast(message)
     }
 
 
