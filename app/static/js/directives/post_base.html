@@ -1,6 +1,21 @@
 <div class="post-card" ng-controller="CardCtrl">
-	 <md-card id="idCard{{ postInfo.id }}" class="md-card">
-		 <md-card-content class="post-card-content">
+	<md-card id="idCard{{ postInfo.id }}" class="md-card">
+		<md-card-content class="post-card-content">
+
+		<div class="card-title make-flex">
+			<h4 ng-if="postInfo.type !== 'lift'">
+				{{ postInfo.title  | capitalise }}
+			</h4>
+
+			<h4 ng-if="postInfo.type === 'lift'">{{ postInfo.from | capitalise }}</h4>
+			<div ng-if="postInfo.type === 'lift'"class="make-flex">
+				<md-icon class="card-lifts-toArrow" md-svg-icon="arrow_forward"></md-icon>
+				<h4>{{ postInfo.to | capitalise }}</h4>
+			</div>
+			<more-button class="more-button" id="more{{ postInfo.id }}"></more-button>
+		</div>
+
+		<md-divider></md-divider>
 
 		 	<post-gen ng-if="postInfo.type === 'general'" info="postInfo"></post-gen>
 		 	<post-ticket ng-if="postInfo.type === 'ticket'" info="postInfo"></post-ticket>
