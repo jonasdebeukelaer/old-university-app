@@ -54,9 +54,8 @@ angular.module('unisalad', [
       $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|tel|mailto|sms):/);
     }
   ])
-  .config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
-    $locationProvider.html5Mode(true);
     $stateProvider
       .state('hello', {
         url: '/',
