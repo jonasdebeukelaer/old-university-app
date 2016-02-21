@@ -45,6 +45,7 @@ def verifyUser(userId):
 def login():
 	if request.method == 'POST':
 		username = request.form['username']
+		print "IM HEEEEEERE"
 
 		user = User.query.filter_by(id=userId).first()
 

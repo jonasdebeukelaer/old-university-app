@@ -84,14 +84,17 @@ angular.module('unisalad')
         }
     }
 
-    $scope.Login = function () {
+    $scope.login = function () {
 
-        var encryptedDeets = $scope.login;
+        var loginData = {
+            'username': $scope.login.username,
+            'password': 'blah'
+        }
 
         $http({
           method: 'POST',
-          data: encryptedDeets,
-          url: '/login'
+          data: JSON.stringify(loginData),
+          url: 'http://localhost:5000/login'
         }).then(function successCallback(response) {
             $location.path('app/general');
         }, function errorCallback(response) {
@@ -101,11 +104,14 @@ angular.module('unisalad')
 
     $scope.SignUp = function () {
 
-        var encryptedSignUp = $scope.signup;
+        var loginData = {
+            'username': $scope.login.username,
+            'password': 'blah'
+        }
 
         $http({
           method: 'POST',
-          data: encryptedSignUp,
+          data: loginData,
           url: '/user/create'
         }).then(function successCallback(response) {
             $location.path('do/confirmationSent');

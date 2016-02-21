@@ -5,10 +5,20 @@
   <div class="to-bottom bottom-padding">
   	<md-input-container>
   		
-	    <md-select class="select-uni" placeholder="Select your university" ng-model="university" ng-change="uniSelected()" aria-label="choose pls">
-	    	<md-option ng-repeat="uni in universities">{{ uni }}</md-option>
+	    <md-select class="select-uni" placeholder="Select your university" ng-model="university" ng-change="uniSelected()">
+	    	<md-option ng-repeat="(id, name) in universities" value="{{ id }}">{{ name }}</md-option>
 	    </md-select>
 	  </md-input-container>
+
+    <div class="make-flex">
+      <md-input-container class="signup-email">
+        <label>Your email</label>
+        <input ng-model="email">
+      </md-input-container>
+      <md-input-container class="signup-domain">
+        <input aria-label="domain" disabled ng-model="domain">
+      </md-input-container>
+    </div>
     
     <md-button ng-click="goToSign('up')" class="md-raised md-primary button-wide">Sign Up</md-button>
   </div>

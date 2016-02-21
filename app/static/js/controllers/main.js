@@ -1,32 +1,34 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('MainCtrl', ['$scope', 'localStorageService', '$location', function ($scope, localStorageService, $location) {
+  .controller('MainCtrl', ['$scope', 'localStorageService', '$location', '$http', function ($scope, localStorageService, $location, $http) {
     $scope.pageClass = 'page-main';
     var viewHeight = $(window).height();
     var cardHeight = $('.container-card').height()
-    $('.container-card').css('margin-top', Math.floor(0.5*(viewHeight-cardHeight-120)))
+    $('.container-card').css('margin-top', Math.min(50, Math.floor(0.5*(viewHeight-cardHeight-120))))
 
-
-  	$scope.universities = ['Imperial College London', 'Nottingham University', 'Leeds University', 'Exeter University', 'Oxford University'];
   	$scope.uniSelected = function () {
-  		console.log('User selected ' + $scope.university);
       localStorageService.set('uni', $scope.university);
-	};
-	$scope.goToSign = function(sign) {
-		localStorageService.set('sign', sign);
-		$location.path('do/login');
-	}
+      $scope.domain = '@' + $scope.university.toString() + '.ac.uk'
+  	};
 
-  $scope.loadUniversities = function () {
-    $http({
-      method: 'GET',
-      url: '/universities'
-    }).then(function successCallback(response) {
-        console.log("universities loaded");
-        $scope.universities = reponse;
-    }, function errorCallback(response) {
-        alert("Error loading universities: " + response);
-    });
-  }
+  	$scope.goToSign = function(sign) {
+  		localStorageService.set('sign', sign);
+  		$location.path('do/login');
+  	}
+
+    var loadUniversities = function () {
+      $http({
+        method: 'GET',
+        url: 'http://127.0.0.1:5000/universities'
+      }).then(function successCallback(response) {
+          console.log("HTTP: universities loaded successfully");
+          $scope.universities = response.data;
+      }, function errorCallback(response) {
+          alert("HTTP: Error loading universities")
+          console.log("response:\n" + JSON.stringify(response))
+      });
+    }
+
+    loadUniversities();
   }]);
