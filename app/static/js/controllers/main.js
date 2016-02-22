@@ -4,8 +4,11 @@ angular.module('unisalad')
   .controller('MainCtrl', ['$scope', 'localStorageService', '$location', '$http', function ($scope, localStorageService, $location, $http) {
     $scope.pageClass = 'page-main';
     var viewHeight = $(window).height();
-    var cardHeight = $('.container-card').height()
-    $('.container-card').css('margin-top', Math.min(50, Math.floor(0.5*(viewHeight-cardHeight-120))))
+    var cardHeight = $('#container')
+    console.log(viewHeight)
+    console.log(cardHeight)
+    $('.container-card').css('margin-top', Math.max(0, Math.floor((viewHeight-cardHeight)/2)) + 64)
+
 
     var universitySelected = false;
     $scope.email = "";
@@ -18,7 +21,7 @@ angular.module('unisalad')
   	};
 
     $scope.moveToEmailField = function () {
-      if (universitySelected == true) {
+      if (universitySelected && $scope.email !== "") {
         $scope.focusOnEmail();
       } else {
         console.log("nope")
