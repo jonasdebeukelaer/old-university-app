@@ -2,12 +2,14 @@
 
 angular.module('unisalad')
   .controller('MainCtrl', ['$scope', 'localStorageService', '$location', '$http', function ($scope, localStorageService, $location, $http) {
-    $scope.pageClass = 'page-main';
-    var viewHeight = $(window).height();
-    var cardHeight = $('#container')
-    console.log(viewHeight)
-    console.log(cardHeight)
-    $('.container-card').css('margin-top', Math.max(0, Math.floor((viewHeight-cardHeight)/2)) + 64)
+    $(window).load(function () {
+      $scope.pageClass = 'page-main';
+      var viewHeight = $(window).height();
+      var cardHeight = $('.container-card').height();
+      console.log(viewHeight)
+      console.log(cardHeight)
+      $('.container-card').css('margin-top', Math.max(0, Math.floor((viewHeight-cardHeight)/2))-64)
+    })
 
 
     var universitySelected = false;
@@ -18,7 +20,11 @@ angular.module('unisalad')
       localStorageService.set('uni', $scope.university);
       $scope.domain = '@' + $scope.university.toString() + '.ac.uk'
       universitySelected = true;
-  	};
+  	}
+
+    $scope.focusOnEmail = function() {
+      $('#emailField').focus();
+    }
 
     $scope.moveToEmailField = function () {
       if (universitySelected && $scope.email !== "") {
@@ -37,10 +43,6 @@ angular.module('unisalad')
         alert("Please select a university")
       }
   	}
-
-    $scope.focusOnEmail = function() {
-      $('#emailField').focus();
-    }
 
     var loadUniversities = function () {
       $http({
