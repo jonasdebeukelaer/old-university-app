@@ -3,9 +3,9 @@
   <p>Welcome to unisalad, home to all your studenty needs!</p>
 
   <div class="to-bottom bottom-padding">
-  	<md-input-container>
-  		
-	    <md-select class="select-uni" placeholder="Select your university" ng-model="university" ng-change="uniSelected()">
+
+  	<md-input-container md-autofocus>	
+	    <md-select class="select-uni" placeholder="Select your university" ng-model="university" ng-change="uniSelected()" ng-focus="moveToEmailField()">
 	    	<md-option ng-repeat="(id, name) in universities" value="{{ id }}">{{ name }}</md-option>
 	    </md-select>
 	  </md-input-container>
@@ -13,13 +13,13 @@
     <div class="make-flex">
       <md-input-container class="signup-email">
         <label>Your email</label>
-        <input ng-model="email">
+        <input id="emailField" ng-model="email" ng-keyup="$event.keyCode == 13 && signUp()">
       </md-input-container>
-      <md-input-container class="signup-domain">
+      <md-input-container class="signup-domain" ng-click="focusOnEmail()">
         <input aria-label="domain" disabled ng-model="domain">
       </md-input-container>
     </div>
     
-    <md-button ng-click="goToSign('up')" class="md-raised md-primary button-wide">Sign Up</md-button>
+    <md-button ng-click="signUp()" class="md-raised md-primary button-wide">Sign Up</md-button>
   </div>
 </div>

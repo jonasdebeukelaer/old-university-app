@@ -7,8 +7,8 @@ def getUniversities():
 	# allUniversities = University.query.all()
 	# universitiesDict = {u.id : u.name for u in allUniversities}
 	universitiesDict = {
-		'no': 'Nottingham University',
-		'ic': 'Imperial College London',
-		'lu': 'Leeds University'
+		'nottingham': 'Nottingham University',
+		'imperial': 'Imperial College London',
+		'leeds': 'Leeds University'
 	}
 	return json.jsonify(universitiesDict)

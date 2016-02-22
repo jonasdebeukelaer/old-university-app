@@ -7,15 +7,37 @@ angular.module('unisalad')
     var cardHeight = $('.container-card').height()
     $('.container-card').css('margin-top', Math.min(50, Math.floor(0.5*(viewHeight-cardHeight-120))))
 
+    var universitySelected = false;
+    $scope.email = "";
+    $scope.domain = "@";
+
   	$scope.uniSelected = function () {
       localStorageService.set('uni', $scope.university);
       $scope.domain = '@' + $scope.university.toString() + '.ac.uk'
+      universitySelected = true;
   	};
 
-  	$scope.goToSign = function(sign) {
-  		localStorageService.set('sign', sign);
-  		$location.path('do/login');
+    $scope.moveToEmailField = function () {
+      if (universitySelected == true) {
+        $scope.focusOnEmail();
+      } else {
+        console.log("nope")
+      }
+    }
+
+  	$scope.signUp = function() {
+      if (universitySelected && $scope.email != "") {
+  		  $location.path('do/login');
+      } else if (universitySelected) {
+        alert("Please enter your university email")
+      } else {
+        alert("Please select a university")
+      }
   	}
+
+    $scope.focusOnEmail = function() {
+      $('#emailField').focus();
+    }
 
     var loadUniversities = function () {
       $http({

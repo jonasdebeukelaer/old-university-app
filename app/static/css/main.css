@@ -139,20 +139,6 @@ div.container-card {
   padding: 12px;
 }
 
-.container-tool {
-  padding: 10px;
-  margin: 5px;
-  background-color: white;
-}
-
-.to-bottom {
-  margin-top: auto;
-}
-
-.bottom-padding {
-  padding-bottom: 10px;
-}
-
 /*prevent focus glow */
 post-ticket, div, md-toolbar, post-ticket:focus, div:focus, md-toolbar:focus, *:focus  {
   outline: none;
@@ -194,6 +180,11 @@ img.splash-logo {
   width: 100px;
 }
 
+h4 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
 
 /*----------------------------------------------------------------------------------*/
 /*------------------------------------Main Page-------------------------------------*/
@@ -206,14 +197,9 @@ img.splash-logo {
   height: 26px;
 }
 
-h4 {
-  font-size: 1.5rem;
-  margin-top: 0;
-  margin-bottom: 4px;
-}
-
 .button-wide {
-  width: 94%;
+  margin: 0;
+  width: 100%;
 }
 
 md-select-label {
@@ -221,11 +207,19 @@ md-select-label {
 }
 
 .signup-email {
-  width: 70%;
+  width: 50%;
 }
 
 .signup-domain {
-  width: 30%;
+  width: 50%;
+}
+
+.to-bottom {
+  margin-top: auto;
+}
+
+.bottom-padding {
+  padding-bottom: 4px;
 }
 
 /*----------------------------------------------------------------------------------*/
