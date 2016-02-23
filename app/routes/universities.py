@@ -4,11 +4,7 @@ from flask import request, abort, json
 
 @app.route("/universities", methods=["GET"])
 def getUniversities():
-	# allUniversities = University.query.all()
-	# universitiesDict = {u.id : u.name for u in allUniversities}
-	universitiesDict = {
-		'nottingham': 'Nottingham University',
-		'imperial': 'Imperial College London',
-		'leeds': 'Leeds University'
-	}
+	allUniversities = University.query.all()
+	universitiesDict = {u.domain : u.name for u in allUniversities}
+
 	return json.jsonify(universitiesDict)

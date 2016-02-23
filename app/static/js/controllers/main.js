@@ -6,8 +6,6 @@ angular.module('unisalad')
       $scope.pageClass = 'page-main';
       var viewHeight = $(window).height();
       var cardHeight = $('.container-card').height();
-      console.log(viewHeight)
-      console.log(cardHeight)
       $('.container-card').css('margin-top', Math.max(0, Math.floor((viewHeight-cardHeight)/2))-64)
     })
 
@@ -27,7 +25,7 @@ angular.module('unisalad')
     }
 
     $scope.moveToEmailField = function () {
-      if (universitySelected && $scope.email !== "") {
+      if (universitySelected && $scope.email == "") {
         $scope.focusOnEmail();
       } else {
         console.log("nope")
