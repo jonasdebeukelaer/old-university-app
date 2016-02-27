@@ -21,19 +21,15 @@ class User(db.Model):
 		self.email = form['email']
 		self.fullName = form['fullName']
 
-		givenPassword = form['password']
-		self.password = password.hashPassword(givenPassword)
+		self.givenPassword = form['password']
+		self.password = password.hashPassword(self.givenPassword)
 
 		# TODO: Verify that phone number is valid for country?
 		self.phoneNumber = form['phoneNumber']
 
-		if('emailContactable' in form):
-			self.emailContactable = form['emailContactable']
-		if('phoneContactable' in form):
-			self.phoneContactable = form['phoneContactable']
-
 	def __repr__(self):
 		return '<User: %r>' % (self.username)
+
 
 	def toDict(self):
 		return {

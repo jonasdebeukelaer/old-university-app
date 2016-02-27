@@ -5,14 +5,16 @@ from flask import request, abort, json, session
 
 @app.route("/user/create", methods=["POST"])
 def createUser():
-	try:
-		newUser = User(request.form)
-		db.session.add(newUser)
-		db.session.commit()
+	thing = request.get_json()
+	# try:
+	newUser = User(request.get_json())
+	db.session.add(newUser)
+	db.session.commit()
 
-		return newUser.id
-	except e:
-		return json.jsonify({"errorMessage" : "Could not create user"}), 500
+	output = {"userid": str(newUser.id)}
+	return json.jsonify(output)
+	# except Exception, e:
+	# 	return json.jsonify({"errorMessage" : "Could not create user: %s" % (e)}), 500
 
 @app.route("/user/<int:userId>", methods=["GET"])
 def getUser(userId):

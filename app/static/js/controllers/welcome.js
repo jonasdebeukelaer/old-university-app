@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('HelloCtrl', ['$scope', 'localStorageService', function ($scope, localStorageService) {
+  .controller('WelcomeCtrl', ['$scope', 'localStorageService', function ($scope, localStorageService) {
   	var viewHeight = $(window).height();
   	$('.welcome-1').css('height', viewHeight);
   	$('.welcome-2').css('height', viewHeight);

@@ -57,10 +57,10 @@ angular.module('unisalad', [
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
-      .state('hello', {
+      .state('welcome', {
         url: '/',
-        templateUrl: 'views/hello.html',
-        controller: 'HelloCtrl'
+        templateUrl: 'views/welcome.html',
+        controller: 'WelcomeCtrl'
       })
       .state('pre', {
         url: '/do',
