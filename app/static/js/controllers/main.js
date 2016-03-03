@@ -2,14 +2,14 @@
 
 angular.module('unisalad')
   .controller('MainCtrl', ['$scope', 'localStorageService', '$location', '$http', function ($scope, localStorageService, $location, $http) {
-    $(window).load(function () {
+    var init = function () {
       $scope.pageClass = 'page-main';
       var viewHeight = $(window).height();
       var cardHeight = $('#signupContainer').height();
       $('#signupContainer').css('margin-top', Math.max(0, Math.floor((viewHeight-cardHeight)/2))-64);
 
       $('#emailSent').css({'top': viewHeight, 'min-height': cardHeight})
-    })
+    }
 
 
     var universitySelected = false;
@@ -93,5 +93,6 @@ angular.module('unisalad')
       }
     }
 
+    init();
     loadUniversities();
   }]);

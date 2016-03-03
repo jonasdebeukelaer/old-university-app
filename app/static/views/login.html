@@ -1,12 +1,9 @@
-<div class="container-card md-whiteframe-z2">
+<div id="loginContainer" class="container-card padded-std md-whiteframe-z2">
   <md-content class="login-signup">
-    <md-tabs md-selected="selectedTab" md-dynamic-height md-border-bottom class="login-tabs">
-      <md-tab label="login">
-        <md-content class="md-padding">
-          <h3>Login to your {{ university }} account</h3>
+          <div class="make-flex"><h1>Login</h1><span class="to-right"><a ui-sref="pre.main">signup</a></span></div>
 
           <md-input-container flex>
-            <label>Email</label>
+            <label>University email</label>
             <input ng-model="login.email" type="email">
           </md-input-container>
           <md-input-container flex>
@@ -14,17 +11,12 @@
             <input ng-model="login.password" type="password">
           </md-input-container>
           <md-input-container flex>
-            <md-checkbox md-no-ink aria-label="Remember me" ng-model="login.remember" class="md-primary"> Remember Me
-          </md-input-container>
-          <md-input-container flex>
-              <md-button class="md-raised md-primary button-wide" ng-click="login()">Submit</md-button>
+              <md-button class="md-raised md-primary button-wide" ng-click="login()">Sign in</md-button>
           </md-input-container>
         </md-content>
-      </md-tab>
+</div>
 
-      <md-tab label="signUp">
-        <md-content class="md-padding">
-          <form name="signupForm">
+<!--<form name="signupForm">
             <h3>Sign up to unisalad :)</h3>
 
             <md-input-container flex>
@@ -58,9 +50,4 @@
             <md-input-container flex>
                 <md-button class="md-primary md-raised button-wide" ui-sref="pre.confirmationsent">Send confirmation email</md-button>
             </md-input-container>
-          </form>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
-</div>
+          </form>-->
