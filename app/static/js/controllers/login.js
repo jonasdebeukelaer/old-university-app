@@ -11,72 +11,31 @@ angular.module('unisalad')
 
 
     $scope.login = {
-        email: '',
-        password: ''
-    }
-
-    $scope.signup = {
-        email:"",
-        forename:"",
-        surname:"",
-        password:"",
-        number:"",
-        universityId:""
-    }
-
-
-    $scope.comparePasswords = function () {
-        var confirmPassword = $('#confirmPassword');
-        if (confirmPassword.hasClass('md-input-invalid')) {
-            if ($scope.signup.password == $scope.passwordConfirm) {
-                confirmPassword.removeClass('md-input-invalid');
-            }
-        } else {
-            if ($scope.signup.password !== $scope.passwordConfirm) {
-                confirmPassword.addClass('md-input-invalid');
-            }    
-        }
+        email: "",
+        password: ""
     }
 
     $scope.login = function () {
 
         var loginData = {
-            'username': $scope.login.username,
-            'password': $scope.login.password
+            email: $scope.login.email,
+            password: $scope.login.password
         }
 
         $http({
           method: 'POST',
           data: JSON.stringify(loginData),
-          url: 'http://localhost:5000/user/login'
+          url: 'http://localhost:5000/login'
         }).then(function successCallback(response) {
             console.log("HTTP: logged in successfully")
+            console.log(response.data)
             $location.path('app/general');
         }, function errorCallback(response) {
             console.log("HTTP: logged in failed")
-            console.log(response)
-            alert("Error occured signing up:\n" + response);
+            if (response.data) {console.log(response.data.errorMessage)}
+            else {console.log(response)}
         });
     }
-
-    $scope.SignUp = function () {
-
-        var loginData = {
-            'username': $scope.login.username,
-            'password': 'blah'
-        }
-
-        $http({
-          method: 'POST',
-          data: loginData,
-          url: '/user/create'
-        }).then(function successCallback(response) {
-            $location.path('do/confirmationSent');
-        }, function errorCallback(response) {
-            alert("Error occured signing up:\n" + response);
-        });
-    }
-
 
     init()
   }]);

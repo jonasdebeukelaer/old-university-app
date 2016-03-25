@@ -9,4 +9,3 @@ CORS(app)
 def root():
 	#return app.send_static_file('index.html')
 	return json.jsonify("Sending you default ~/~ data.")
-

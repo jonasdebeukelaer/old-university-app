@@ -37,7 +37,8 @@ angular.module('unisalad')
       if (universitySelected && $scope.email != "") {
         var userDetails = {
           username: $scope.email,
-          fullName:'',
+          forename:'',
+          surname:'',
           email: $scope.email + $scope.domain,
           password:'',
           phoneNumber:''
@@ -49,12 +50,13 @@ angular.module('unisalad')
           url: 'http://127.0.0.1:5000/user/create'
         }).then(function successCallback(response) {
             console.log("HTTP: user created successfully");
-            console.log(response)
+            console.log(response.data.userid + "=sample")
             toggleEmailSentConfirmation();
             correctEmailSent = true;
         }, function errorCallback(response) {
             alert("HTTP: Error creating user")
-            console.log("response:\n" + JSON.stringify(response))
+            if (response.data) {console.log(response.data.errorMessage)}
+            else {console.log(response)}
         });  
       } else if (universitySelected) {
         alert("Please enter your university email")
@@ -79,7 +81,8 @@ angular.module('unisalad')
           $scope.universities = response.data;
       }, function errorCallback(response) {
           alert("HTTP: Error loading universities")
-          console.log("response:\n" + JSON.stringify(response))
+          if (response.data) {console.log(response.data.errorMessage)}
+          else {console.log(response)}
       });
     }
 

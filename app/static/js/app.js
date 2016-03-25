@@ -72,6 +72,11 @@ angular.module('unisalad', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .state('pre.signup', {
+        url: '/signup',
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl'
+      })
       .state('pre.login', {
         url: '/login',
         templateUrl: 'views/login.html',

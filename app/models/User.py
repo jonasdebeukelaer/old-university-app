@@ -2,45 +2,70 @@ from app import db
 from app.utils import password
 
 class User(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	username = db.Column(db.String(64), index=True, unique=True)
-	email = db.Column(db.Text, index=True, unique=True)
-	password = db.Column(db.String(128))
-	fullName = db.Column(db.Text)
-	phoneNumber = db.Column(db.String(15))
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), index=True, unique=True)
+    email = db.Column(db.Text, index=True, unique=True)
+    password = db.Column(db.String(128))
+    forename = db.Column(db.Text)
+    surname = db.Column(db.Text)
+    phoneNumber = db.Column(db.String(15))
 
-	upVotes = db.Column(db.Integer, default=0)
-	downVotes = db.Column(db.Integer, default=0)
-	emailContactable = db.Column(db.Boolean, default=False)
-	phoneContactable = db.Column(db.Boolean, default=False)
-	verified = db.Column(db.Boolean, default=False)
-	# posts = db.relationship("Post", backref = "user", lazy = "dynamic")
+    upVotes = db.Column(db.Integer, default=0)
+    downVotes = db.Column(db.Integer, default=0)
+    emailContactable = db.Column(db.Boolean, default=False)
+    phoneContactable = db.Column(db.Boolean, default=False)
+    verification = db.Column(db.String(40))
+    verified = db.Column(db.Boolean, default=False)
+    active = db.Column(db.Boolean, default=False)
+    # posts = db.relationship("Post", backref = "user", lazy = "dynamic")
 
-	def __init__(self, form):
-		self.username = form['username']
-		self.email = form['email']
-		self.fullName = form['fullName']
+    @property
+    def is_authenticated(self):
+        return self.verified
 
-		self.givenPassword = form['password']
-		self.password = password.hashPassword(self.givenPassword)
+    @property
+    def is_active(self):
+        return True
 
-		# TODO: Verify that phone number is valid for country?
-		self.phoneNumber = form['phoneNumber']
+    @property
+    def is_anonymous(self):
+        return False
 
-	def __repr__(self):
-		return '<User: %r>' % (self.username)
+    def get_id(self):
+        try:
+            return unicode(self.id)
+        except:
+            return "error getting id"
+
+    def __init__(self, form):
+        self.username = form['username']
+        self.email = form['email']
+        self.forename = form['forename']
+        self.surname = form['surname']
+
+        self.givenPassword = form['password']
+        self.password = password.hashPassword(self.givenPassword)
+
+        self.verification = 'sample'
+
+        # TODO: Verify that phone number is valid for country?
+        self.phoneNumber = form['phoneNumber']
+
+    def __repr__(self):
+        return '<User: %r>' % (self.username)
 
 
-	def toDict(self):
-		return {
-			"id" : self.id,
-			"username" : self.username,
-			"email" : self.email,
-			"password" : self.password,
-			"upVotes" : self.upVotes,
-			"downVotes" : self.downVotes,
-			"phoneNumber" : self.phoneNumber,
-			"fullName" : self.fullName,
-			"emailContactable" : self.emailContactable,
-			"phoneContactable" : self.phoneContactable
-		}
+    def toDict(self):
+        return {
+            "id" : self.id,
+            "username" : self.username,
+            "email" : self.email,
+            "password" : self.password,
+            "upVotes" : self.upVotes,
+            "downVotes" : self.downVotes,
+            "phoneNumber" : self.phoneNumber,
+            "forename" : self.forename,
+            "surname" : self.surname,
+            "emailContactable" : self.emailContactable,
+            "phoneContactable" : self.phoneContactable
+        }
