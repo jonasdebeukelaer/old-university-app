@@ -5,11 +5,11 @@ angular.module('unisalad', [
 	'ngRoute',
   'ui.router',
   'LocalStorageModule',
-  'ngMaterial'
+  'ngMaterial',
+  'ngCookies'
 	])
   .run(function($mdMedia, $rootScope) {
     FastClick.attach(document.body);
-    $rootScope.wideScreen = $mdMedia('gt-md');
     })
 	.config(['localStorageServiceProvider', function(localStorageServiceProvider){
 	  localStorageServiceProvider.setPrefix('us');

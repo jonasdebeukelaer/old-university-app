@@ -39,7 +39,7 @@ module.exports = function (grunt) {
     connect: {
       proxies: [
         {
-          context: '/unisalad',
+          context: '/api',
           host: 'localhost',
           port: 5000,
           https: false,
@@ -59,6 +59,12 @@ module.exports = function (grunt) {
             '<%= yeoman.app %>'
           ],
           middleware: function (connect) {
+
+            var middlewares = [];
+
+            // Setup the proxy
+            middlewares.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+
             return [
               proxySnippet,
               connect.static(require('path').resolve('app/static'))
@@ -251,6 +257,7 @@ module.exports = function (grunt) {
     },
   });
 
+  grunt.loadNpmTasks('grunt-connect-proxy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');

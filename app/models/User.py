@@ -1,5 +1,6 @@
 from app import db
 from app.utils import password
+#from itsdangerous import 
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -36,6 +37,11 @@ class User(db.Model):
             return unicode(self.id)
         except:
             return "error getting id"
+
+    def get_auth_token(self):
+        #data = [str(self.id), self.password]
+        #return login_serializer.dumps(data)
+        return self.password # ----------------- !!!! -----change
 
     def __init__(self, form):
         self.username = form['username']

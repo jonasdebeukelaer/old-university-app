@@ -13,14 +13,14 @@ angular.module('unisalad')
   				var userCode = verifyInfo[1] 
   				console.log("user: " + userId)
 	  			console.log("userCode: " + userCode)
-	  			var verifyUrl = ('http://127.0.0.1:5000/user/' + userId + '/verify/' + userCode).toString()
+	  			var verifyUrl = ('/api/user/' + userId + '/verify/' + userCode).toString()
 	  			console.log(verifyUrl)
 	  			$http({
 		          method: 'GET',
 		          url: verifyUrl
 		        }).then(function successCallback(response) {
               console.log(response)
-		            $scope.email = response.email
+		            $scope.email = response.data.email
 		        }, function errorCallback(response) {
 		            console.log("Error occured signing up:");
 		            if (response.data) {console.log(response.data.errorMessage)}
@@ -61,7 +61,7 @@ angular.module('unisalad')
     	$http({
           method: 'POST',
           data: JSON.stringify($scope.signup),
-          url: 'http://127.0.0.1:5000/user/' + userId + '/completeSignup'
+          url: '/api/user/' + userId + '/completeSignup'
         }).then(function successCallback(response) {
             $location.path('app/general');
         }, function errorCallback(response) {

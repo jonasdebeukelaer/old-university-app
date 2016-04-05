@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('LoginCtrl', ['$scope', '$http', 'localStorageService', '$location', function ($scope, $http, localStorageService, $location) {
+  .controller('LoginCtrl', ['$scope', '$http', 'localStorageService', '$location', '$cookies', 'userData', 
+                             function ($scope, $http, localStorageService, $location, $cookies, userData) {
     var init = function () {
       $scope.pageClass = 'page-login';
       var viewHeight = $(window).height();
@@ -25,10 +26,13 @@ angular.module('unisalad')
         $http({
           method: 'POST',
           data: JSON.stringify(loginData),
-          url: 'http://localhost:5000/login'
+          url: '/api/login'
         }).then(function successCallback(response) {
+            userData.hash = response.data.password
+            userData.email = response.data.email
+            $cookies.put('hash', response.data.password)
             console.log("HTTP: logged in successfully")
-            console.log(response.data)
+            console.log(response.data);
             $location.path('app/general');
         }, function errorCallback(response) {
             console.log("HTTP: logged in failed")

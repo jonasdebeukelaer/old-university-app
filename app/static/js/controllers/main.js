@@ -47,7 +47,7 @@ angular.module('unisalad')
         $http({
           method: 'POST',
           data: JSON.stringify(userDetails),
-          url: 'http://127.0.0.1:5000/user/create'
+          url: '/api/user/create'
         }).then(function successCallback(response) {
             console.log("HTTP: user created successfully");
             console.log(response.data.userid + "=sample")
@@ -75,7 +75,7 @@ angular.module('unisalad')
     var loadUniversities = function () {
       $http({
         method: 'GET',
-        url: 'http://127.0.0.1:5000/universities'
+        url: '/api/universities'
       }).then(function successCallback(response) {
           console.log("HTTP: universities loaded successfully");
           $scope.universities = response.data;
