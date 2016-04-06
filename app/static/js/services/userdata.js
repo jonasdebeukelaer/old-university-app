@@ -2,9 +2,9 @@
 
 angular.module('unisalad')
   .service('userData', ['$cookies', '$http', function ($cookies, $http) {
-    this.hash = $cookies.get('hash')
+    this.hash = $cookies.get('token')
     this.email = "empty@none.co.uk"
-  	this.userId = 103912
+  	this.userId = 111111
   	this.forename = "forename"
   	this.surname = "surname"
   	this.university = "my uni"
@@ -33,5 +33,6 @@ angular.module('unisalad')
       }
   	]
     
-    $http.defaults.headers.common.Authorization = this.email + "=" + this.password;
+
+    $http.defaults.headers.common.Authorization = this.userId;
   }]);

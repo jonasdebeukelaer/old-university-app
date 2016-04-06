@@ -1,15 +1,21 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('GeneralCtrl', ['$scope', '$http', function ($scope, $http) {
+  .controller('GeneralCtrl', ['$scope', '$http', 'userData', '$cookies', function ($scope, $http, userData, $cookies) {
   	//in future load splash image instead of hiding everything
   	$('#splashScreen').fadeOut('3000', function () {
   		$('#rootRoot').css("visibility", "visible");
   	});
 
   	var test = function () {
+
+      if (userData.userId == 111111) {
+        userData.userId = $cookies.get('token')
+      }
+
       $http({
           method: 'GET',
+          headers: {'token': userData.userId },
           url: '/api/protected'
         }).then(function successCallback(response) {
           console.log("user is logged in! ")
@@ -21,6 +27,8 @@ angular.module('unisalad')
         }); 
     }
 
-    test()
+    $scope.testClick = function () {
+      test()
+    }
   	  
   }]);

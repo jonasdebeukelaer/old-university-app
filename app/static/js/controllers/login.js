@@ -30,7 +30,9 @@ angular.module('unisalad')
         }).then(function successCallback(response) {
             userData.hash = response.data.password
             userData.email = response.data.email
-            $cookies.put('hash', response.data.password)
+            userData.userId = response.data.id
+            $cookies.put('token', response.data.id)
+            $http.defaults.headers.common.Authorization = response.data.id;
             console.log("HTTP: logged in successfully")
             console.log(response.data);
             $location.path('app/general');
