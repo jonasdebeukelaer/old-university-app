@@ -51,11 +51,11 @@ def createUser():
 
 @app.route("/api/user/<int:userId>", methods=["GET"])
 def getUser(userId):
-    user = User.query.filter_by(id=userId).first()
+    user = User.query.get(userId)
     if not user:
         return json.jsonify({"errorMessage" : "No matching user found"}), 422
     else:
-        return json.jsonify(user.toDict())
+        return json.jsonify(user.toDictWithToken())
 
 @app.route("/api/user/<int:userId>/verify/<activationCode>", methods=["GET"])
 def verifyUser(userId, activationCode):
@@ -113,6 +113,7 @@ def login():
         data = request.get_json()
         email = data['email']
         pw = data['password'] 
+
         user = User.query.filter_by(email=email).first()
 
         if not user:
@@ -137,5 +138,5 @@ def logout():
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
-    return 'Unauthorized'
+    return 'You are not welcome here >:('
 

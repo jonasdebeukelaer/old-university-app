@@ -1,6 +1,7 @@
-from app import db
+from app import app, db
 from app.utils import password
-#from itsdangerous import 
+from itsdangerous import (TimedJSONWebSignatureSerializer
+                          as Serializer, BadSignature)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -38,10 +39,22 @@ class User(db.Model):
         except:
             return "error getting id"
 
-    def get_auth_token(self):
-        #data = [str(self.id), self.password]
-        #return login_serializer.dumps(data)
-        return self.password # ----------------- !!!! -----change
+    def generate_auth_token(self):
+        data = [str(self.id), self.password]
+        s = Serializer(app.config['SECRET_KEY'])
+        return s.dumps({ 'id': self.id , 'password': self.password})
+
+    @staticmethod
+    def verify_auth_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+
+        try:
+            data = s.loads(token)
+        except BadSignature:
+            return None # invalid token
+
+        user = User.query.get(data['id'])
+        return user
 
     def __init__(self, form):
         self.username = form['username']
@@ -74,4 +87,20 @@ class User(db.Model):
             "surname" : self.surname,
             "emailContactable" : self.emailContactable,
             "phoneContactable" : self.phoneContactable
+        }
+
+    def toDictWithToken(self):
+        return {
+            "id" : self.id,
+            "username" : self.username,
+            "email" : self.email,
+            "password" : self.password,
+            "upVotes" : self.upVotes,
+            "downVotes" : self.downVotes,
+            "phoneNumber" : self.phoneNumber,
+            "forename" : self.forename,
+            "surname" : self.surname,
+            "emailContactable" : self.emailContactable,
+            "phoneContactable" : self.phoneContactable,
+            "token" : self.generate_auth_token()
         }

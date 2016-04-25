@@ -31,7 +31,7 @@ angular.module('unisalad')
             userData.hash = response.data.password
             userData.email = response.data.email
             userData.userId = response.data.id
-            $cookies.put('token', response.data.id)
+            $cookies.put('token', response.data.token)
             $http.defaults.headers.common.Authorization = response.data.id;
             console.log("HTTP: logged in successfully")
             console.log(response.data);
