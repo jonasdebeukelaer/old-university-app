@@ -2,14 +2,8 @@
   <div class="make-flex"><h1>Hello</h1><span class="to-right"><a ui-sref="pre.login">login</a></span></div>
   <p>Welcome to UniSalad, full of top baynder!</p>
 
-	<md-input-container md-autofocus>	
-    <md-select class="select-uni" placeholder="Select your university" ng-model="university" ng-change="uniSelected()" ng-focus="moveToEmailField()">
-    	<md-option ng-repeat="(id, name) in universities" value="{{ id }}">{{ name }}</md-option>
-    </md-select>
-  </md-input-container>
-
   <div class="make-flex">
-    <md-input-container class="signup-email">
+    <md-input-container class="signup-email" md-autofocus>
       <label>Your email</label>
       <input id="emailField" ng-model="email" ng-keyup="$event.keyCode == 13 && signUp()">
     </md-input-container>

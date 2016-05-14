@@ -26,35 +26,6 @@
 
         </md-grid-list>
     </div>
-    <div ng-if="page == 'general'">
-        <md-grid-list class="bottomsheet-options">
-            <md-grid-list-item>
-                <md-button class="md-grid-item-content" ng-click="comment(post.id)">
-                    <md-icon md-svg-src="tick"></md-icon>
-                    <div class="md-grid-text"> comment </div>
-                </md-button>
-            </md-grid-list-item>
-
-            <md-grid-list-item>
-                <md-button class="md-grid-item-content" ng-click="doThing(post.id)">
-                    <md-icon md-svg-src="mood_bad"></md-icon>
-                    <div class="md-grid-text"> do thing </div>
-                </md-button>
-            </md-grid-list-item>
-
-            <md-grid-list-item>
-                <md-button class="md-grid-item-content" ng-click="reaction(post.id)">
-                    <md-icon md-svg-src="remove"></md-icon>
-                    <div class="md-grid-text"> reaction </div>
-                </md-button>
-            </md-grid-list-item>
-        </md-grid-list>
-
-        <md-input-container id="commentInput" class="hidden" flex>
-            <label>comment</label>
-            <textarea ng-model="commentContent"></textarea>
-        </md-input-container>
-    </div>
     <div ng-if="page != 'mod' && page != 'general'">
     	<h3>Contact {{ post.user }}</h3>
 

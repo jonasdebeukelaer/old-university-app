@@ -11,30 +11,22 @@ angular.module('unisalad')
       $('#emailSent').css({'top': viewHeight, 'min-height': cardHeight})
     }
 
-
-    var universitySelected = false;
     var correctEmailSent = false;
     $scope.email = "";
-    $scope.domain = "";
-
-  	$scope.uniSelected = function () {
-      localStorageService.set('uni', $scope.university);
-      $scope.domain = '@' + $scope.university.toString() + '.ac.uk'
-      universitySelected = true;
-  	}
+    $scope.domain = "@nottingham.co.uk";
 
     $scope.focusOnEmail = function() {
       $('#emailField').focus();
     }
 
     $scope.moveToEmailField = function () {
-      if (universitySelected && $scope.email == "") {
+      if ($scope.email == "") {
         $scope.focusOnEmail();
       }
     }
 
   	$scope.signUp = function() {
-      if (universitySelected && $scope.email != "") {
+      if ($scope.email != "") {
         var userDetails = {
           username: $scope.email,
           forename:'',
@@ -54,16 +46,15 @@ angular.module('unisalad')
             toggleEmailSentConfirmation();
             correctEmailSent = true;
         }, function errorCallback(response) {
-            alert("HTTP: Error creating user")
+            console.log("HTTP: Error creating user")
             if (response.data) {console.log(response.data.errorMessage)}
             else {console.log(response)}
+              toggleEmailSentConfirmation();
         });  
-      } else if (universitySelected) {
-        alert("Please enter your university email")
       } else {
-        alert("Please select a university")
-      }
-  	}
+        alert("Please enter your university email")
+    	}
+    }
 
     $scope.reEnterEmail = function () {
       toggleEmailSentConfirmation();
@@ -72,19 +63,6 @@ angular.module('unisalad')
       correctEmailSent = false;
     }
 
-    var loadUniversities = function () {
-      $http({
-        method: 'GET',
-        url: '/api/universities'
-      }).then(function successCallback(response) {
-          console.log("HTTP: universities loaded successfully");
-          $scope.universities = response.data;
-      }, function errorCallback(response) {
-          alert("HTTP: Error loading universities")
-          if (response.data) {console.log(response.data.errorMessage)}
-          else {console.log(response)}
-      });
-    }
 
     var toggleEmailSentConfirmation = function () {
       $('#emailSent').toggleClass('showConfirmation');
@@ -97,5 +75,4 @@ angular.module('unisalad')
     }
 
     init();
-    loadUniversities();
   }]);

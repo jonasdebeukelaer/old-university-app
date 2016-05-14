@@ -122,26 +122,6 @@ angular.module('unisalad', [
         templateUrl: 'views/list_template.html',
         controller: 'ListTicketsCtrl'
       })
-      .state('base.lifts', {
-        url: '/lifts',
-        templateUrl: 'views/list_template.html',
-        controller: 'ListLiftsCtrl'
-      })
-      .state('base.houses', {
-        url: '/houses',
-        templateUrl: 'views/list_template.html',
-        controller: 'ListHousesCtrl'
-      })
-      .state('base.sales', {
-        url: '/sales',
-        templateUrl: 'views/list_template.html',
-        controller: 'ListSalesCtrl'
-      })
-      .state('base.general', {
-        url: '/general',
-        templateUrl: 'views/list_template.html',
-        controller: 'ListGeneralCtrl'
-      })
       .state('base.profile', {
         url: '/profile',
         templateUrl: 'views/profile.html',
