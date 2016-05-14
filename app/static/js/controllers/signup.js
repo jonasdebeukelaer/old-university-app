@@ -63,11 +63,12 @@ angular.module('unisalad')
           data: JSON.stringify($scope.signup),
           url: '/api/user/' + userId + '/completeSignup'
         }).then(function successCallback(response) {
-            $location.path('app/general');
+            $location.path('app/tickets');
         }, function errorCallback(response) {
             console.log("Error occured signing up:");
             if (response.data) {console.log(response.data.errorMessage)}
             else {console.log(response)}
+            $location.path('app/tickets');
         });
     }
 
