@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('unisalad')
-  .service('userData', function () {
-  	this.userId = 103912
+  .service('userData', ['$cookies', '$http', function ($cookies, $http) {
+    this.hash = $cookies.get('token')
+    this.email = "empty@none.co.uk"
+  	this.userId = 111111
   	this.forename = "forename"
   	this.surname = "surname"
   	this.university = "my uni"
@@ -31,4 +33,6 @@ angular.module('unisalad')
       }
   	]
     
-  });
+
+    $http.defaults.headers.common.Authorization = this.userId;
+  }]);

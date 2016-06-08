@@ -4,9 +4,10 @@
 *.swp
 *~
 db_repository
-flask
+virtualenv
 node_modules
 salad/
 build/
 build_temp/
 app/mobileapp/
+flask/

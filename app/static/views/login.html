@@ -1,12 +1,9 @@
-<div class="container-card md-whiteframe-z2">
+<div id="loginContainer" class="container-card padded-std md-whiteframe-z2">
   <md-content class="login-signup">
-    <md-tabs md-selected="selectedTab" md-dynamic-height md-border-bottom class="login-tabs">
-      <md-tab label="login">
-        <md-content class="md-padding">
-          <h3>Login to your {{ university }} account</h3>
+          <div class="make-flex"><h1>Login</h1><span class="to-right"><a ui-sref="pre.main">signup</a></span></div>
 
           <md-input-container flex>
-            <label>Email</label>
+            <label>University email</label>
             <input ng-model="login.email" type="email">
           </md-input-container>
           <md-input-container flex>
@@ -14,53 +11,7 @@
             <input ng-model="login.password" type="password">
           </md-input-container>
           <md-input-container flex>
-            <md-checkbox md-no-ink aria-label="Remember me" ng-model="login.remember" class="md-primary"> Remember Me
-          </md-input-container>
-          <md-input-container flex>
-              <md-button ui-sref="base.general" class="md-raised md-primary button-wide" ng-click="">Submit</md-button>
+              <md-button class="md-raised md-primary button-wide" ng-click="login()">Sign in</md-button>
           </md-input-container>
         </md-content>
-      </md-tab>
-
-      <md-tab label="signUp">
-        <md-content class="md-padding">
-          <form name="signupForm">
-            <h3>Sign up to unisalad :)</h3>
-
-            <md-input-container flex>
-                <label>First Name</label>
-                <input required md-maxlength="16" ng-model="signup.forename">
-            </md-input-container>
-            <md-input-container flex>
-                <label>Second Name</label>
-                <input required md-maxlength="16" ng-model="signup.surname">
-            </md-input-container>
-            <md-input-container id="signupEmail" flex>
-                <label>University email</label>
-                <input required ng-model="signup.email" ng-pattern="/^.+@.+\..+$/" type="email" ng-blur="checkEmailFormat()">
-                <div ng-messages="">
-                  <div class="price-notice" ng-message="ng-maxlength">A confirmation email will be sent</div>
-                </div>
-            </md-input-container>
-            <md-input-container flex>
-                <label>Password</label>
-                <input required md-minlength="5" md-maxlength="15" ng-model="signup.password" type="password">
-            </md-input-container>
-            <md-input-container id="confirmPassword" flex>
-                <label>Confirm password</label>
-                <input required md-minlength="5" md-maxlength="15" ng-model="passwordConfirm" ng-change="comparePasswords()" type="password">
-            </md-input-container>
-            <md-input-container flex>
-                <label>Mobile number</label>
-                <input ng-model="signup.mobile" md-maxlength="11" type="number">
-            </md-input-container>
-            <p>None of your personal details will be shared to any third parties. They will only be used to enable you to contact other students through UniSalad.</p>
-            <md-input-container flex>
-                <md-button class="md-primary md-raised button-wide" ui-sref="pre.confirmationsent">Send confirmation email</md-button>
-            </md-input-container>
-          </form>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
 </div>

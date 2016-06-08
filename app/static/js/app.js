@@ -5,11 +5,11 @@ angular.module('unisalad', [
 	'ngRoute',
   'ui.router',
   'LocalStorageModule',
-  'ngMaterial'
+  'ngMaterial',
+  'ngCookies'
 	])
   .run(function($mdMedia, $rootScope) {
     FastClick.attach(document.body);
-    $rootScope.wideScreen = $mdMedia('gt-md');
     })
 	.config(['localStorageServiceProvider', function(localStorageServiceProvider){
 	  localStorageServiceProvider.setPrefix('us');
@@ -57,10 +57,10 @@ angular.module('unisalad', [
   .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
-      .state('hello', {
+      .state('welcome', {
         url: '/',
-        templateUrl: 'views/hello.html',
-        controller: 'HelloCtrl'
+        templateUrl: 'views/welcome.html',
+        controller: 'WelcomeCtrl'
       })
       .state('pre', {
         url: '/do',
@@ -71,6 +71,11 @@ angular.module('unisalad', [
         url: '/main',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+      })
+      .state('pre.signup', {
+        url: '/signup',
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl'
       })
       .state('pre.login', {
         url: '/login',
@@ -116,26 +121,6 @@ angular.module('unisalad', [
         url: '/tickets',
         templateUrl: 'views/list_template.html',
         controller: 'ListTicketsCtrl'
-      })
-      .state('base.lifts', {
-        url: '/lifts',
-        templateUrl: 'views/list_template.html',
-        controller: 'ListLiftsCtrl'
-      })
-      .state('base.houses', {
-        url: '/houses',
-        templateUrl: 'views/list_template.html',
-        controller: 'ListHousesCtrl'
-      })
-      .state('base.sales', {
-        url: '/sales',
-        templateUrl: 'views/list_template.html',
-        controller: 'ListSalesCtrl'
-      })
-      .state('base.general', {
-        url: '/general',
-        templateUrl: 'views/list_template.html',
-        controller: 'ListGeneralCtrl'
       })
       .state('base.profile', {
         url: '/profile',

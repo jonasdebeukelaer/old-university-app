@@ -1,0 +1,35 @@
+<div id="loginContainer" class="container-card padded-std md-whiteframe-z2">
+    <h3>Welcome :)</h3>
+
+    <p>Finish your signup for {{ email }}.</p>
+
+</div>
+<div id="loginContainer" class="container-card padded-std md-whiteframe-z2">
+    
+    <form>
+        <md-input-container flex>
+            <label>First Name</label>
+            <input required ng-model="signup.forename">
+        </md-input-container>
+        <md-input-container flex>
+            <label>Second Name</label>
+            <input required ng-model="signup.surname">
+        </md-input-container>
+        <md-input-container flex>
+            <label>Password</label>
+            <input required md-minlength="5" md-maxlength="15" ng-model="signup.password" type="password">
+        </md-input-container>
+        <md-input-container id="confirmPassword" flex>
+            <label>Confirm password</label>
+            <input required md-minlength="5" md-maxlength="15" ng-model="passwordConfirm" ng-change="comparePasswords()" type="password">
+        </md-input-container>
+        <md-input-container flex>
+            <label>Mobile number</label>
+            <input ng-model="signup.mobile" md-maxlength="11" type="number">
+        </md-input-container>
+        <p>None of your personal details will be shared to any third parties. They will only be used to enable you to contact other students through UniSalad.</p>
+        <md-input-container flex>
+            <md-button class="md-primary md-raised button-wide" ng-click="finishSignup()">Party</md-button>
+        </md-input-container>
+    </form>
+</div>

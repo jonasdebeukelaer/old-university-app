@@ -19,7 +19,8 @@
     "jquery-touchswipe": "~1.6.12",
     "lodash": "~2.4",
     "swipebox": "~1.4.1",
-    "angular-spinners": "~3.1.2"
+    "angular-spinners": "~3.1.2",
+    "angular-cookies": "~1.5.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.4",
