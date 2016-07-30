@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('unisalad')
-  .service('listFunctions', ['tappedPost', '$location','$mdMedia', '$timeout', '$mdBottomSheet', 'fetchPosts', 'currentList', 
-                    function (tappedPost, $location, $mdMedia, $timeout, $mdBottomSheet, fetchPosts, currentList) {
+  .service('listFunctions', ['tappedPost', '$location','$mdMedia', '$timeout', '$mdBottomSheet', 'httpsRequests', 'currentList', 
+                    function (tappedPost, $location, $mdMedia, $timeout, $mdBottomSheet, httpsRequests, currentList) {
     var thisPage = $location.path().split("/").pop();
 
   	this.hideAddpostButton = $('#addpost').addClass('add-post-hide');
@@ -15,19 +15,37 @@ angular.module('unisalad')
   	}
 
   	this.loadPosts = function (list, callback) {
-  		var thing = fetchPosts.getPosts();
-      thing.then(function(JSONfile) {
-        return JSONfile.data;
-      }).then(function(JSONfile) {
+
+      var loadPromise = new Promise(function(resolve, reject) {
+        var response = httpsRequests.get('/posts/user/12')
+
+        if (response.status == "200") {
+          console.log(response) 
+          resolve(reponse.data);
+        }
+        else {
+          reject(Error("It broke"));
+        }
+      });
+
+      loadPromise.then(function(data) {
+        console.log(data)
+      }, function(err) {
+        console.log(err)
+      })
+
+  		var thing = fetchPosts.getPosts(function (resp) {
+        console.log(resp)
+        var data = resp.data
         var oneDetail = '';
         var onePost = {};
-        for (var postType in JSONfile) {
-          for (var i=0; i < JSONfile[postType].length; i++) {
-            onePost = JSONfile[postType][i];
+        for (var postType in data) {
+          for (var i=0; i < data[postType].length; i++) {
+            onePost = data[postType][i];
             for (var oneDetail in onePost) {
               if (oneDetail.indexOf('Date') != -1) {
-                var dateType = JSONfile[postType][i][oneDetail]
-                JSONfile[postType][i][oneDetail] = new Date(dateType)
+                var dateType = data[postType][i][oneDetail]
+                data[postType][i][oneDetail] = new Date(dateType)
               }
             }
           }
@@ -35,14 +53,14 @@ angular.module('unisalad')
         console.log(list)
         if (list == 'flagged') {
           var allPosts = []
-          for (var thisList in JSONfile) {
-            for (var i = 0; i < JSONfile[thisList].length; i++) {
-              allPosts.push(JSONfile[thisList][i])
+          for (var thisList in data) {
+            for (var i = 0; i < data[thisList].length; i++) {
+              allPosts.push(data[thisList][i])
             }
           }
           callback(allPosts)
         } else {
-          callback(JSONfile[list]);
+          callback(data[list]);
         }
       })
   	}

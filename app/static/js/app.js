@@ -6,7 +6,8 @@ angular.module('unisalad', [
   'ui.router',
   'LocalStorageModule',
   'ngMaterial',
-  'ngCookies'
+  'ngCookies',
+  'ngStorage'
 	])
   .run(function($mdMedia, $rootScope) {
     FastClick.attach(document.body);

@@ -1,16 +1,9 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('ListTicketsCtrl', ['$q', '$scope', 'searchText', 'filterFilter', 'currentList', 'fetchPosts', '$location', 'listFunctions', 
-                                function ($q, $scope, searchText, filterFilter, currentList, fetchPosts, $location, listFunctions) {
+  .controller('ListTicketsCtrl', ['$q', '$scope', 'searchText', 'filterFilter', 'currentList', '$location', 'listFunctions', 
+                                function ($q, $scope, searchText, filterFilter, currentList, $location, listFunctions) {
     $scope.pageClass = 'page-tickets';
-    $scope.list = {
-      label: 'tickets',
-      name: 'Tickets',
-      posts: '10',
-      icon: 'tickets'
-    }
-    listFunctions.setList($scope.list);
 
     $scope.searchText = searchText;
     $scope.sortModes = [{
@@ -26,6 +19,7 @@ angular.module('unisalad')
         code: 'eventDate'
     }];
     $scope.sortBy = 'postDate';
+
 
     function getLists () {
       listFunctions.loadPosts('tickets', function(data) {

@@ -1,0 +1,44 @@
+{
+  "name": "uni-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nohup node index.js >/dev/null 2>&1 & echo $! > pid",
+    "stop": "kill -9 `cat pid`",
+    "restart": "npm stop && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tobias Neil for Uni Salad",
+  "license": "Proprietary",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-aria": "^1.4.8",
+    "angular-cookies": "^1.4.8",
+    "angular-material": "^0.11.4",
+    "body-parser": "^1.15.1",
+    "bower": "^1.4.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^7.0.0",
+    "mailgun-js": "^0.7.11",
+    "morgan": "^1.6.1",
+    "mysql": "^2.11.0",
+    "node-env-file": "^0.1.8",
+    "node-mysql": "^0.4.2",
+    "passport": "^0.3.2",
+    "passport-json": "^1.2.0",
+    "passport-local": "^1.0.0",
+    "password-hash": "^1.2.2",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-execute": "^0.2.2",
+    "grunt-proxy": "0.0.3",
+    "gulp": "^3.9.1"
+  }
+}

@@ -26,34 +26,43 @@ angular.module('unisalad')
     }
 
   	$scope.signUp = function() {
-      if ($scope.email != "") {
-        var userDetails = {
-          username: $scope.email,
-          forename:'',
-          surname:'',
-          email: $scope.email + $scope.domain,
-          password:'',
-          phoneNumber:''
-        }
+      if ($scope.email != "" && $scope.password != "" && $scope.confirmPassword != "") {
+        if ($scope.password != $scope.confirmPassword) {
+          alert("Passwords don't match :(")
+        } else {
+          var userDetails = {
+            username: $scope.email,
+            forename:'',
+            surname:'',
+            email: $scope.email + $scope.domain,
+            password:$scope.password,
+            phoneNumber:''
+          }
 
-        $http({
-          method: 'POST',
-          data: JSON.stringify(userDetails),
-          url: '/api/user/create'
-        }).then(function successCallback(response) {
-            console.log("HTTP: user created successfully");
-            console.log(response.data.userid + "=sample")
-            toggleEmailSentConfirmation();
-            correctEmailSent = true;
-        }, function errorCallback(response) {
-            console.log("HTTP: Error creating user")
-            if (response.data) {console.log(response.data.errorMessage)}
-            else {console.log(response)}
+          console.log(userDetails)
+          $http({
+            method: 'POST',
+            data: JSON.stringify(userDetails),
+            url: 'https://127.0.0.1:5000/api/register'
+          }).then(function successCallback(response) {
+              console.log("HTTPS: user created successfully");
               toggleEmailSentConfirmation();
-        });  
-      } else {
-        alert("Please enter your university email")
-    	}
+              correctEmailSent = true;
+          }, function errorCallback(response) {
+              console.log("HTTPS: Error creating user")
+              console.log(response)
+                toggleEmailSentConfirmation();
+          });  
+        }
+      } else if ($scope.email == "") {
+        alert("Please enter your email")
+      } else if ($scope.password == "") {
+        alert("Please enter a password")
+      } else if ($scope.confirmPassword == "") {
+        alert("Please confirm your password")
+    	} else {
+        alert("Dunno")
+      }
     }
 
     $scope.reEnterEmail = function () {
@@ -61,6 +70,19 @@ angular.module('unisalad')
       $scope.email = "";
       $scope.focusOnEmail();
       correctEmailSent = false;
+    }
+
+    $scope.comparePasswords = function () {
+        var confirmPassword = $('#confirmPassword');
+        if (confirmPassword.hasClass('md-input-invalid')) {
+            if ($scope.password == $scope.passwordConfirm) {
+                confirmPassword.removeClass('md-input-invalid');
+            }
+        } else {
+            if ($scope.password !== $scope.passwordConfirm) {
+                confirmPassword.addClass('md-input-invalid');
+            }    
+        }
     }
 
 

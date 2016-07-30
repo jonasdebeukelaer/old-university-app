@@ -11,6 +11,15 @@
       <input aria-label="domain" disabled ng-model="domain">
     </md-input-container>
   </div>
+
+  <md-input-container flex>
+            <label>Password</label>
+            <input required md-minlength="5" md-maxlength="15" ng-model="password" type="password">
+        </md-input-container>
+        <md-input-container id="confirmPassword" flex>
+            <label>Confirm password</label>
+            <input required md-minlength="5" md-maxlength="15" ng-model="confirmPassword" ng-change="comparePasswords()" type="password">
+        </md-input-container>
   
   <md-button ng-click="signUp()" class="md-raised md-primary button-wide">Sign Up</md-button>
 </div>
