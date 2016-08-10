@@ -12,3 +12,5 @@ build_temp/
 app/mobileapp/
 flask/
 .env
+node_modules/
+app/node_modules/
