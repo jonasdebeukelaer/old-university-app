@@ -7,8 +7,8 @@
 6 silly lifecycle uni-api@1.0.0~prestop: no script for prestop, continuing
 7 info lifecycle uni-api@1.0.0~stop: uni-api@1.0.0
 8 verbose lifecycle uni-api@1.0.0~stop: unsafe-perm in lifecycle true
-9 verbose lifecycle uni-api@1.0.0~stop: PATH: /opt/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/jonas/Documents/myStuff/unisalad/app/node_modules/.bin:/usr/local/bin:/Users/jonas/.gvm/vertx/current/bin:/Users/jonas/.gvm/springboot/current/bin:/Users/jonas/.gvm/lazybones/current/bin:/Users/jonas/.gvm/jbossforge/current/bin:/Users/jonas/.gvm/jbake/current/bin:/Users/jonas/.gvm/groovyserv/current/bin:/Users/jonas/.gvm/groovy/current/bin:/Users/jonas/.gvm/griffon/current/bin:/Users/jonas/.gvm/grails/current/bin:/Users/jonas/.gvm/gradle/current/bin:/Users/jonas/.gvm/glide/current/bin:/Users/jonas/.gvm/gaiden/current/bin:/Users/jonas/.gvm/crash/current/bin:/Users/jonas/.gvm/asciidoctorj/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/usr/sbin:/usr/local/mysql/bin/:/Users/jonas/workspace/palamabron/utils:/Users/jonas/.gvm/groovy/current/bin:/Users/jonas/UnderwriterScripts/
-10 verbose lifecycle uni-api@1.0.0~stop: CWD: /Users/jonas/Documents/myStuff/unisalad/app
+9 verbose lifecycle uni-api@1.0.0~stop: PATH: /opt/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/jonas/Documents/myStuff/unisalad/node_modules/.bin:/usr/local/bin:/Users/jonas/Documents/myStuff/unisalad/salad/bin:/Users/jonas/.gvm/vertx/current/bin:/Users/jonas/.gvm/springboot/current/bin:/Users/jonas/.gvm/lazybones/current/bin:/Users/jonas/.gvm/jbossforge/current/bin:/Users/jonas/.gvm/jbake/current/bin:/Users/jonas/.gvm/groovyserv/current/bin:/Users/jonas/.gvm/groovy/current/bin:/Users/jonas/.gvm/griffon/current/bin:/Users/jonas/.gvm/grails/current/bin:/Users/jonas/.gvm/gradle/current/bin:/Users/jonas/.gvm/glide/current/bin:/Users/jonas/.gvm/gaiden/current/bin:/Users/jonas/.gvm/crash/current/bin:/Users/jonas/.gvm/asciidoctorj/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/local/bin:/opt/local/sbin:/usr/sbin:/usr/local/mysql/bin/:/Users/jonas/workspace/palamabron/utils:/Users/jonas/.gvm/groovy/current/bin:/Users/jonas/UnderwriterScripts/
+10 verbose lifecycle uni-api@1.0.0~stop: CWD: /Users/jonas/Documents/myStuff/unisalad
 11 silly lifecycle uni-api@1.0.0~stop: Args: [ '-c', 'kill -9 `cat pid`' ]
 12 silly lifecycle uni-api@1.0.0~stop: Returned: code: 1  signal: null
 13 info lifecycle uni-api@1.0.0~stop: Failed to exec stop script
@@ -23,7 +23,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:852:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid uni-api@1.0.0
-16 verbose cwd /Users/jonas/Documents/myStuff/unisalad/app
+16 verbose cwd /Users/jonas/Documents/myStuff/unisalad
 17 error Darwin 15.0.0
 18 error argv "/usr/local/bin/node" "/opt/local/bin/npm" "stop"
 19 error node v6.2.1

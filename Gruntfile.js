@@ -9,8 +9,8 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         yeoman: {
-            app: require('./bower.json').appPath || 'app/static',
-            dist: 'app/static'
+            app: require('./bower.json').appPath || 'static',
+            dist: 'static'
         },
         watch: {
             options: {
@@ -38,7 +38,7 @@ module.exports = function (grunt) {
                         res.setHeader('Access-Control-Allow-Methods', '*');
                         next();
                       },
-                      connect.static(require('path').resolve('app/static'))
+                      connect.static(require('path').resolve('static'))
                     ];
                   }
               }
