@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "6.2.1"
+    "node": "6.2.1",
+    "npm": "3.9.2"
   },
   "scripts": {
-    "start": "nohup node index.js >/dev/null 2>&1 & echo $! > pid",
+    "start": "node index.js",
+    "start_background": "nohup node index.js >/dev/null 2>&1 & echo $! > pid",
     "stop": "kill -9 `cat pid`",
     "restart": "npm stop && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
