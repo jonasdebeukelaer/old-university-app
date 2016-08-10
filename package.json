@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "6.2.1"
+  }
   "scripts": {
     "start": "nohup node index.js >/dev/null 2>&1 & echo $! > pid",
     "stop": "kill -9 `cat pid`",
@@ -39,7 +42,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-connect-proxy": "^0.2.0",
     "grunt-execute": "^0.2.2",
-    "grunt-proxy": "0.0.3",
-    "gulp": "^3.9.1"
+    "grunt-proxy": "0.0.3"
   }
 }
