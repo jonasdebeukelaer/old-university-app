@@ -38,6 +38,6 @@ app.use(function (req, res, next) {
 })
 app.use('/api', routes);
 
-https.createServer(credentials, app).listen(conf.port);
+https.createServer(credentials, app).listen(process.env.PORT || conf.port);
 
 console.log('Started server on port ' + conf.port);
