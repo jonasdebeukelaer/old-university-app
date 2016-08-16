@@ -3,6 +3,7 @@ const https = require('https');
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const cors = require('cors');  //TODO remove in prod
 
@@ -19,6 +20,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors()); //TODO remove in prod
+app.use(morgan('dev')); 
 app.use(function (req, res, next) {
 	// Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'http://0.0.0.0:9000');
@@ -43,5 +45,3 @@ app.use('/api', routes);
 https.createServer(credentials, app).listen(process.env.PORT || conf.port);
 
 console.log('Started server on port ' + (process.env.PORT || conf.port));
-console.log(__dirname + '/static');
-console.log(express.static(__dirname + '/static'));
