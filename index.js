@@ -26,7 +26,7 @@ app.get('/',function(req,res){
 
 app.use('/api', routes);
 
-app.listen(process.env.PORT || conf.port);
+https.createServer(credentials, app).listen(process.env.PORT || conf.port);
 
 console.log('Started server on port ' + (process.env.PORT || conf.port));
 
