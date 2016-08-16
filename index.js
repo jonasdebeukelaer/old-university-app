@@ -43,3 +43,5 @@ app.use('/api', routes);
 https.createServer(credentials, app).listen(process.env.PORT || conf.port);
 
 console.log('Started server on port ' + (process.env.PORT || conf.port));
+console.log(__dirname + '/static');
+console.log(express.static(__dirname + '/static'));
