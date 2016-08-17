@@ -12,8 +12,8 @@ conf.mailgun = {
     subject: 'UniSalad - confirm email'
 };
 
-conf.emailVerificationRedirect = '/do/login?hello';
-conf.apiEndpoint = 'api/';
+conf.emailVerificationRedirect = '0.0.0.0:9000/#/do/login?hello';
+conf.apiEndpoint = 'localhost:5000';
 
 // SSL certificate paths
 conf.cert = {
@@ -27,10 +27,10 @@ conf.token = {
 };
 
 conf.db = {
-    host: 'eu-cdbr-west-01.cleardb.com',
+    host: 'localhost',
     user: process.env.DB_USER,
     password: process.env.DB_PWD,
-    database: 'heroku_7c6ad40c54d07af'
+    database: 'salad_db'
 };
 
 // MySQL string literals

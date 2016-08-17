@@ -3,8 +3,8 @@ MAILGUN_DOMAIN=mg.unisalad.com
 
 TOKEN_SECRET=fakesecrettoken
 
-DB_USER=b9c05271955b10
-DB_PWD=f25bb73f
+DB_USER=root
+DB_PWD=
 
 ADMIN_INIT_PWD=fakeAdminPw
 ADMIN_INIT_EMAIL=a@a.a.a
