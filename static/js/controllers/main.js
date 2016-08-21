@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('unisalad')
-  .controller('MainCtrl', ['$scope', 'localStorageService', '$location', '$http', function ($scope, localStorageService, $location, $http) {
+  .controller('MainCtrl', ['$scope', 'localStorageService', '$location', '$http', 'httpReq', function ($scope, localStorageService, $location, $http, httpReq) {
     var init = function () {
       $scope.pageClass = 'page-main';
       var viewHeight = $(window).height();

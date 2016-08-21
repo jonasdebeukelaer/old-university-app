@@ -1,5 +1,5 @@
 var env = require('node-env-file');
-env(__dirname + '/.env');
+env(__dirname + '/.envlocal');
 
 const conf = {};
 

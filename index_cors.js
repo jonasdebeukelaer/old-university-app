@@ -7,7 +7,7 @@ const morgan = require('morgan');
 
 const cors = require('cors');  //TODO remove in prod
 
-const conf = require('./conf');
+const conf = require('./conf_local');
 const routes = require('./routes');
 
 
