@@ -43,7 +43,7 @@ angular.module('unisalad')
           $http({
             method: 'POST',
             data: JSON.stringify(userDetails),
-            url: 'https://127.0.0.1:5000/api/register'
+            url: '/api/register'
           }).then(function successCallback(response) {
               console.log("HTTPS: user created successfully");
               toggleEmailSentConfirmation();
