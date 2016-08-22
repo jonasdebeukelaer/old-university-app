@@ -23,15 +23,11 @@ function setup(req, res) {
     const pwd = req.body.password;
     const email = req.body.email;
     console.log("Inside register:\t" + email + "\t" + pwd)
-    try {
-        db.emailNotInUse(email)
-            .then(() => db.createUser(email, pwd))
-            //.then(sendMail)
-            .then(user => res.status(200).send(user.id))
-            .catch(err => res.status(500).send(err));
-    } catch  (e) {
-        console.error(e.stack);
-    }
+    db.emailNotInUse(email)
+        .then(() => db.createUser(email, pwd))
+        //.then(sendMail)
+        .then(user => res.status(200).send(user.id))
+        .catch(err => res.status(500).send(err.stack));
 }
 
 function verify(req, res) {
