@@ -46,6 +46,7 @@ angular.module('unisalad')
             url: '/api/register'
           }).then(function successCallback(response) {
               console.log("HTTPS: user created successfully");
+              confirmUser(response, userDetails.email)
               toggleEmailSentConfirmation();
               correctEmailSent = true;
           }, function errorCallback(response) {
@@ -63,6 +64,23 @@ angular.module('unisalad')
     	} else {
         alert("Dunno")
       }
+    }
+
+    function confirmUser(response, email) {
+        $http({
+            method: 'POST',
+            data: JSON.stringify(userDetails),
+            url: '/api/verify?email=' + email + "&verification=" + response.verification
+          }).then(function successCallback(response) {
+              console.log("HTTPS: user created successfully");
+              confirmUser(response)
+              toggleEmailSentConfirmation();
+              correctEmailSent = true;
+          }, function errorCallback(response) {
+              console.log("HTTPS: Error creating user")
+              console.log(response)
+                toggleEmailSentConfirmation();
+          });
     }
 
     $scope.reEnterEmail = function () {

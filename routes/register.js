@@ -25,8 +25,8 @@ function setup(req, res) {
     console.log("Inside register:\t" + email + "\t" + pwd)
     db.emailNotInUse(email)
         .then(() => db.createUser(email, pwd))
-        //.then(sendMail)
-        .then(user => res.status(200).send(user.id))
+        .then(sendMail)
+        .then(user => res.status(200).send(user))
         .catch(err => res.status(500).send(err.stack));
 }
 
