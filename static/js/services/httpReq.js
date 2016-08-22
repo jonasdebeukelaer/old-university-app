@@ -3,7 +3,7 @@
 angular.module('unisalad')
   .service('httpReq', ['$http', function ($http) {
   	var prefix = "/api";
-  	if (window.location.href.contains("0.0.0.0")) { //debug for using grunt server
+  	if (window.location.href.indexOf("0.0.0.0") > -1) { //debug for using grunt server
   		prefix = 'https://127.0.0.1:5000/api'	
   	}
   	
