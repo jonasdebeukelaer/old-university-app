@@ -43,11 +43,23 @@ module.exports = function (grunt) {
                   }
               }
             }
+        },
+        jshint: {
+          options: {
+            "esversion": 6,
+            "node": true,
+            "indent": 4,
+            "quotmark": "single",
+            "eqeqeq": false,
+            "laxbreak": true
+          },
+          all: ['index.js', 'routes/**/*.js', 'security/**/*.js', 'db/**/*.js']
         }
     });
 
 grunt.loadNpmTasks('grunt-connect-proxy');
 grunt.loadNpmTasks('grunt-contrib-connect');
+grunt.loadNpmTasks('grunt-contrib-jshint');
 
 grunt.registerTask('server', function (target) {
     grunt.task.run([
@@ -55,4 +67,7 @@ grunt.registerTask('server', function (target) {
         'watch'
         ]);
 });
+
+grunt.registerTask('check', ['jshint']);
+
 };

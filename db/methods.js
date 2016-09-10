@@ -39,7 +39,7 @@ function crudMethods (con) {
             const queryString = query([conf.db.keys.users.uid, conf.db.keys.users.password], conf.db.tables.users, filterOpts);
             con.query(queryString, (err, rows) => {
                 if (err) return deferred.reject(new Error(err));
-                if (!rows || rows.length == 0) return deferred.reject(new Error("No match"));
+                if (!rows || rows.length === 0) return deferred.reject(new Error('No match'));
                 if (!verifyPassword(pwd, rows[0][conf.db.keys.users.password])) return deferred.reject(new Error('Wrong password'));
                 deferred.resolve(rows[0][conf.db.keys.users.uid]);
             });
@@ -54,14 +54,14 @@ function crudMethods (con) {
             const queryString = query([conf.db.keys.users.uid], conf.db.tables.users, filterOpts);
             con.query(queryString, (err, rows) => {
                 if (err) return deferred.reject(new Error(err));
-                if (rows.length > 0) return deferred.reject(new Error("Email already in use"));
+                if (rows.length > 0) return deferred.reject(new Error('Email already in use'));
                 deferred.resolve();
             });
             return deferred.promise;
         },
 
         createUser: (email, pwd) => {
-            console.log("create user " + email + " " + "pwd")
+            console.log('create user ' + email + ' ' + 'pwd');
             const deferred = Q.defer();
             const user = {
                 [conf.db.keys.users.email]: email,
@@ -103,7 +103,7 @@ function crudMethods (con) {
             const queryString = query([conf.db.keys.users.blocked], conf.db.tables.users, filterOpts);
             con.query(queryString, (err, rows) => {
                 if (err) return deferred.reject(new Error(err));
-                if (!rows || rows.length == 0) return deferred.reject(new Error('User not found'));
+                if (!rows || rows.length === 0) return deferred.reject(new Error('User not found'));
                 if (rows[0][conf.db.keys.users.blocked] == 1) return deferred.reject(new Error('User is banned'));
                 deferred.resolve();
             });
@@ -120,7 +120,7 @@ function crudMethods (con) {
             const sourceQuery = query([conf.db.keys.users.admin], conf.db.tables.users, sourceFilter);
             con.query(sourceQuery, (err, rows) => {
                 if (err) return deferred.reject(new Error(err));
-                if (!rows || rows.length == 0) return deferred.reject(new Error("Source user not found"));
+                if (!rows || rows.length === 0) return deferred.reject(new Error('Source user not found'));
                 const sourceRole = rows[0][conf.db.keys.users.admin] == 1 ? 'admin' : 'user';
                 deferred.resolve({sourceRole: sourceRole, sourceId: sourceId, targetId: targetId});
             });
@@ -140,7 +140,7 @@ function crudMethods (con) {
                 if (err) return deferred.reject(new Error(err));
                 if (sourceId == targetId) return deferred.resolve({source: sourceRole, target: 'self'});
                 if (targetId == 'every') return deferred.resolve({source: sourceRole, target: 'every'});
-                if (!rows || rows.length == 0) return deferred.reject(new Error("Target user not found"));
+                if (!rows || rows.length === 0) return deferred.reject(new Error('Target user not found'));
                 const targetRole = rows[0][conf.db.keys.users.admin] == 1 ? 'admin' : 'user';
                 deferred.resolve({source: sourceRole, target: targetRole});
             });
@@ -155,7 +155,7 @@ function crudMethods (con) {
             const queryString = query(fields, conf.db.tables.users, filterOpts);
             con.query(queryString, (err, rows) => {
                 if (err) return deferred.reject(new Error(err));
-                if (!rows || rows.length == 0) return deferred.reject(new Error('User not found'));
+                if (!rows || rows.length === 0) return deferred.reject(new Error('User not found'));
                 deferred.resolve(rows[0]);
             });
             return deferred.promise;
@@ -208,7 +208,7 @@ function crudMethods (con) {
             const queryString = query([conf.db.keys.posts.uid],conf.db.tables.posts, filterOpts);
             con.query(queryString, (err, rows) => {
                 if (err) return deferred.reject(new Error(err));
-                if (!rows || rows.length == 0) return deferred.reject(new Error());
+                if (!rows || rows.length === 0) return deferred.reject(new Error());
                 deferred.resolve(rows[0][conf.db.keys.posts.uid]);
             });
             return deferred.promise;
@@ -281,7 +281,7 @@ function crudMethods (con) {
             });
             return deferred.promise;
         }
-    }
+    };
 }
 
 module.exports = crudMethods;

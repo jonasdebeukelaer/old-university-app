@@ -22,7 +22,7 @@ function sendMail(user) {
 function setup(req, res) {
     const pwd = req.body.password;
     const email = req.body.email;
-    console.log("Inside register:\t" + email + "\t" + pwd)
+    console.log('Inside register:\t' + email + '\t' + pwd);
     db.emailNotInUse(email)
         .then(() => db.createUser(email, pwd))
         .then(sendMail)

@@ -4,8 +4,8 @@ const db = require('../db');
 
 function isAllowed (sourceRole, action, targetRole, targetFields) {
     return targetFields.every(field => {
-        return !!conf.permissions[sourceRole][action][targetRole]['all']
-            || !!conf.permissions[sourceRole][action][targetRole][field];
+        return !!conf.permissions[sourceRole][action][targetRole].all
+         || !!conf.permissions[sourceRole][action][targetRole][field];
     });
 }
 

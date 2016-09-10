@@ -63,7 +63,7 @@ function filterBanned(req, res, next) {
     db.isNotBanned(req.user.id)
         .then(() => next())
         .catch(err => {
-            next(err)
+            next(err);
         });
 }
 

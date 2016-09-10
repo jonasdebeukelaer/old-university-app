@@ -35,7 +35,7 @@ function loginError(err, req, res, next) {
 
 function verifyToken(req, res, next) {
     const token = req.get(conf.token.header);
-    console.log(token) //TODO remove this when comfortable with auth
+    console.log(token); //TODO remove this when comfortable with auth
     jwt.verify(token, conf.token.secret, function (err, decoded) {
         if (err) return(next(new Error(err)));
         req.user = {id: decoded.id};

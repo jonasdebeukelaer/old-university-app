@@ -44,7 +44,7 @@ function getUserPosts (req, res) {
     db.getPostsByUser(uid).then(posts => {
         res.status(200).json(posts);
     }).catch(err => {
-        console.log(err)
+        console.log(err);
         res.status(500).send(err);
     });
 }
@@ -54,7 +54,7 @@ function getPost (req, res) {
     db.getPost(postId).then(post => {
         res.status(200).json(post);
     }).catch(err => {
-        res.status(500).send(err)
+        res.status(500).send(err);
     });
 }
 
